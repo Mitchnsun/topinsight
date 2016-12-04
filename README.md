@@ -10,11 +10,11 @@ This README documents steps are necessary to get your application up and running
 ### How do I get set up? ###
 
 ###### Set up ######
-* [Node.js](https://nodejs.org/en/download/), version used v7.2.0
+* [Node.js](https://nodejs.org/en/download/), version used v6.9.1
 > Upgrade Node.js
 > * `sudo npm install n -g` - Node version manager
 > * `sudo n stable` - For the latest stable version
-* npm, version used 3.10.9 (Node comes with npm installed). npm is upgrading with Node.js
+* npm, version used 3.10.8 (Node comes with npm installed). npm is upgrading with Node.js
 
 * `sudo npm install`
 
