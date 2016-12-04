@@ -10,7 +10,7 @@ This README documents steps are necessary to get your application up and running
 ### How do I get set up? ###
 
 ###### Set up ######
-* [Node.js](https://nodejs.org/download/), version used v7.2.0
+* [Node.js](https://nodejs.org/en/download/), version used v7.2.0
 > Upgrade Node.js
 > * `sudo npm install n -g` - Node version manager
 > * `sudo n stable` - For the latest stable version
