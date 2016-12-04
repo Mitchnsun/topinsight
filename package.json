@@ -1,0 +1,16 @@
+{
+    "name": "topinsight",
+    "version": "1.0.0",
+    "description": "Topinsight project",
+    "main": "js/cv.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://matthieu_comperat@bitbucket.org/matthieu_comperat/topinsight.git"
+    },
+    "author": "Matthieu Compérat",
+    "license": "ISC",
+    "homepage": "https://bitbucket.org/matthieu_comperat/topinsight#readme"
+}
