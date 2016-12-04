@@ -9,14 +9,20 @@ This README documents steps are necessary to get your application up and running
 
 ### How do I get set up? ###
 
-###### Set up ######
+###### Global Set up ######
 * [Node.js](https://nodejs.org/en/download/), version used v6.9.1
 > Upgrade Node.js
 > * `sudo npm install n -g` - Node version manager
 > * `sudo n stable` - For the latest stable version
 * npm, version used 3.10.8 (Node comes with npm installed). npm is upgrading with Node.js
 
+* `sudo npm install -g cordova` - version used 6.4.0
 * `sudo npm install`
+
+###### Cordova Set up ######
+
+* `cordova platform add browser`
+* `cordova run browser` - Launch a web-server to see the application in browser
 
 ###### Configuration ######
 
