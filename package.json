@@ -4,7 +4,7 @@
     "description": "Topinsight project",
     "main": "js/cv.js",
     "scripts": {
-        "install": "npm install && npm install -g cordova && cordova platform add browser && npm run prepare:www",
+        "prepare": "npm run prepare:www && sudo cordova platform add browser",
         "prepare:www": "mkdir -p www/js && mkdir -p www/css && cp work/index.html www && cp -r work/assets www",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "npm run build:css && npm run build:js",

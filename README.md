@@ -16,8 +16,11 @@ This README documents steps are necessary to get your application up and running
 > * `sudo n stable` - For the latest stable version
 * npm, version used 3.10.8 (Node comes with npm installed). npm is upgrading with Node.js
 * Cordova version used 6.4.0
+* `chmod -R 755 folder/` to change permission
 
-* `sudo npm run install`
+* `sudo npm install -g cordova`
+* `sudo npm install`
+* `npm run prepare`
 
 ###### Launch ######
 
