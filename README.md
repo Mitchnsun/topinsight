@@ -15,14 +15,14 @@ This README documents steps are necessary to get your application up and running
 > * `sudo npm install n -g` - Node version manager
 > * `sudo n stable` - For the latest stable version
 * npm, version used 3.10.8 (Node comes with npm installed). npm is upgrading with Node.js
+* Cordova version used 6.4.0
 
-* `sudo npm install -g cordova` - version used 6.4.0
-* `sudo npm install`
+* `sudo npm run install`
 
-###### Cordova Set up ######
+###### Launch ######
 
-* `cordova platform add browser`
-* `cordova run browser` - Launch a web-server to see the application in browser
+* `npm run dev` - Launch a web-server to see the application in browser
+> Cordova version 6.4.0 display this error `Error loading cordova-browser`, this is a misleading message error.
 
 ###### Configuration ######
 
