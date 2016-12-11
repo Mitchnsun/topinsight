@@ -218,7 +218,7 @@ h1 {
   padding: 2px 0px;
 }
 .event.listening {
-  background-color: #333333;
+  background-color: orange;
   display: block;
 }
 .event.received {
