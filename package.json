@@ -9,7 +9,7 @@
         "prepare:copy": "cp work/index.html www && cp -r work/assets www",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "npm run prepare:copy && npm run build:css && npm run build:js",
-        "build:css": "lessc work/less/config.less www/css/index.css",
+        "build:css": "lessc work/less/config.less www/css/output.css",
         "build:js": "node scripts/uglify.js",
         "dev": "cordova run -- --live-reload"
     },
