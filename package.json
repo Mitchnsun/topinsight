@@ -9,7 +9,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "npm run build:css && npm run build:js",
         "build:css": "lessc work/less/config.less www/css/index.css",
-        "build:js": "uglifyjs work/js/*.js -o www/js/index.js -c",
+        "build:js": "uglifyjs work/js/*.js -o www/js/index.js -c --source-map www/js/index.js.map",
         "dev": "cordova run -- --live-reload"
     },
     "repository": {
