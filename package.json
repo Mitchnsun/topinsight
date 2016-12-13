@@ -8,9 +8,10 @@
         "prepare:www": "mkdir -p www/js && mkdir -p www/css && npm run prepare:copy",
         "prepare:copy": "cp work/index.html www && cp -r work/assets www",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "npm run prepare:copy && npm run build:css && npm run build:js",
+        "build:dev": "npm run prepare:copy && npm run build:css && npm run copy:map && npm run build:js",
         "build:css": "lessc work/less/config.less www/css/output.css",
         "build:js": "node scripts/uglify.js",
+        "copy:map": "cp -r work/js www",
         "dev": "cordova run -- --live-reload"
     },
     "repository": {

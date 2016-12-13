@@ -5,10 +5,11 @@ var result = UglifyJS.minify([
     "node_modules/jquery/dist/jquery.js",
     "node_modules/underscore/underscore.js",
     "node_modules/backbone/backbone.js",
+    "work/js/home/*.js",
     "work/js/*.js"
 ], {
-    outSourceMap: "www/js/output.js.map",
-    outFileName: "www/js/output.js"
+    outSourceMap: "output.js.map",
+    outFileName: "output.js"
 });
 
 // Minified JS
