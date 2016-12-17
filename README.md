@@ -24,6 +24,7 @@ This README documents steps are necessary to get your application up and running
 
 ###### Launch ######
 
+* Modify sources in work/
 * `npm run dev` - Launch a web-server to see the application in browser
 > Cordova version 6.4.0 display this error `Error loading cordova-browser`, this is a misleading message error.
 
