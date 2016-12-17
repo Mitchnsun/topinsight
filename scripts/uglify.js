@@ -4,7 +4,9 @@ var fs = require('fs');
 var result = UglifyJS.minify([
     "node_modules/jquery/dist/jquery.js",
     "node_modules/underscore/underscore.js",
+    "node_modules/handlebars/dist/handlebars.runtime.js",
     "node_modules/backbone/backbone.js",
+    "work/dist/*.js",
     "work/js/home/*.js",
     "work/js/*.js"
 ], {
