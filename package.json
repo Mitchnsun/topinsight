@@ -4,13 +4,13 @@
     "description": "Topinsight project",
     "main": "js/cv.js",
     "scripts": {
-        "prepare": "npm run prepare:www && sudo cordova platform add browser",
-        "prepare:www": "mkdir -p www/js && mkdir -p www/css && npm run prepare:copy",
+        "prepare": "npm run prepare:folders && sudo cordova platform add browser",
+        "prepare:folders": "mkdir -p www/js && mkdir -p www/css && mkdir -p work/dist && npm run prepare:copy",
         "prepare:copy": "cp work/index.html www && cp -r work/assets www",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build:dev": "npm run prepare:copy && npm run build:css && npm run copy:map && npm run build:js",
         "build:css": "lessc work/less/config.less www/css/output.css",
-        "build:js": "node scripts/uglify.js",
+        "build:js": "handlebars work/tpl/*.html -f work/dist/tpl.js && node scripts/uglify.js",
         "copy:map": "cp -r work/js www",
         "dev": "cordova run -- --live-reload"
     },
