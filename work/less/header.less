@@ -1,0 +1,23 @@
+@size-header: 40px;
+
+header {
+    position: relative;
+    width: 100%;
+    .title {
+        line-height: @size-header;
+        color: @green;
+        text-align: center;
+    }
+    .chevron {
+        position: absolute;
+        color: @green;
+        font-weight: bold;
+        top: 12px;
+        &--right {
+            right: 5px;
+        }
+        &--left {
+            left: 5px;
+        }
+    }
+}

@@ -6,4 +6,5 @@ app.initialize = function() {
 /* DOM Ready and events function */
 $(document).ready(function() {
     app.initialize();
+    new app.headerview();
 });
