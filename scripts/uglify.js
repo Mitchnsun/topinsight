@@ -7,7 +7,7 @@ var result = UglifyJS.minify([
     "node_modules/handlebars/dist/handlebars.runtime.js",
     "node_modules/backbone/backbone.js",
     "work/dist/*.js",
-    "work/js/home/*.js",
+    "work/js/views/*.js",
     "work/js/*.js"
 ], {
     outSourceMap: "output.js.map",
