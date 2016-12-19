@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {
+define(['backbone', 'views/homeview'], function(Backbone, Homeview) {
     return Backbone.Router.extend({
         routes: _.object([
             [app.urls.home, "home"],
@@ -7,6 +7,7 @@ define(['backbone'], function(Backbone) {
             [app.urls.itinerary, "itinerary"]
         ]),
         home: function() {
+            new Homeview();
             console.log("route home");
         },
         signup: function() {
