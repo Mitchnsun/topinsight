@@ -5,8 +5,9 @@
     "main": "js/cv.js",
     "scripts": {
         "prepare": "npm run prepare:folders && sudo cordova platform add browser",
-        "prepare:folders": "mkdir -p www/js && mkdir -p www/css && mkdir -p work/dist && npm run prepare:copy",
-        "prepare:copy": "cp work/index.html www && cp -r work/assets www",
+        "prepare:folders": "mkdir -p www/js && mkdir -p www/vendors && mkdir -p www/css && mkdir -p work/dist && npm run prepare:copy",
+        "prepare:copy": "cp work/index.html www && cp -r work/assets www && npm run copy:vendors",
+        "copy:vendors": "cp node_modules/requirejs/require.js www/vendors && cp node_modules/jquery/dist/jquery.js www/vendors && cp node_modules/underscore/underscore.js www/vendors && cp node_modules/backbone/backbone.js www/vendors",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build:dev": "npm run prepare:copy && npm run build:css && npm run copy:map && npm run build:js",
         "build:css": "lessc work/less/config.less www/css/output.css",
@@ -26,6 +27,7 @@
         "handlebars": "^4.0.6",
         "jquery": "^3.1.1",
         "less": "^2.7.1",
+        "requirejs": "^2.3.2",
         "reset-css": "^2.2.0",
         "uglify-js": "^2.7.5"
     },
