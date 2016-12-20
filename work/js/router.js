@@ -1,4 +1,4 @@
-define(['backbone', 'views/homeview'], function(Backbone, Homeview) {
+define(['backbone', 'views/headerview', 'views/homeview'], function(Backbone, Headerview, Homeview) {
     return Backbone.Router.extend({
         routes: _.object([
             [app.urls.home, "home"],
@@ -7,6 +7,9 @@ define(['backbone', 'views/homeview'], function(Backbone, Homeview) {
             [app.urls.itinerary, "itinerary"]
         ]),
         home: function() {
+            this.header({
+                title: app.wordings.dashboard.header
+            });
             new Homeview();
             console.log("route home");
         },
@@ -18,6 +21,12 @@ define(['backbone', 'views/homeview'], function(Backbone, Homeview) {
         },
         itinerary: function() {
             console.log("route itinerary");
+        },
+        header: function(options) {
+            if (!this.headerview) {
+                this.headerview = new Headerview();
+            }
+            this.headerview.render(options);
         }
     });
 });
