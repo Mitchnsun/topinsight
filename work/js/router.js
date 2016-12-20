@@ -1,4 +1,4 @@
-define(['backbone', 'views/headerview', 'views/homeview'], function(Backbone, Headerview, Homeview) {
+define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
     return Backbone.Router.extend({
         routes: _.object([
             [app.urls.home, "home"],
@@ -10,8 +10,9 @@ define(['backbone', 'views/headerview', 'views/homeview'], function(Backbone, He
             this.header({
                 title: app.wordings.dashboard.header
             });
-            new Homeview();
-            console.log("route home");
+            require(['views/homeview'], function(Homeview) {
+                new Homeview();
+            });
         },
         signup: function() {
             console.log("route signup");
