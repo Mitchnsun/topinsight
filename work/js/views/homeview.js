@@ -3,11 +3,12 @@ define(['backbone'], function(Backbone) {
         el: ".app",
         wordings: app.wordings.dashboard,
         initialize: function() {
-            console.log('homeview initialize');
             this.render();
         },
         render: function() {
-            $(this.el).html(Handlebars.templates["home.html"]());
+            $(this.el).html(Handlebars.templates["home.html"]({
+                wordings: this.wordings
+            }));
         }
     });
 });

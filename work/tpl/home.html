@@ -2,7 +2,7 @@
     <div class="dashboard__meter">
         <img src="assets/img/compteur.png" alt="meter">
         <div class="dashboard__meter__data">
-            <strong>10,5</strong> km/h
+            <strong>10,5</strong> {{wordings.meter.unit}}
         </div>
     </div>
     <div class="dashboard__battery">
@@ -10,24 +10,14 @@
     </div>
 </div>
 <div class="infos">
+    {{#each wordings.elements}}
     <div class="infos__element">
-        <img src="assets/img/icon-road.png" class="infos__element__icon" alt="Icon Road">
-        <h3 class="infos__element__title">Distance</h3>
-        <p class="infos__element__data">10,5</p>
-        <p class="infos__element__unit">km</p>
+        <img src="{{icon}}" class="infos__element__icon" alt="{{alt}}">
+        <h3 class="infos__element__title">{{title}}</h3>
+        <p class="infos__element__data">{{{data}}}</p>
+        <p class="infos__element__unit">{{unit}}</p>
     </div>
-    <div class="infos__element">
-        <img src="assets/img/icon-battery.png" class="infos__element__icon" alt="Icon Battery">
-        <h3 class="infos__element__title">Puissance</h3>
-        <p class="infos__element__data">80</p>
-        <p class="infos__element__unit">watts</p>
-    </div>
-    <div class="infos__element">
-        <img src="assets/img/icon-plus.png" class="infos__element__icon" alt="Icon Plus">
-        <h3 class="infos__element__title">Assistance</h3>
-        <p class="infos__element__data">2 <span>sur 5</span></p>
-        <p class="infos__element__unit">PAS</p>
-    </div>
+    {{/each}}
 </div>
 <h3 class="assistance__title">Assistance</h3>
 <div class="assistance">
