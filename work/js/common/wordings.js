@@ -27,6 +27,14 @@ var app = app || {};
                 icon: "assets/img/icon-plus.png",
                 alt: "Icon Plus"
             }]
+        },
+        sign: {
+            header: "assets/img/logo.png",
+            mail: "Mail",
+            password: "Mot de passe",
+            signin: "Se connecter",
+            FBsign: "Connexion Facebook",
+            TWsign: "S'inscrire"
         }
     };
 })();

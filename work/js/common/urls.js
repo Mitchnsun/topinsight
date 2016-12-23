@@ -4,6 +4,7 @@ var app = app || {};
     'use strict';
     app.urls = {
         home: "",
+        signin: "signin",
         signup: "signup",
         login: "login",
         itinerary: "itinerary"

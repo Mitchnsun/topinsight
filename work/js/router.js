@@ -2,6 +2,7 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
     return Backbone.Router.extend({
         routes: _.object([
             [app.urls.home, "home"],
+            [app.urls.signin, "signin"],
             [app.urls.signup, "signup"],
             [app.urls.login, "login"],
             [app.urls.itinerary, "itinerary"]
@@ -14,7 +15,15 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
                 });
             });
         },
-        signup: function() {
+        signin: function() {
+            var self = this;
+            require(['views/signinview'], function(Signinview) {
+                new Signinview({
+                    headerview: self.header()
+                });
+            });
+        },
+        signup: function () {
             console.log("route signup");
         },
         login: function() {
