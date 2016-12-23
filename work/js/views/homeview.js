@@ -2,7 +2,14 @@ define(['backbone'], function(Backbone) {
     return Backbone.View.extend({
         el: ".app",
         wordings: app.wordings.dashboard,
-        initialize: function() {
+        initialize: function(options) {
+            this.headerview = options.headerview;
+            this.headerview.render({
+                title: this.wordings.header,
+                back: false,
+                forward: true,
+                signout: true,
+            });
             this.render();
         },
         render: function() {

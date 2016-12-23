@@ -7,11 +7,11 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
             [app.urls.itinerary, "itinerary"]
         ]),
         home: function() {
-            this.header({
-                title: app.wordings.dashboard.header
-            });
+            var self = this;
             require(['views/homeview'], function(Homeview) {
-                new Homeview();
+                new Homeview({
+                    headerview: self.header()
+                });
             });
         },
         signup: function() {
@@ -23,11 +23,8 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
         itinerary: function() {
             console.log("route itinerary");
         },
-        header: function(options) {
-            if (!this.headerview) {
-                this.headerview = new Headerview();
-            }
-            this.headerview.render(options);
+        header: function() {
+            return this.headerview = this.headerview || new Headerview();
         }
     });
 });

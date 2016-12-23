@@ -4,7 +4,10 @@ define(['backbone'], function(Backbone) {
         render: function(options) {
             $(this.el).html(Handlebars.templates["header.html"]({
                 urls: app.urls,
-                title: options.title
+                title: options.title,
+                back: options.back,
+                forward: options.forward,
+                signout: options.signout,
             }));
         },
         events: {
