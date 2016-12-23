@@ -1,0 +1,78 @@
+.dashboard {
+    overflow: hidden;
+    &__meter {
+        width: 80%;
+    }
+    &__battery {
+        width: 20%;
+    }
+    &__meter, &__battery {
+        box-sizing: border-box;
+        float: left;
+        padding: 16px;
+        img {
+            max-width: 100%;
+        }
+    }
+}
+.infos, .assistance {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.infos {
+    &__element {
+        text-align: center;
+        &__title {
+            display: inline;
+            font-family: @OpenSansSemibold;
+            font-size: 12px;
+            line-height: 18px;
+            color: @grey;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        &__icon {
+            width: 16px;
+            vertical-align: middle;
+        }
+        &__data {
+            margin-top: 6px;
+            font-family: @OpenSansLight;
+            font-size: 44px;
+            line-height: 52px;
+            color: @green;
+            span {
+                font-size: 26px;
+            }
+        }
+        &__unit {
+            font-family: @OpenSansLight;
+            font-size: 32px;
+            line-height: 32px;
+            color: @grey; 
+        }
+    }
+}
+
+.assistance {
+    &__title {
+        margin-top: 20px;
+        font-family: @OpenSansLight;
+        font-size: 16px;
+        line-height: 20px;
+        color: @grey;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        &:before, &:after {
+            content: '-';
+        }
+        &:before {
+            margin: 0 5px 0 24px;
+        }
+        &:after {
+            margin: 0 24px 0 5px;
+        }
+    }
+}
