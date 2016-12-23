@@ -3,16 +3,20 @@ define(['backbone'], function(Backbone) {
         el: "header",
         render: function(options) {
             $(this.el).html(Handlebars.templates["header.html"]({
+                urls: app.urls,
                 title: options.title
             }));
         },
         events: {
-            "click .chevron--right": "doing",
-            "click .chevron--left": "doing",
-            "click .icon--logout": "doing"
+            "click .chevron--left": "back",
+            "click .icon--logout": "signout"
         },
-        doing: function(e) {
-            console.log(e);
+        signout: function(e) {
+            console.log("signout");
+        },
+        back: function(e) {
+            e.preventDefault();
+            window.history.back();
         }
     });
 });
