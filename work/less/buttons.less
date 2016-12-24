@@ -1,7 +1,12 @@
 .button {
+    &--container {
+        padding: 0 17%;
+    }
+    /* Colors */
     &--green {
         background-color: @green;
     }
+    /* Shapes */
     &--round {
         vertical-align: top;
         width: 88px;
@@ -10,5 +15,27 @@
         img {
             max-width: 100%;
         }
+    }
+    &--rectangle {
+        width: 100%;
+        height: 36px;
+        margin-top: 20px;
+        font-family: @Helvetica;
+        font-size: 15px;
+        line-height: 31px;
+        letter-spacing: 0.5px;
+        color: @green;
+        border: 2px solid @green;
+        background: @white;
+    }
+    &--facebook {
+        border-color: @facebook;
+        background: @facebook;
+        color: @white;
+    }
+    &--twitter {
+        border-color: @twitter;
+        background: @twitter;
+        color: @white;
     }
 }
