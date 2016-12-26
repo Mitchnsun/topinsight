@@ -4,6 +4,7 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
             [app.urls.home, "home"],
             [app.urls.signin, "signin"],
             [app.urls.signup, "signup"],
+            [app.urls.signup_suite, "signupsuite"],
             [app.urls.login, "login"],
             [app.urls.itinerary, "itinerary"]
         ]),
@@ -23,8 +24,22 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
                 });
             });
         },
-        signup: function () {
-            console.log("route signup");
+        signup: function() {
+            var self = this;
+            require(['views/signupview'], function(Signupview) {
+                new Signupview({
+                    headerview: self.header()
+                });
+            });
+        },
+        signupsuite: function() {
+            var self = this;
+            require(['views/signupview'], function(Signupview) {
+                new Signupview({
+                    headerview: self.header(),
+                    suite: true
+                });
+            });
         },
         login: function() {
             console.log("route login");

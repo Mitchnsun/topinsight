@@ -29,9 +29,16 @@ var app = app || {};
             }]
         },
         sign: {
+            title: "Inscription",
             header: "assets/img/logo.png",
-            mail: "Mail",
+            name: "Nom",
+            surname: "Prénom",
+            email: "E-mail",
             password: "Mot de passe",
+            address: "Adresse",
+            phone: "Numéro de téléphone",
+            vae: "Modèle VAE",
+            validate: "Valider",
             signin: "Se connecter",
             FBsign: "Connexion Facebook",
             TWsign: "S'inscrire"
