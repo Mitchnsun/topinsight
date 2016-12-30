@@ -1,4 +1,5 @@
 .button {
+    box-sizing: border-box;
     &--container {
         padding: 0 17%;
     }
@@ -26,6 +27,23 @@
         border: 2px solid @green;
         background: @white;
     }
+    &--half {
+        width: 50%;
+        display: inline-block;
+        margin-right: -4px;
+    }
+    /* Sizes */
+    &--big {
+        font-family: @HelveticaBold;
+        font-size: 19px;
+        height: 56px;
+        line-height: 55px;
+    }
+    /* Colors */
+    &--green {
+        color: @white;
+        background-color: @green;
+    }
     &--facebook {
         border-color: @facebook;
         background: @facebook;
@@ -35,10 +53,5 @@
         border-color: @twitter;
         background: @twitter;
         color: @white;
-    }
-    /* Colors */
-    &--green {
-        color: @white;
-        background-color: @green;
     }
 }

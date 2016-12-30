@@ -1,0 +1,40 @@
+.itinerary {
+    &__map {
+        display: block;
+        width: 100%;
+    }
+    &__element {
+        display: inline-block;
+        width: 50%;
+        margin-right: -4px;
+        padding-top: 6px;
+        .icon {
+            margin-left: 10px;
+        }
+        &__title {
+            display: inline;
+            font-family: @OpenSansSemibold;
+            font-size: 12px;
+            line-height: 18px;
+            color: @grey;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        &__data {
+            text-align: center;
+            font-family: @OpenSansLight;
+            font-size: 38px;
+            line-height: 64px;
+            color: @green;
+        }
+    }
+    &__footer {
+        position: fixed;
+        background: @white;
+        width: 100%;
+        bottom: 0;
+        .button--rectangle {
+            margin-top: 0;
+        }
+    }
+}

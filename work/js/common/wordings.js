@@ -42,6 +42,23 @@ var app = app || {};
             signin: "Se connecter",
             FBsign: "Connexion Facebook",
             TWsign: "S'inscrire"
+        },
+        itinerary: {
+            header: "Parcours",
+            reset: "Remettre à zéro",
+            elements: [{
+                title: "Temps",
+                data: "01:30:22",
+                unit: "",
+                icon: "assets/img/icon-clock-grey.png",
+                alt: "Clock Icon"
+            }, {
+                title: "Distance",
+                data: "%f",
+                unit: "km",
+                icon: "assets/img/icon-road.png",
+                alt: "Road Icon"
+            }]
         }
     };
 })();
