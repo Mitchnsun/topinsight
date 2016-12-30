@@ -7,7 +7,6 @@ var app = app || {};
         signin: "signin",
         signup: "signup",
         signup_suite: "signup/suite",
-        login: "login",
         itinerary: "itinerary"
     };
 })();

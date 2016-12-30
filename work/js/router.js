@@ -5,7 +5,6 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
             [app.urls.signin, "signin"],
             [app.urls.signup, "signup"],
             [app.urls.signup_suite, "signupsuite"],
-            [app.urls.login, "login"],
             [app.urls.itinerary, "itinerary"]
         ]),
         home: function() {
@@ -40,9 +39,6 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
                     suite: true
                 });
             });
-        },
-        login: function() {
-            console.log("route login");
         },
         itinerary: function() {
             console.log("route itinerary");
