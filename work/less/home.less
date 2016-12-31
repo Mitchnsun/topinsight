@@ -56,13 +56,14 @@
             line-height: 52px;
             color: @green;
             span {
+                line-height: 1;
                 font-size: 26px;
             }
         }
         &__unit {
             font-family: @OpenSansLight;
             font-size: 32px;
-            line-height: 32px;
+            line-height: 1;
             color: @grey; 
         }
     }
@@ -99,6 +100,26 @@
                 strong {
                     font-size: 52px
                 }
+            }
+        }
+    }
+}
+@media (max-width: 370px) {
+    .infos {
+        &__element {
+            &__title {
+                font-size: 11px;
+                line-height: 17px;
+            }
+            &__data {
+                font-size: 40px;
+                line-height: 50px;
+                span {
+                    font-size: 22px;
+                }
+            }
+            &__unit {
+                font-size: 28px;
             }
         }
     }

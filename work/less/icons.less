@@ -2,9 +2,19 @@
     vertical-align: sub;
     margin-right: 6px;
     &--small {
-        height: 16px;
+        height: 14px;
+        vertical-align: middle;
     }
     &--big {
         height: 25px;
+    }
+}
+
+@media (max-width: 370px) {
+    .icon {
+        margin-right: 2px;
+        &--small {
+            height: 12px;
+        }
     }
 }
