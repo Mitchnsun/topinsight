@@ -4,6 +4,7 @@
     "description": "Topinsight project",
     "main": "js/cv.js",
     "scripts": {
+        "clean": "rm -rf www && npm run prepare:folders",
         "prepare": "npm run prepare:folders && sudo cordova platform add browser",
         "prepare:folders": "mkdir -p www/js && mkdir -p www/vendors && mkdir -p www/css && mkdir -p work/dist && npm run prepare:copy",
         "prepare:copy": "cp work/index.html www && cp -r work/assets www && npm run copy:vendors",
