@@ -15,6 +15,19 @@ define(['backbone'], function(Backbone) {
                 wordings: this.wordings,
                 urls: app.urls
             }));
+        },
+        events: {
+            "click .button--facebook": "share",
+            "click .button--twitter": "share",
+            "click .button--reset": "reset"
+        },
+        share: function(e) {
+            e.preventDefault();
+            console.log(e);
+        },
+        reset: function(e) {
+            e.preventDefault();
+            console.log(e);
         }
     });
 });
