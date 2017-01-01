@@ -12,19 +12,19 @@ var app = app || {};
                 title: "Distance",
                 data: "%f",
                 unit: "km",
-                icon: "assets/img/icon-road.png",
+                icon: "assets/img/icons/icon-road.png",
                 alt: "Icon Road"
             }, {
                 title: "Puissance",
                 data: "%f",
                 unit: "watts",
-                icon: "assets/img/icon-battery.png",
+                icon: "assets/img/icons/icon-battery.png",
                 alt: "Icon Battery"
             }, {
                 title: "Assistance",
                 data: "%f <span>sur %f</span>",
                 unit: "PAS",
-                icon: "assets/img/icon-plus.png",
+                icon: "assets/img/icons/icon-plus.png",
                 alt: "Icon Plus"
             }]
         },
@@ -50,13 +50,13 @@ var app = app || {};
                 title: "Temps",
                 data: "01:30:22",
                 unit: "",
-                icon: "assets/img/icon-clock-grey.png",
+                icon: "assets/img/icons/icon-clock-grey.png",
                 alt: "Clock Icon"
             }, {
                 title: "Distance",
                 data: "%f",
                 unit: "km",
-                icon: "assets/img/icon-road.png",
+                icon: "assets/img/icons/icon-road.png",
                 alt: "Road Icon"
             }]
         }
