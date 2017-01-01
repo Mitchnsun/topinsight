@@ -6,6 +6,7 @@ var app = app || {};
         /* API */
         endpoint: "",
         ws_vae: "/api/v1/vae",
+        ws_user: "/api/v1/users",
 
         /* Application urls */
         home: "",

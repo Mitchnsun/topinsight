@@ -23,9 +23,11 @@ require.config({
 
 require([
     'backbone',
-    'router'
-], function(Backbone, Router) {
+    'router',
+    'models/user'
+], function(Backbone, Router, User) {
     // Initialize routing and start Backbone.history()
+    app.user = new User();
     new Router();
     Backbone.history.start();
 });
