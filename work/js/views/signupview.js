@@ -3,7 +3,7 @@ define(['backbone'], function(Backbone) {
         el: ".app",
         wordings: app.wordings.sign,
         initialize: function(options) {
-            this.tmpl = options.suite ? Handlebars.templates["signup-suite.html"] : Handlebars.templates["signup.html"];
+            this.tmpl = window.location.hash.match(/suite/) !== null ? Handlebars.templates["signup-suite.html"] : Handlebars.templates["signup.html"];
             this.headerview = options.headerview;
             this.headerview.render({
                 title: this.wordings.title,

@@ -7,38 +7,27 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
             [app.urls.signup_suite, "signupsuite"],
             [app.urls.itinerary, "itinerary"]
         ]),
-        home: function() {
+        loadView: function(path) {
             var self = this;
-            require(['views/homeview'], function(Homeview) {
-                new Homeview({ headerview: self.header() });
+            this.view && (this.view.close ? this.view.close() : this.view.undelegateEvents());
+            require([path], function(View) {
+                self.view = new View({ headerview: self.header() });
             });
+        },
+        home: function() {
+            this.loadView('views/homeview');
         },
         signin: function() {
-            var self = this;
-            require(['views/signinview'], function(Signinview) {
-                new Signinview({ headerview: self.header() });
-            });
+            this.loadView('views/signinview');
         },
         signup: function() {
-            var self = this;
-            require(['views/signupview'], function(Signupview) {
-                new Signupview({ headerview: self.header() });
-            });
+            this.loadView('views/signupview');
         },
         signupsuite: function() {
-            var self = this;
-            require(['views/signupview'], function(Signupview) {
-                new Signupview({
-                    headerview: self.header(),
-                    suite: true
-                });
-            });
+            this.loadView('views/signupview');
         },
         itinerary: function() {
-            var self = this;
-            require(['views/itineraryview'], function(Itineraryview) {
-                new Itineraryview({ headerview: self.header() });
-            });
+            this.loadView('views/itineraryview');
         },
         header: function() {
             return this.headerview = this.headerview || new Headerview();
