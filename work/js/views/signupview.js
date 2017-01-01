@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {
+define(['backbone', 'models/vae'], function(Backbone, Vae) {
     return Backbone.View.extend({
         el: ".app",
         wordings: app.wordings.sign,
@@ -9,6 +9,8 @@ define(['backbone'], function(Backbone) {
                 title: this.wordings.title,
                 back: true
             });
+            this.vaemodels = new Vae();
+            this.vaemodels.fetch();
             this.render();
         },
         render: function() {
