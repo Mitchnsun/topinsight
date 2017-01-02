@@ -21,11 +21,11 @@ define(['backbone'], function(Backbone) {
         rendermaps: function() {
             var heightHeader = $('header').height();
             var heightFooter = $('.itinerary__footer').height();
-            var map = new google.maps.Map(document.getElementById('map'), {
+            $('.itinerary__map').height(this.height - heightHeader - heightFooter);
+            this.map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: 48.8566, lng: 2.3522 },
                 zoom: 14
             });
-            $('.itinerary__map').height(this.height - heightHeader - heightFooter);
         },
         events: {
             "click .button--facebook": "share",
