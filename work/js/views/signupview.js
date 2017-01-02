@@ -15,6 +15,7 @@ define(['backbone', 'models/vae'], function(Backbone, Vae) {
         render: function() {
             $(this.el).html(this.tmpl({
                 wordings: this.wordings,
+                user: app.user.toJSON(),
                 urls: app.urls
             }));
         },
