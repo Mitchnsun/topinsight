@@ -9,13 +9,13 @@
         "prepare": "npm run prepare:folders && sudo cordova prepare",
         "prepare:folders": "mkdir -p www/js && mkdir -p www/vendors && mkdir -p www/css && mkdir -p work/dist && npm run prepare:copy",
         "prepare:copy": "cp work/index.html www && cp -r work/assets www && npm run copy:vendors",
-        "copy:vendors": "cp node_modules/requirejs/require.js www/vendors && cp node_modules/jquery/dist/jquery.js www/vendors && cp node_modules/underscore/underscore.js www/vendors && cp node_modules/backbone/backbone.js www/vendors",
+        "copy:vendors": "cp node_modules/requirejs/require.js www/vendors && cp node_modules/jquery/dist/jquery.js www/vendors && cp node_modules/underscore/underscore.js www/vendors && cp node_modules/backbone/backbone.js www/vendors && cp node_modules/requirejs-plugins/src/async.js www/vendors",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build:dev": "npm run prepare:copy && npm run build:css && npm run copy:map && npm run build:js",
         "build:css": "lessc work/less/config.less www/css/output.css",
         "build:js": "handlebars work/tpl/*.html -f work/dist/tpl.js && node scripts/uglify.js",
         "copy:map": "cp -r work/js www",
-        "dev": "cordova run -- --live-reload"
+        "dev": "cordova run browser -- --live-reload"
     },
     "repository": {
         "type": "git",
@@ -30,6 +30,7 @@
         "jquery": "^3.1.1",
         "less": "^2.7.1",
         "requirejs": "^2.3.2",
+        "requirejs-plugins": "^1.0.2",
         "reset-css": "^2.2.0",
         "uglify-js": "^2.7.5"
     },
