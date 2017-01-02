@@ -31,8 +31,8 @@ var app = app || {};
         sign: {
             title: "Inscription",
             header: "assets/img/logo.png",
-            name: "Nom",
-            surname: "Prénom",
+            lastname: "Nom",
+            firstname: "Prénom",
             email: "E-mail",
             password: "Mot de passe",
             address: "Adresse",
@@ -41,7 +41,14 @@ var app = app || {};
             validate: "Valider",
             signin: "Se connecter",
             FBsign: "Connexion Facebook",
-            TWsign: "S'inscrire"
+            TWsign: "S'inscrire",
+            errors: {
+                empty: "Veuillez remplir tous les champs",
+                firstname: "Le prénom doit être composé de 2 à 14 caractères",
+                lastname: "Le nom doit être être composé de 2 à 14 caractères",
+                email: "Format d'adresse mail invalide",
+                password: "Votre mot de passe doit être compris entre 4 et 18 caractères"
+            }
         },
         itinerary: {
             header: "Parcours",
