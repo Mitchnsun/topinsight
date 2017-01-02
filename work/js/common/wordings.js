@@ -37,7 +37,7 @@ var app = app || {};
             password: "Mot de passe",
             address: "Adresse",
             phone: "Numéro de téléphone",
-            vae: "Modèle VAE",
+            vae: "Votre modèle",
             validate: "Valider",
             signin: "Se connecter",
             FBsign: "Connexion Facebook",

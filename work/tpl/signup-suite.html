@@ -1,15 +1,15 @@
 <form class="form">
     <div class="input">
-        <input class="input__element" type="text" placeholder="{{wordings.address}}">
+        <input class="input__element" type="text" placeholder="{{wordings.address}}" data-param="address">
     </div>
     <div class="input">
-        <input class="input__element" type="tel" placeholder="{{wordings.phone}}">
+        <input class="input__element" type="tel" placeholder="{{wordings.phone}}" data-param="phone">
     </div>
     <div class="input">
-        <select class="input__element">
-            <option>{{wordings.vae}}</option>
-            <option>VAE 1</option>
-            <option>VAE 2 </option>
+        <select class="input__element" data-param="vaeType">
+            <option value="">{{wordings.vae}}</option>
+            <option value="vae1">VAE 1</option>
+            <option value="vae2">VAE 2 </option>
         </select>
     </div>
 </form>
