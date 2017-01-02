@@ -4,8 +4,9 @@
     "description": "Topinsight project",
     "main": "js/cv.js",
     "scripts": {
-        "clean": "rm -rf www && npm run prepare:folders",
-        "prepare": "npm run prepare:folders && sudo cordova platform add browser",
+        "clean": "rm -rf www && sudo npm run clean:platforms && npm run prepare",
+        "clean:platforms": "cordova platform rm browser && cordova platform rm android && cordova platform rm ios",
+        "prepare": "npm run prepare:folders && sudo cordova prepare",
         "prepare:folders": "mkdir -p www/js && mkdir -p www/vendors && mkdir -p www/css && mkdir -p work/dist && npm run prepare:copy",
         "prepare:copy": "cp work/index.html www && cp -r work/assets www && npm run copy:vendors",
         "copy:vendors": "cp node_modules/requirejs/require.js www/vendors && cp node_modules/jquery/dist/jquery.js www/vendors && cp node_modules/underscore/underscore.js www/vendors && cp node_modules/backbone/backbone.js www/vendors",
