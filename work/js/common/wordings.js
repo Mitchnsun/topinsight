@@ -5,7 +5,13 @@ var app = app || {};
     app.wordings = {
         continue: "continuer",
         errors: {
-            default: "Une erreur est survenue, veuillez réessayer dans quelques instants"
+            default: "Une erreur est survenue, veuillez réessayer dans quelques instants",
+            empty: "Veuillez remplir tous les champs",
+            firstname: "Le prénom doit être composé de 2 à 14 caractères",
+            lastname: "Le nom doit être être composé de 2 à 14 caractères",
+            email: "Format d'adresse mail invalide",
+            password: "Votre mot de passe doit être compris entre 4 et 18 caractères",
+            phone: "Le numéro de téléphone est invalide"
         },
         dashboard: {
             header: "Tableau de bord",
@@ -46,14 +52,6 @@ var app = app || {};
             signin: "Se connecter",
             FBsign: "Connexion Facebook",
             TWsign: "S'inscrire",
-            errors: {
-                empty: "Veuillez remplir tous les champs",
-                firstname: "Le prénom doit être composé de 2 à 14 caractères",
-                lastname: "Le nom doit être être composé de 2 à 14 caractères",
-                email: "Format d'adresse mail invalide",
-                password: "Votre mot de passe doit être compris entre 4 et 18 caractères",
-                phone: "Le numéro de téléphone est invalide"
-            }
         },
         itinerary: {
             header: "Parcours",

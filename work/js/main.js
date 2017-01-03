@@ -28,8 +28,9 @@ require([
     'views/errorview',
     'models/user'
 ], function(Backbone, Router, Errorview, User) {
+    app.$ = $;
     app.user = new User();
-    app.erroview = new Errorview();
+    app.errorview = new Errorview();
     // Initialize routing and start Backbone.history()
     app.router = new Router();
     Backbone.history.start();
