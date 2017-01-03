@@ -3,6 +3,10 @@ var app = app || {};
 (function($) {
     'use strict';
     app.wordings = {
+        continue: "continuer",
+        errors: {
+            default: "Une erreur est survenue, veuillez réessayer dans quelques instants"
+        },
         dashboard: {
             header: "Tableau de bord",
             meter: {

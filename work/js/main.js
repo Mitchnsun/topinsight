@@ -25,10 +25,12 @@ require.config({
 require([
     'backbone',
     'router',
+    'views/errorview',
     'models/user'
-], function(Backbone, Router, User) {
-    // Initialize routing and start Backbone.history()
+], function(Backbone, Router, Errorview, User) {
     app.user = new User();
+    app.erroview = new Errorview();
+    // Initialize routing and start Backbone.history()
     app.router = new Router();
     Backbone.history.start();
 });

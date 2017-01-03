@@ -1,0 +1,32 @@
+.error {
+    display: none;
+    background: @white;
+    position: fixed;
+    top: 35%;
+    border-radius: 5px;
+    box-shadow: 0 3px 8px @grey;
+    box-sizing: content-box;
+    width: 80%;
+    margin: 0 10%;
+    &--active {
+        display: block;
+    }
+    &__message {
+        font-family: @OpenSansLight;
+        font-size: 15px;
+        color: @black;
+        text-align: center;
+        padding: 27px 16px;
+    }
+    &__button {
+        font-family: @OpenSansSemibold;
+        font-size: 15px;
+        line-height: 55px;
+        text-transform: uppercase;
+        color: @green;
+        border: 1px solid @green;
+        background: @white;
+        border-radius: 0 0 5px 5px;
+        width: 100%;
+    }
+}
