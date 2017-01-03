@@ -10,6 +10,11 @@ This README documents steps are necessary to get your application up and running
 ### How do I get set up? ###
 
 ###### Global Set up ######
+* Install [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12).
+> Once Xcode is installed, several command-line tools need to be enabled for Cordova to run.
+> * `xcode-select --install`
+> * `npm install -g ios-deploy`
+* Install the [Android Stand-alone SDK Tools](http://developer.android.com/sdk/installing/index.html?pkg=tools) or [Android Studio](http://developer.android.com/sdk/installing/index.html?pkg=studio)
 * [Node.js](https://nodejs.org/en/download/), version used v6.9.1
 > Upgrade Node.js
 > * `sudo npm install n -g` - Node version manager

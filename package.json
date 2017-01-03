@@ -4,7 +4,7 @@
     "description": "Topinsight project",
     "main": "js/cv.js",
     "scripts": {
-        "clean": "rm -rf www && sudo npm run clean:platforms && npm run prepare",
+        "clean": "sudo npm run clean:platforms && rm -rf www && npm run prepare",
         "clean:platforms": "cordova platform rm browser && cordova platform rm android && cordova platform rm ios",
         "prepare": "npm run prepare:folders && sudo cordova prepare",
         "prepare:folders": "mkdir -p www/js && mkdir -p www/vendors && mkdir -p www/css && mkdir -p work/dist && npm run prepare:copy",
@@ -14,6 +14,7 @@
         "build:dev": "npm run prepare:copy && npm run build:css && npm run copy:map && npm run build:js",
         "build:css": "lessc work/less/config.less www/css/output.css",
         "build:js": "handlebars work/tpl/*.html -f work/dist/tpl.js && node scripts/uglify.js",
+        "build:app": "sudo cordova build --device --buildConfig=build.json",
         "copy:map": "cp -r work/js www",
         "dev": "cordova run browser -- --live-reload"
     },
