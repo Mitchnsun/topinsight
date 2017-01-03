@@ -4,9 +4,10 @@ var app = app || {};
     'use strict';
     app.urls = {
         /* API */
-        endpoint: "",
+        endpoint: "http://topinsight-uat.geoks-dev.fr",
         ws_vae: "/api/v1/vae",
         ws_user: "/api/v1/users",
+        ws_subscribe: "/api/v1/sessions/subscribe",
 
         /* Application urls */
         home: "",

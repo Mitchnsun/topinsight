@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {
+define(['backbone', 'models/subscribe'], function(Backbone, Subscribe) {
     return Backbone.View.extend({
         el: ".app",
         wordings: app.wordings.sign,
@@ -18,7 +18,7 @@ define(['backbone'], function(Backbone) {
         events: {
             "click .button--submit": "submit",
             "click .button--facebook": "facebook",
-            "click .button--twitter": "twitter"
+            "click .button--signup": "signup"
         },
         submit: function(e) {
             console.log(e);
@@ -26,8 +26,8 @@ define(['backbone'], function(Backbone) {
         facebook: function(e) {
             e.preventDefault();
         },
-        twitter: function(e) {
-            console.log(e);
+        signup: function(e) {
+            app.subscribe = new Subscribe();
         }
     });
 });

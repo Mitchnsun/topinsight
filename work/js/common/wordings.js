@@ -47,7 +47,8 @@ var app = app || {};
                 firstname: "Le prénom doit être composé de 2 à 14 caractères",
                 lastname: "Le nom doit être être composé de 2 à 14 caractères",
                 email: "Format d'adresse mail invalide",
-                password: "Votre mot de passe doit être compris entre 4 et 18 caractères"
+                password: "Votre mot de passe doit être compris entre 4 et 18 caractères",
+                phone: "Le numéro de téléphone est invalide"
             }
         },
         itinerary: {
