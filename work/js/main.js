@@ -26,10 +26,12 @@ require([
     'backbone',
     'router',
     'views/errorview',
-    'models/user'
-], function(Backbone, Router, Errorview, User) {
+    'models/user',
+    'models/vae'
+], function(Backbone, Router, Errorview, User, Vae) {
     app.$ = $;
     app.user = new User();
+    app.vae = new Vae({ access_token: "ee57db27c3c9c618d6f8e66b8d46a207585c05e03485a" });
     app.errorview = new Errorview();
     // Initialize routing and start Backbone.history()
     app.router = new Router();

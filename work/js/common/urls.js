@@ -5,7 +5,7 @@ var app = app || {};
     app.urls = {
         /* API */
         endpoint: "http://topinsight-uat.geoks-dev.fr",
-        ws_vae: "/api/v1/vae",
+        ws_vae: "/api/v1/vaeTypes",
         ws_user: "/api/v1/users",
         ws_subscribe: "/api/v1/sessions/subscribe",
         ws_login: "/api/v1/sessions/login",
