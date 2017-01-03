@@ -24,29 +24,19 @@ define(['backbone', 'models/vae'], function(Backbone, Vae) {
         },
         submit: function(e) {
             e.preventDefault();
-            var self = this;
-            var errors = [];
-            _.each($('.input__element'), function(input) {
-                var param = $(input).attr('data-param');
-                var value = $(input).val();
-                app.subscribe.set(param, value);
-                if (!app.rules.user.verification(param, value)) {
-                    errors.push({ input: input, wording: self.wordings.errors[param] })
-                }
-            });
-            if (errors.length > 0) {
-                this.displayErrors(errors);
+            app.subscribe.set(app.rules.user.verification($('.input__element')));
+            var subscribe = app.subscribe.toJSON();
+            if (subscribe.empty) {
+                app.errorview.render(subscribe.empty);
+                app.subscribe.unset('empty');
+            } else if (subscribe.errors) {
+                app.errorview.render(_.first(subscribe.errors));
+                app.subscribe.unset('errors');
             } else if (!this.suite) {
                 app.router.navigate(app.urls.signup_suite, { trigger: true });
             } else {
                 app.subscribe.save();
             }
-        },
-        displayErrors: function(errors) {
-            _.each(errors, function(error) {
-                $(error.input).addClass('input__element--error');
-                $(error.input).after('<p>' + error.wording + '</p>');
-            });
         }
     });
 });
