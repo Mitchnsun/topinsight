@@ -23,12 +23,15 @@ define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subs
         },
         signin: function(e) {
             e.preventDefault();
-            var email = $('.input__element--email').val();
-            if (app.rules.user.email(email)) {
-                this.login.set({
-                    email: email,
-                    password: $('.input__element--password').val()
-                });
+            this.login.set(app.rules.user.verification($('.input__element')));
+            var login = this.login.toJSON();
+            if (login.empty) {
+                app.errorview.render(login.empty);
+                this.login.unset('empty');
+            } else if (login.errors) {
+                app.errorview.render(_.first(login.errors));
+                this.login.unset('errors');
+            } else {
                 this.login.save();
             }
         },
