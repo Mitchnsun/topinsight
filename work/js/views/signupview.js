@@ -35,8 +35,14 @@ define(['backbone', 'models/vae'], function(Backbone, Vae) {
             } else if (!this.suite) {
                 app.router.navigate(app.urls.signup_suite, { trigger: true });
             } else {
-                app.subscribe.save();
+                app.subscribe.save({}, {
+                    success: _.bind(this.success, this),
+                    error: _.bind(app.errorview.errorcallback, app.errorview)
+                });
             }
-        }
+        },
+        success: function(model, response, options) {
+            console.log(model, response, options);
+        },
     });
 });

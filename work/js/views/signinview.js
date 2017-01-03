@@ -32,8 +32,14 @@ define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subs
                 app.errorview.render(_.first(login.errors));
                 this.login.unset('errors');
             } else {
-                this.login.save();
+                this.login.save({}, {
+                    success: _.bind(this.success, this),
+                    error: _.bind(app.errorview.errorcallback, app.errorview)
+                });
             }
+        },
+        success: function(model, response, options) {
+            console.log(model, response, options);
         },
         facebook: function(e) {
             e.preventDefault();

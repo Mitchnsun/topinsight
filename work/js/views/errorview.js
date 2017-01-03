@@ -13,6 +13,9 @@ define(['backbone'], function(Backbone) {
         },
         continue: function(e) {
             $(this.el).removeClass('error--active');
+        },
+        errorcallback: function(model, response, options) {
+            this.render();
         }
     });
 });
