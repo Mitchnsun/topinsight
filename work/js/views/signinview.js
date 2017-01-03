@@ -1,4 +1,4 @@
-define(['backbone', 'models/subscribe'], function(Backbone, Subscribe) {
+define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subscribe, Login) {
     return Backbone.View.extend({
         el: ".app",
         wordings: app.wordings.sign,
@@ -7,6 +7,7 @@ define(['backbone', 'models/subscribe'], function(Backbone, Subscribe) {
             this.headerview.render({
                 hidden: true
             });
+            this.login = new Login();
             this.render();
         },
         render: function() {
@@ -16,12 +17,20 @@ define(['backbone', 'models/subscribe'], function(Backbone, Subscribe) {
             }));
         },
         events: {
-            "click .button--submit": "submit",
+            "click .button--signin": "signin",
             "click .button--facebook": "facebook",
             "click .button--signup": "signup"
         },
-        submit: function(e) {
-            console.log(e);
+        signin: function(e) {
+            e.preventDefault();
+            var email = $('.input__element--email').val();
+            if (app.rules.user.email(email)) {
+                this.login.set({
+                    email: email,
+                    password: $('.input__element--password').val()
+                });
+                this.login.save();
+            }
         },
         facebook: function(e) {
             e.preventDefault();

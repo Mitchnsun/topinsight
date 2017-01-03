@@ -8,6 +8,7 @@ var app = app || {};
         ws_vae: "/api/v1/vae",
         ws_user: "/api/v1/users",
         ws_subscribe: "/api/v1/sessions/subscribe",
+        ws_login: "/api/v1/sessions/login",
 
         /* Application urls */
         home: "",
