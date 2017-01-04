@@ -34,6 +34,11 @@
         <allow-intent href="itms-apps:*" />
         <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
     </platform>
+    <platform name="browser">
+        <preference name="SplashScreen" value="assets/img/splashscreen.png" />
+        <preference name="SplashScreenWidth" value="375" />
+        <preference name="SplashScreenHeight" value="667" />
+    </platform>
     <plugin name="cordova-plugin-browsersync" spec="~0.1.1" />
     <engine name="ios" spec="~4.3.1" />
     <engine name="android" spec="~6.0.0" />
@@ -41,4 +46,5 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreenBackgroundColor" value="#FFF" />
 </widget>
