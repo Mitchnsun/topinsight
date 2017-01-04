@@ -1,16 +1,15 @@
 {
     "ios": {
         "Debug": {
-            "codeSignIdentity": "iPhone Development",
-            "provisioningProfile": "3fb55e21-c679-4b4e-bd80-d10783dcee37",
             "developmentTeam": "29XZE9TWMA",
-            "packageType": "development"
+            "codeSignIdentity": "iPhone Developer",
+            "provisioningProfile": "3fb55e21-c679-4b4e-bd80-d10783dcee37"
         },
+
         "release": {
-            "codeSignIdentity": "iPhone Distribution",
-            "provisioningProfile": "3fb55e21-c679-4b4e-bd80-d10783dcee37",
             "developmentTeam": "29XZE9TWMA",
-            "packageType": "app-store"
+            "codeSignIdentity": "iPhone Developer",
+            "packageType": "ad-hoc"
         }
     }
 }

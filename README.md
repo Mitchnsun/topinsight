@@ -13,7 +13,7 @@ This README documents steps are necessary to get your application up and running
 * Install [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12).
 > Once Xcode is installed, several command-line tools need to be enabled for Cordova to run.
 > * `xcode-select --install`
-> * `npm install -g ios-deploy`
+> * `npm install -g ios-deploy` - Under OS X 10.11 El Capitan add `--unsafe-perm=true --allow-root`
 * Install the [Android Stand-alone SDK Tools](http://developer.android.com/sdk/installing/index.html?pkg=tools) or [Android Studio](http://developer.android.com/sdk/installing/index.html?pkg=studio)
 * [Node.js](https://nodejs.org/en/download/), version used v6.9.1
 > Upgrade Node.js
@@ -33,7 +33,7 @@ This README documents steps are necessary to get your application up and running
 * `npm run dev` - Launch a web-server to see the application in browser
 > Cordova version 6.4.0 display this error `Error loading cordova-browser`, this is a misleading message error.
 
-* `npm run build:dev` - Build css & js for development, also copy non-minified js for debugging
+* `npm run build` - Build css & js for development, also copy non-minified js for debugging
 
 ###### Configuration ######
 
