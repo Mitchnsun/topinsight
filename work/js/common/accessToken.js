@@ -20,7 +20,7 @@ var app = app || {};
             return this.storage(key);
         },
         clean: function() {
-            this.localStorage.removeItem('token');
+            localStorage.removeItem('token');
         }
     };
 })();

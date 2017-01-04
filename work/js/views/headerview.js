@@ -2,7 +2,7 @@ define(['backbone'], function(Backbone) {
     return Backbone.View.extend({
         el: "header",
         render: function(options) {
-            if(options.hidden) {
+            if (options.hidden) {
                 $(this.el).hide();
                 return;
             }
@@ -16,10 +16,11 @@ define(['backbone'], function(Backbone) {
         },
         events: {
             "click .chevron--left": "back",
-            "click .icon--logout": "signout"
+            "click .icon--signout": "signout"
         },
         signout: function(e) {
-            console.log("signout");
+            app.user.clear();
+            app.accessToken.clean();
         },
         back: function(e) {
             e.preventDefault();
