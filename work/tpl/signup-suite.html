@@ -6,11 +6,11 @@
         <input class="input__element" type="tel" value="{{user.phone}}" placeholder="{{wordings.phone}}" data-param="phone">
     </div>
     <div class="input">
-        {{#if vae.types}}
+        {{#if vae.vaetypes}}
             <select class="input__element" data-param="vaeType">
                 <option value="">{{wordings.vae}}</option>
-                {{#each vae.types}}
-                <option value="{{.}}">{{.}}</option>
+                {{#each vae.vaetypes}}
+                    <option value="{{.}}">{{.}}</option>
                 {{/each}}
             </select>
         {{else}}
