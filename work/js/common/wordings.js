@@ -38,10 +38,14 @@ var app = app || {};
             address: "Adresse",
             phone: "Numéro de téléphone",
             vae: "Modèle VAE",
+            lostpassword: "Mot de passe oublié ?",
             validate: "Valider",
             signin: "Se connecter",
             FBsign: "Connexion Facebook",
             TWsign: "S'inscrire"
+        },
+        password: {
+            header: "Mot de passe oublié"
         },
         itinerary: {
             header: "Parcours",
