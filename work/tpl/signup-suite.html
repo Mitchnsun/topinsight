@@ -10,7 +10,7 @@
             <select class="input__element" data-param="vaeType">
                 <option value="">{{wordings.vae}}</option>
                 {{#each vae.vaetypes}}
-                    <option value="{{.}}">{{.}}</option>
+                    <option value="{{id}}">{{reference}}</option>
                 {{/each}}
             </select>
         {{else}}
