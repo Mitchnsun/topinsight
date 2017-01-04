@@ -2,7 +2,7 @@
     <div class="dashboard__meter">
         <img src="assets/img/compteur.png" alt="meter">
         <div class="dashboard__meter__data">
-            <strong>10,5</strong> {{wordings.meter.unit}}
+            <strong>{{#if course.speed}}{{course.speed}}{{else}}0{{/if}}</strong> {{wordings.meter.unit}}
         </div>
     </div>
     <div class="dashboard__battery">
@@ -10,14 +10,24 @@
     </div>
 </div>
 <div class="infos">
-    {{#each wordings.elements}}
     <div class="infos__element">
-        <img src="{{icon}}" class="icon icon--small" alt="{{alt}}">
-        <h3 class="infos__element__title">{{title}}</h3>
-        <p class="infos__element__data">{{{data}}}</p>
-        <p class="infos__element__unit">{{unit}}</p>
+        <img src="{{wordings.distance.icon}}" class="icon icon--small" alt="{{wordings.distance.alt}}">
+        <h3 class="infos__element__title">{{wordings.distance.title}}</h3>
+        <p class="infos__element__data">{{#if course.distance}}{{course.distance}}{{else}}0{{/if}}</p>
+        <p class="infos__element__unit">{{wordings.distance.unit}}</p>
     </div>
-    {{/each}}
+    <div class="infos__element">
+        <img src="{{wordings.power.icon}}" class="icon icon--small" alt="{{wordings.power.alt}}">
+        <h3 class="infos__element__title">{{wordings.power.title}}</h3>
+        <p class="infos__element__data">{{#if course.power}}{{course.power}}{{else}}0{{/if}}</p>
+        <p class="infos__element__unit">{{wordings.power.unit}}</p>
+    </div>
+    <div class="infos__element">
+        <img src="{{wordings.assistance.icon}}" class="icon icon--small" alt="{{wordings.assistance.alt}}">
+        <h3 class="infos__element__title">{{wordings.assistance.title}}</h3>
+        <p class="infos__element__data">{{#if course.assistance}}{{course.assistance}}{{else}}0{{/if}} <span>{{wordings.assistance.pace}}</p>
+        <p class="infos__element__unit">{{wordings.assistance.unit}}</p>
+    </div>
 </div>
 <h3 class="assistance__title">Assistance</h3>
 <div class="assistance">

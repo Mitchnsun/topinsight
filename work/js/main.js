@@ -27,10 +27,12 @@ require([
     'router',
     'views/errorview',
     'models/user',
+    'models/course',
     'models/vae'
-], function(Backbone, Router, Errorview, User, Vae) {
+], function(Backbone, Router, Errorview, User, Course, Vae) {
     app.$ = $;
     app.user = new User();
+    app.course = new Course();
     app.vae = new Vae({ access_token: app.accessToken.get() });
     app.errorview = new Errorview();
 

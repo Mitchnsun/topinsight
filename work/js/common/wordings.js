@@ -29,25 +29,25 @@ var app = app || {};
             meter: {
                 unit: "km/h"
             },
-            elements: [{
+            distance: {
                 title: "Distance",
-                data: "%f",
                 unit: "km",
                 icon: "assets/img/icons/icon-road.png",
                 alt: "Icon Road"
-            }, {
+            },
+            power: {
                 title: "Puissance",
-                data: "%f",
                 unit: "watts",
                 icon: "assets/img/icons/icon-battery.png",
                 alt: "Icon Battery"
-            }, {
+            },
+            assistance: {
                 title: "Assistance",
-                data: "%f <span>sur %f</span>",
+                pace: "sur 5",
                 unit: "PAS",
                 icon: "assets/img/icons/icon-plus.png",
                 alt: "Icon Plus"
-            }]
+            }
         },
         sign: {
             title: "Inscription",
