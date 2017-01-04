@@ -39,7 +39,9 @@ define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subs
             }
         },
         success: function(model, response, options) {
-            console.log(model, response, options);
+            app.user.set(model.get('user'));
+            app.accessToken.set(model.get('accessToken'));
+            app.router.navigate(app.urls.home, { trigger: true });
         },
         facebook: function(e) {
             e.preventDefault();
