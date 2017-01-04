@@ -1,4 +1,4 @@
-define(['backbone', 'models/vae'], function(Backbone, Vae) {
+define(['backbone', 'models/vae', 'models/subscribe'], function(Backbone, Vae, Subscribe) {
     return Backbone.View.extend({
         el: ".app",
         wordings: app.wordings.sign,
@@ -10,6 +10,7 @@ define(['backbone', 'models/vae'], function(Backbone, Vae) {
                 title: this.wordings.title,
                 back: true
             });
+            app.subscribe = app.subscribe ? app.subscribe : new Subscribe();
             this.render();
         },
         render: function() {
@@ -43,7 +44,9 @@ define(['backbone', 'models/vae'], function(Backbone, Vae) {
             }
         },
         success: function(model, response, options) {
-            console.log(model, response, options);
-        },
+            app.user.set(model.get('user'));
+            app.accessToken.set(model.get('accessToken'));
+            app.router.navigate(app.urls.home, { trigger: true });
+        }
     });
 });
