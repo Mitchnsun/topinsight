@@ -31,9 +31,20 @@ require([
 ], function(Backbone, Router, Errorview, User, Vae) {
     app.$ = $;
     app.user = new User();
-    app.vae = new Vae({ access_token: "ee57db27c3c9c618d6f8e66b8d46a207585c05e03485a" });
+    app.vae = new Vae({ access_token: app.accessToken.get() });
     app.errorview = new Errorview();
-    // Initialize routing and start Backbone.history()
-    app.router = new Router();
-    Backbone.history.start();
+
+    app.user.fetch({
+        data: $.param({ access_token: app.accessToken.get() }),
+        success: function() {
+            // Initialize routing and start Backbone.history()
+            app.router = new Router();
+            Backbone.history.start();
+        },
+        error: function() {
+            // Initialize routing and start Backbone.history()
+            app.router = new Router();
+            Backbone.history.start();
+        }
+    })
 });

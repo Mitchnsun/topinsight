@@ -3,6 +3,10 @@ define(['backbone'], function(Backbone) {
         el: ".app",
         wordings: app.wordings.dashboard,
         initialize: function(options) {
+            if (!app.accessToken.get()) {
+                app.router.navigate(app.urls.signin, { trigger: true });
+                return false;
+            }
             this.headerview = options.headerview;
             this.headerview.render({
                 title: this.wordings.header,

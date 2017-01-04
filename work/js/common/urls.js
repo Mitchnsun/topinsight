@@ -6,7 +6,7 @@ var app = app || {};
         /* API */
         endpoint: "http://topinsight-uat.geoks-dev.fr",
         ws_vae: "/api/v1/vaeTypes",
-        ws_user: "/api/v1/users",
+        ws_user: "/api/v1/users/me",
         ws_subscribe: "/api/v1/sessions/subscribe",
         ws_login: "/api/v1/sessions/login",
 

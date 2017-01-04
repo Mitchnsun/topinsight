@@ -16,8 +16,8 @@ var app = app || {};
         set: function(token) {
             this.storage('token', token);
         },
-        get: function(key) {
-            return this.storage(key);
+        get: function() {
+            return this.storage('token');
         },
         clean: function() {
             localStorage.removeItem('token');
