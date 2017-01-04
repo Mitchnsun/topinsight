@@ -15,7 +15,9 @@ define(['backbone'], function(Backbone) {
             $(this.el).removeClass('error--active');
         },
         errorcallback: function(model, response, options) {
-            this.render();
+            var param = response.responseJSON.error;
+            var message = app.wordings.errors[param] ? app.wordings.errors[param] : app.wordings.errors.http[response.status];
+            this.render(message);
         }
     });
 });

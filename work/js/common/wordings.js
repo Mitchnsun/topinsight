@@ -6,12 +6,23 @@ var app = app || {};
         continue: "continuer",
         errors: {
             default: "Une erreur est survenue, veuillez réessayer dans quelques instants",
+            /* Front errors */
             empty: "Veuillez remplir tous les champs",
             firstname: "Le prénom doit être composé de 2 à 14 caractères",
             lastname: "Le nom doit être être composé de 2 à 14 caractères",
             email: "Format d'adresse mail invalide",
             password: "Votre mot de passe doit être compris entre 4 et 18 caractères",
-            phone: "Le numéro de téléphone est invalide"
+            phone: "Le numéro de téléphone est invalide",
+            /* Back errors */
+            http: {
+                "401": "Une authentification est nécessaire pour accéder à la ressource",
+                "403": "Cette ressource est interdite d'accès",
+                "404": "Ressource non trouvée",
+                "422": "L’entité fournie avec la requête est incompréhensible ou incomplète",
+                "500": "Erreur interne du serveur",
+            },
+            "geoks.user.email.invalid": "L'email renseigné n'existe pas",
+            "geoks.user.login.wrong": "Le mot de passe est incorrect"
         },
         dashboard: {
             header: "Tableau de bord",
