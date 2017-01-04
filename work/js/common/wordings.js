@@ -45,7 +45,13 @@ var app = app || {};
             TWsign: "S'inscrire"
         },
         password: {
-            header: "Mot de passe oublié"
+            header: "Mot de passe oublié",
+            email: "E-mail",
+            code: "Code",
+            new_password: "Nouveau mot de passe",
+            password_again: "Retaper le mot de passe",
+            text: "Merci de renseigner votre mail, un code va vous être envoyé",
+            validate: "Valider"
         },
         itinerary: {
             header: "Parcours",
