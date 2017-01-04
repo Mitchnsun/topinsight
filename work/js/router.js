@@ -5,7 +5,10 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
             [app.urls.signin, "signin"],
             [app.urls.signup, "signup"],
             [app.urls.signup_suite, "signupsuite"],
-            [app.urls.itinerary, "itinerary"]
+            [app.urls.itinerary, "itinerary"],
+            [app.urls.lost_password, "lostpassword"],
+            [app.urls.retrieve_password, "retrievepassword"],
+            ["*path", "home"]
         ]),
         loadView: function(path) {
             var self = this;
@@ -28,6 +31,12 @@ define(['backbone', 'views/headerview'], function(Backbone, Headerview) {
         },
         itinerary: function() {
             this.loadView('views/itineraryview');
+        },
+        lostpassword: function() {
+            this.loadView('views/lostpasswordview');
+        },
+        retrievepassword: function() {
+            this.loadView('views/retrievepasswordview');
         },
         header: function() {
             return this.headerview = this.headerview || new Headerview();
