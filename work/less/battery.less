@@ -1,0 +1,45 @@
+.battery {
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid @grey;
+    width: 36px;
+    height: 244px;
+    margin: auto;
+    padding: 0 4px;
+    &__cell {
+        box-sizing: border-box;
+        background: @green;
+        height: 21px;
+        width: 100%;
+        margin: 3px 0;
+        &:first-child{
+            border-radius: 4px 4px 0 0;
+        }
+        &:last-child{
+            border-radius: 0 0 4px 4px;
+        }
+        &--empty {
+            background: @white;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .battery {
+        height: 224px;
+        width: 34px;
+        &__cell {
+            height: 19px;
+        }
+    }
+}
+@media (min-width: 400px) {
+    .battery {
+        top: 15px;
+    }
+}
+@media (min-width: 500px) {
+    .battery {
+        top: 40px;
+    }
+}
