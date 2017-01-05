@@ -31,7 +31,7 @@
         -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self' data: gap:
-            https://ssl.gstatic.com;
+            https://*.gstatic.com http://*.geoks-dev.fr/;
         script-src 'self' 'unsafe-inline' 'unsafe-eval'
             https://*.gstatic.com https://*.googleapis.com;
         style-src 'self' 'unsafe-inline'
@@ -61,6 +61,7 @@
             <img class="loader__image loader__image--4" src="assets/img/icons/icon-oval-4.png" alt="Oval loader 4">
         </div>
     </div>
+    <div class="error"></div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/output.js"></script>
     <script type="text/javascript" data-main="js/main" src="vendors/require.js"></script>

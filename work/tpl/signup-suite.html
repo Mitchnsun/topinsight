@@ -1,16 +1,21 @@
 <form class="form">
     <div class="input">
-        <input class="input__element" type="text" placeholder="{{wordings.address}}">
+        <input class="input__element" type="text" value="{{user.address}}" placeholder="{{wordings.address}}" data-param="address">
     </div>
     <div class="input">
-        <input class="input__element" type="tel" placeholder="{{wordings.phone}}">
+        <input class="input__element" type="tel" value="{{user.phone}}" placeholder="{{wordings.phone}}" data-param="phone">
     </div>
     <div class="input">
-        <select class="input__element">
-            <option>{{wordings.vae}}</option>
-            <option>VAE 1</option>
-            <option>VAE 2 </option>
-        </select>
+        {{#if vae.vaetypes}}
+            <select class="input__element" data-param="vaeType">
+                <option value="">{{wordings.vae}}</option>
+                {{#each vae.vaetypes}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        {{else}}
+            <input class="input__element" type="text" value="{{user.vaeType}}" placeholder="{{wordings.vae}}" data-param="vaeType">
+        {{/if}}
     </div>
 </form>
 <div class="button--container">

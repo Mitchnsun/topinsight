@@ -24,9 +24,29 @@ require.config({
 
 require([
     'backbone',
-    'router'
-], function(Backbone, Router) {
-    // Initialize routing and start Backbone.history()
-    new Router();
-    Backbone.history.start();
+    'router',
+    'views/errorview',
+    'models/user',
+    'models/course',
+    'models/vae'
+], function(Backbone, Router, Errorview, User, Course, Vae) {
+    app.$ = $;
+    app.user = new User();
+    app.course = new Course();
+    app.vae = new Vae({ access_token: app.accessToken.get() });
+    app.errorview = new Errorview();
+
+    app.user.fetch({
+        data: $.param({ access_token: app.accessToken.get() }),
+        success: function() {
+            // Initialize routing and start Backbone.history()
+            app.router = new Router();
+            Backbone.history.start();
+        },
+        error: function() {
+            // Initialize routing and start Backbone.history()
+            app.router = new Router();
+            Backbone.history.start();
+        }
+    })
 });

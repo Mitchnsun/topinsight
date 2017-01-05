@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {
+define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subscribe, Login) {
     return Backbone.View.extend({
         el: ".app",
         wordings: app.wordings.sign,
@@ -7,6 +7,7 @@ define(['backbone'], function(Backbone) {
             this.headerview.render({
                 hidden: true
             });
+            this.login = new Login();
             this.render();
         },
         render: function() {
@@ -16,18 +17,37 @@ define(['backbone'], function(Backbone) {
             }));
         },
         events: {
-            "click .button--submit": "submit",
+            "click .button--signin": "signin",
             "click .button--facebook": "facebook",
-            "click .button--twitter": "twitter"
+            "click .button--signup": "signup"
         },
-        submit: function(e) {
-            console.log(e);
+        signin: function(e) {
+            e.preventDefault();
+            this.login.set(app.rules.user.verification($('.input__element')));
+            var login = this.login.toJSON();
+            if (login.empty) {
+                app.errorview.render(login.empty);
+                this.login.unset('empty');
+            } else if (login.errors) {
+                app.errorview.render(_.first(login.errors));
+                this.login.unset('errors');
+            } else {
+                this.login.save({}, {
+                    success: _.bind(this.success, this),
+                    error: _.bind(app.errorview.errorcallback, app.errorview)
+                });
+            }
+        },
+        success: function(model, response, options) {
+            app.user.set(model.get('user'));
+            app.accessToken.set(model.get('accessToken'));
+            app.router.navigate(app.urls.home, { trigger: true });
         },
         facebook: function(e) {
             e.preventDefault();
         },
-        twitter: function(e) {
-            console.log(e);
+        signup: function(e) {
+            app.subscribe = new Subscribe();
         }
     });
 });
