@@ -15,6 +15,7 @@
         "build:css": "lessc work/less/config.less www/css/output.css",
         "build:js": "handlebars work/tpl/*.html -f work/dist/tpl.js && node scripts/uglify.js",
         "build:app": "sudo cordova build --buildConfig=build.json --device",
+        "build:ios": "npm run build:www && sudo cordova build ios",
         "copy:map": "cp -r work/js www",
         "dev": "cordova run browser -- --live-reload"
     },
