@@ -1,8 +1,9 @@
-define(['backbone', 'models/lastcourse'], function(Backbone, LastCourse) {
+define(['backbone', 'models/lastcourse', 'models/bluetoothparams'], function(Backbone, LastCourse, BluetoothParams) {
     return Backbone.View.extend({
         el: ".app",
         wordings: app.wordings.dashboard,
         initialize: function(options) {
+            app.bluetooth.init(new BluetoothParams());
             if (!app.accessToken.get()) {
                 app.router.navigate(app.urls.signin, { trigger: true });
                 return false;

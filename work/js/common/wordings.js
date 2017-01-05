@@ -6,6 +6,7 @@ var app = app || {};
         continue: "continuer",
         errors: {
             default: "Une erreur est survenue, veuillez réessayer dans quelques instants",
+            bluetooth: "Une erreur est survenue avec le module Bluetooth, veuillez réessayer dans quelques instants",
             /* Front errors */
             empty: "Veuillez remplir tous les champs",
             firstname: "Le prénom doit être composé de 2 à 14 caractères",
