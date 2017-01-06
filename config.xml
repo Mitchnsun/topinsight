@@ -46,4 +46,5 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="SplashScreenBackgroundColor" value="#FFF" />
     <plugin name="cordova-plugin-bluetoothle" spec="~4.3.0" />
+    <plugin name="cordova-plugin-background-mode-bluetooth-central" spec="~1.0.0" />
 </widget>
