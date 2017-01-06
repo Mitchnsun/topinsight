@@ -11,6 +11,7 @@ var app = app || {};
         ws_login: "/api/v1/sessions/login",
         ws_course: "/api/v1/courses/",
         ws_lastcourse: "/api/v1/courses/last/updated",
+        ws_lostpassword: "/api/v1/sessions/@/password-recovery/request",
 
         /* Application urls */
         home: "",

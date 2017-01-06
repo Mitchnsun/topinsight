@@ -23,6 +23,7 @@ var app = app || {};
                 "500": "Erreur interne du serveur",
             },
             "geoks.user.email.invalid": "L'email renseigné n'existe pas",
+            "geoks.user.email.nonExpired": "Le mot de passe a déjà été réinitialisé, vérifiez votre boîte mail",
             "geoks.user.login.wrong": "Le mot de passe est incorrect"
         },
         dashboard: {

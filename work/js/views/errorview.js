@@ -14,9 +14,10 @@ define(['backbone'], function(Backbone) {
         continue: function(e) {
             $(this.el).removeClass('error--active');
         },
-        errorcallback: function(model, response, options) {
-            var param = response.responseJSON.error;
-            var message = app.wordings.errors[param] ? app.wordings.errors[param] : app.wordings.errors.http[response.status];
+        errorcallback: function(jqXHR, response) {
+            var param = response.responseJSON ? response.responseJSON.error : jqXHR.responseJSON.error;
+            var status = response.status ? response.status : jqXHR.status;
+            var message = app.wordings.errors[param] ? app.wordings.errors[param] : app.wordings.errors.http[status];
             this.render(message);
         }
     });
