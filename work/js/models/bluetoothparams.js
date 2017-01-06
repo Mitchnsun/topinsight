@@ -3,6 +3,10 @@
  */
 define(['backbone'], function(Backbone) {
     return Backbone.Model.extend({
+        initialize: function() {
+            this.retrieveparams();
+            this.listenTo(this, 'change', _.bind(this.saveparams, this));
+        },
         defaults: {
             init: {
                 "request": true,
@@ -16,7 +20,14 @@ define(['backbone'], function(Backbone) {
                 "matchMode": bluetoothle.MATCH_MODE_AGGRESSIVE,
                 "matchNum": bluetoothle.MATCH_NUM_MAX_ADVERTISEMENT,
                 "callbackType": bluetoothle.CALLBACK_TYPE_ALL_MATCHES,
-            }
+            },
+            services: []
+        },
+        saveparams: function() {
+            localStorage.setItem('bluetooth-address', this.get('address'));
+        },
+        retrieveparams: function() {
+            this.set('address', localStorage.getItem('bluetooth-address', this.get('address')));
         }
     });
 });
