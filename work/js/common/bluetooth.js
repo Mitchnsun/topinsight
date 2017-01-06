@@ -22,6 +22,10 @@ var app = app || {};
                 this.error('- initcallback - ', msg);
             }
         },
+        clean: function() {
+            this.disconnect();
+            this.params.clean();
+        },
         error: function(path, msg) {
             console.log('# ERROR ', path, msg)
             app.errorview.render(app.wordings.errors.bluetooth);
@@ -73,6 +77,9 @@ var app = app || {};
         reconnecterror: function(msg) {
             console.log('- reconnectsuccess - ', msg);
             bluetoothle.connect(_.bind(this.connectsuccess, this), _.bind(this.connecterror, this), { address: this.params.get('address') });
+        },
+        disconnect: function() {
+            bluetoothle.disconnect(_.bind(this.success, this), _.bind(this.error, this), { address: this.params.get('address') });
         },
         discoverSuccess: function(msg) {
             console.log('- discoverSuccess -', msg);

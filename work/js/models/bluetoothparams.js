@@ -28,6 +28,10 @@ define(['backbone'], function(Backbone) {
         },
         retrieveparams: function() {
             this.set('address', localStorage.getItem('bluetooth-address', this.get('address')));
+        },
+        clean: function() {
+            localStorage.removeItem('bluetooth-address');
+            this.clear({ silent: true }).set(this.defaults);
         }
     });
 });
