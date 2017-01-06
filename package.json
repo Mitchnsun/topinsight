@@ -9,7 +9,7 @@
         "prepare": "npm run prepare:folders && npm run build:www && sudo cordova prepare",
         "prepare:folders": "mkdir -p www/js && mkdir -p www/vendors && mkdir -p www/css && mkdir -p work/dist && npm run prepare:copy",
         "prepare:copy": "cp work/index.html www && cp -r work/assets www && npm run copy:vendors",
-        "prepare:ios": "npm run build:www && sudo cordova prepare ios",
+        "prepare:apps": "npm run build:www && sudo cordova prepare",
         "copy:vendors": "cp node_modules/requirejs/require.js www/vendors && cp node_modules/jquery/dist/jquery.js www/vendors && cp node_modules/underscore/underscore.js www/vendors && cp node_modules/backbone/backbone.js www/vendors && cp node_modules/requirejs-plugins/src/async.js www/vendors",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build:www": "npm run prepare:copy && npm run build:css && npm run build:js && npm run copy:map",

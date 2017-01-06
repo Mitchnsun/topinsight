@@ -3,7 +3,6 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams'], function(Bac
         el: ".app",
         wordings: app.wordings.dashboard,
         initialize: function(options) {
-            app.bluetooth.init(new BluetoothParams());
             if (!app.accessToken.get()) {
                 app.router.navigate(app.urls.signin, { trigger: true });
                 return false;
@@ -25,6 +24,8 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams'], function(Bac
             });
 
             this.listenTo(app.course, 'change', this.render);
+            app.bluetooth.params = new BluetoothParams();
+            //app.bluetooth.init();
         },
         lastcoursecallback: function(model, response, options) {
             app.course.set(model.get('course'));

@@ -8,20 +8,7 @@ define(['backbone'], function(Backbone) {
             this.listenTo(this, 'change', _.bind(this.saveparams, this));
         },
         defaults: {
-            init: {
-                "request": true,
-                "statusReceiver": false,
-                "restoreKey": "bluetoothleplugin"
-            },
-            scan: {
-                "services": [],
-                "allowDuplicates": true,
-                "scanMode": bluetoothle.SCAN_MODE_LOW_LATENCY,
-                "matchMode": bluetoothle.MATCH_MODE_AGGRESSIVE,
-                "matchNum": bluetoothle.MATCH_NUM_MAX_ADVERTISEMENT,
-                "callbackType": bluetoothle.CALLBACK_TYPE_ALL_MATCHES,
-            },
-            services: []
+            name: "LanQianTech"
         },
         saveparams: function() {
             localStorage.setItem('bluetooth-address', this.get('address'));
