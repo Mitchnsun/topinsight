@@ -22,6 +22,7 @@ define(['backbone'], function(Backbone) {
         submit: function(e) {
             e.preventDefault();
             var email = $('.input__element').val();
+            app.user.set('email', email);
             if (app.rules.user.email(email)) {
                 $.ajax({
                     url: app.urls.endpoint + app.urls.ws_lostpassword.replace('@', email),

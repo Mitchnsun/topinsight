@@ -12,6 +12,7 @@ var app = app || {};
         ws_course: "/api/v1/courses/",
         ws_lastcourse: "/api/v1/courses/last/updated",
         ws_lostpassword: "/api/v1/sessions/@/password-recovery/request",
+        ws_retrievepassword: "/api/v1/sessions/password-recovery/reset/",
 
         /* Application urls */
         home: "",

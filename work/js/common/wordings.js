@@ -13,6 +13,7 @@ var app = app || {};
             lastname: "Le nom doit être être composé de 2 à 14 caractères",
             email: "Format d'adresse mail invalide",
             password: "Votre mot de passe doit être compris entre 4 et 18 caractères",
+            same_password: "Les deux mots de passe renseignés doivent être identique",
             phone: "Le numéro de téléphone est invalide",
             /* Back errors */
             http: {
