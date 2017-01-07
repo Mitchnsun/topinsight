@@ -1,4 +1,4 @@
-define(['backbone', 'models/lastcourse', 'models/bluetoothparams'], function(Backbone, LastCourse, BluetoothParams) {
+define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/route'], function(Backbone, LastCourse, BluetoothParams, Route) {
     return Backbone.View.extend({
         el: ".app",
         wordings: app.wordings.dashboard,
@@ -26,6 +26,7 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams'], function(Bac
             this.listenTo(app.course, 'change', this.render);
             app.bluetooth.params = new BluetoothParams();
             //app.bluetooth.init();
+            app.geolocation.route = _.isEmpty(app.geolocation.route) ? new Route() : app.geolocation.route;
         },
         lastcoursecallback: function(model, response, options) {
             app.course.set(model.get('course'));

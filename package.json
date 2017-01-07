@@ -17,7 +17,7 @@
         "build:js": "handlebars work/tpl/*.html -f work/dist/tpl.js && node scripts/uglify.js",
         "build:apps": "sudo cordova build --debug --device",
         "copy:map": "cp -r work/js www",
-        "dev": "cordova run browser -- --live-reload"
+        "dev": "sudo cordova run browser -- --live-reload"
     },
     "repository": {
         "type": "git",
