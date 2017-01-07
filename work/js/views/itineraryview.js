@@ -23,25 +23,37 @@ define(['backbone'], function(Backbone) {
         },
         /* Google Maps */
         rendermaps: function() {
+            this.starting_location = {
+                model: this.route.first()
+            }
+
             var heightHeader = $('header').height();
             var heightFooter = $('.itinerary__footer').height();
             $('.itinerary__map').height(this.height - heightHeader - heightFooter);
             this.map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: 48.8566, lng: 2.3522 },
+                center: this.starting_location.model.location(),
                 zoom: 14
             });
-            this.addMarker();
+            this.addStartingPoint();
+            this.traceRoute();
         },
-        addMarker: function() {
-            this.starting_location = {
-                model: this.route.first()
-            }
+        addStartingPoint: function() {
             this.starting_location.marker = new google.maps.Marker({
                 position: this.starting_location.model.location(),
                 map: this.map,
                 title: this.wordings.start,
                 icon: this.wordings.icon
             });
+        },
+        traceRoute: function() {
+            this.googlepath = new google.maps.Polyline({
+                path: this.route.toJSON(),
+                geodesic: true,
+                strokeColor: '#00BFA5',
+                strokeOpacity: 1.0,
+                strokeWeight: 5
+            });
+            this.googlepath.setMap(this.map);
         },
         /* User actions */
         events: {

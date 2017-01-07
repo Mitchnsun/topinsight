@@ -3,6 +3,10 @@ define(['backbone'], function(Backbone) {
         url: function() {
             return app.urls.endpoint + app.urls.ws_course + this.id + '?access_token=' + app.accessToken.get();
         },
+        initialize: function() {
+            this.set('lat', this.get('latitude'));
+            this.set('lng', this.get('longitude'));
+        },
         updating: function() {
             app.course.save({
                 latitudeEnd: "48.9",
