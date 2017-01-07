@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="Xcode">
+    
+    <!--
+     Provide one or more waypoints containing a latitude/longitude pair. If you provide one
+     waypoint, Xcode will simulate that specific location. If you provide multiple waypoints,
+     Xcode will simulate a route visiting each waypoint.
+     -->
+    <!--
+     Optionally provide a time element for each waypoint. Xcode will interpolate movement
+     at a rate of speed based on the time elapsed between each waypoint. If you do not provide
+     a time element, then Xcode will use a fixed rate of speed.
+     
+     Waypoints must be sorted by time in ascending order.
+     -->
+    <wpt lat="48.870790" lon="2.304430">
+      <time>2017-01-07T13:56:53Z</time>
+      <name>pt0</name>
+    </wpt>
+    <wpt lat="48.869060" lon="2.309930">
+      <time>2017-01-07T13:57:59Z</time>
+      <name>pt1</name>
+    </wpt>
+    <wpt lat="48.869020" lon="2.309910">
+      <time>2017-01-07T13:58:00Z</time>
+      <name>pt2</name>
+    </wpt>
+    <wpt lat="48.868950" lon="2.309910">
+      <time>2017-01-07T13:58:01Z</time>
+      <name>pt3</name>
+    </wpt>
+    <wpt lat="48.868910" lon="2.309930">
+      <time>2017-01-07T13:58:02Z</time>
+      <name>pt4</name>
+    </wpt>
+    <wpt lat="48.868880" lon="2.309950">
+      <time>2017-01-07T13:58:03Z</time>
+      <name>pt5</name>
+    </wpt>
+    <wpt lat="48.868830" lon="2.310050">
+      <time>2017-01-07T13:58:04Z</time>
+      <name>pt6</name>
+    </wpt>
+    <wpt lat="48.868830" lon="2.310230">
+      <time>2017-01-07T13:58:05Z</time>
+      <name>pt7</name>
+    </wpt>
+    <wpt lat="48.868860" lon="2.310310">
+      <time>2017-01-07T13:58:06Z</time>
+      <name>pt8</name>
+    </wpt>
+    <wpt lat="48.868910" lon="2.310360">
+      <time>2017-01-07T13:58:07Z</time>
+      <name>pt9</name>
+    </wpt>
+    <wpt lat="48.868590" lon="2.311360">
+      <time>2017-01-07T13:58:20Z</time>
+      <name>pt10</name>
+    </wpt>
+</gpx>
