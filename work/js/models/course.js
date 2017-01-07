@@ -16,6 +16,12 @@ define(['backbone'], function(Backbone) {
                     console.log(model, response, options);
                 }
             });
+        },
+        location: function() {
+            return {
+                lat: this.get('latitude'),
+                lng: this.get('longitude')
+            };
         }
     });
 });

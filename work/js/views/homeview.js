@@ -27,6 +27,7 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
             app.bluetooth.params = new BluetoothParams();
             //app.bluetooth.init();
             app.geolocation.route = _.isEmpty(app.geolocation.route) ? new Route() : app.geolocation.route;
+            app.geolocation.init();
         },
         lastcoursecallback: function(model, response, options) {
             app.course.set(model.get('course'));

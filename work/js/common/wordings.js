@@ -80,6 +80,8 @@ var app = app || {};
         itinerary: {
             header: "Parcours",
             reset: "Remettre à zéro",
+            start: "Point de départ",
+            icon: "assets/img/icons/icon-location.png",
             elements: [{
                 title: "Temps",
                 data: "01:30:22",
