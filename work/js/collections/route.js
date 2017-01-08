@@ -1,6 +1,6 @@
-define(['backbone', 'models/course'], function(Backbone, Course) {
+define(['backbone', 'models/location'], function(Backbone, Location) {
     return Backbone.Collection.extend({
-        model: Course,
+        model: Location,
         comparator: 'time'
     });
 });

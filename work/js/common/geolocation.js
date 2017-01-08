@@ -38,6 +38,45 @@ var app = app || {};
             // Remove older stored location
             this.route.remove(this.route.filter(function(point) { return point.get('time') < self.start_date; }));
             this.route.trigger('updated');
+            this.saveCourse();
+        },
+        saveCourse: function() {
+            if (app.course.get('id')) {
+                this.saveLastLocation(this.route.last());
+            } else {
+                this.saveFirstLocation(this.route.first());
+            }
+        },
+        saveFirstLocation: function(model) {
+            console.log(model.toJSON());
+            app.course.url = app.urls.endpoint + app.urls.ws_course + "?access_token=" + app.accessToken.get();
+            app.course.save({
+                latitudeStart: model.get('latitude'),
+                longitudeStart: model.get('longitude')
+            }, {
+                success: function(model, response, options) {
+                    console.log(model, response, options);
+                },
+                error: function(model, response, options) {
+                    console.log(model, response, options);
+                }
+            });
+        },
+        saveLastLocation: function(model) {
+            console.log(model.toJSON());
+            app.course.url = app.urls.endpoint + app.urls.ws_course + '/' + app.course.get('id') + "?access_token=" + app.accessToken.get();
+            app.course.save({
+                latitudeEnd: model.get('latitude'),
+                longitudeEnd: model.get('longitude')
+            }, {
+                patch: true,
+                success: function(model, response, options) {
+                    console.log(model, response, options);
+                },
+                error: function(model, response, options) {
+                    console.log(model, response, options);
+                }
+            });
         }
     };
 })();

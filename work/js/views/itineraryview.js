@@ -76,6 +76,7 @@ define(['backbone'], function(Backbone) {
         },
         close: function() {
             this.undelegateEvents();
+            this.stopListening();
             clearInterval(this.intervalId);
         }
     });

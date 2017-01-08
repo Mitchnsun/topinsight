@@ -37,6 +37,10 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
                 course: app.course.toJSON(),
                 wordings: this.wordings
             }));
+        },
+        close: function() {
+            this.undelegateEvents();
+            this.stopListening();
         }
     });
 });
