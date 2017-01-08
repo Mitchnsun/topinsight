@@ -33,9 +33,11 @@ var app = app || {};
         },
         getlocationscallback: function(locations) {
             var self = this;
+            console.log("Stored locations - ", locations.length);
             this.route.reset(locations);
             // Remove older stored location
             this.route.remove(this.route.filter(function(point) { return point.get('time') < self.start_date; }));
+            this.route.trigger('updated');
         }
     };
 })();

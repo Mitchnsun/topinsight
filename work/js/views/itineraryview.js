@@ -34,8 +34,10 @@ define(['backbone'], function(Backbone) {
                 center: this.starting_location.model.location(),
                 zoom: 14
             });
+            this.listenTo(this.route, 'updated', _.bind(this.traceRoute, this));
             this.addStartingPoint();
             this.traceRoute();
+            this.livereload();
         },
         addStartingPoint: function() {
             this.starting_location.marker = new google.maps.Marker({
@@ -55,6 +57,9 @@ define(['backbone'], function(Backbone) {
             });
             this.googlepath.setMap(this.map);
         },
+        livereload: function() {
+            this.intervalId = setInterval(_.bind(app.geolocation.getlocations, app.geolocation), 1000);
+        },
         /* User actions */
         events: {
             "click .button--facebook": "share",
@@ -68,6 +73,10 @@ define(['backbone'], function(Backbone) {
         reset: function(e) {
             e.preventDefault();
             console.log(e);
+        },
+        close: function() {
+            this.undelegateEvents();
+            clearInterval(this.intervalId);
         }
     });
 });
