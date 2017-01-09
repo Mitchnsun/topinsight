@@ -21,7 +21,7 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
             this.initBluetooth();
 
             this.listenTo(app.course, 'change', this.render);
-            this.once(app.bluetooth.params, 'ready', this.startCourse);
+            this.listenToOnce(app.bluetooth.params, 'ready', _.bind(app.course.start, app.course));
             this.render();
         },
         getLastCourse: function() {
@@ -43,15 +43,8 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
         },
         course: function() {
             if (_.isEmpty(app.course) || !app.course.get('id')) {
-                this.startCourse();
+                app.course.start();
             }
-        },
-        startCourse: function() {
-            app.geolocation.start_date = Date.now();
-            app.bluetooth.ready();
-            app.course.clear();
-            app.geolocation.init();
-            app.geolocation.start();
         },
         render: function() {
             $(this.el).html(Handlebars.templates["home.html"]({

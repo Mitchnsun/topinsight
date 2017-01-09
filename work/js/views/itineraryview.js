@@ -10,6 +10,7 @@ define(['backbone'], function(Backbone) {
                 title: this.wordings.header,
                 back: true
             });
+            this.listenToOnce(app.bluetooth.params, 'ready', _.bind(app.course.start, app.course));
             this.render();
         },
         render: function() {

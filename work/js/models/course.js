@@ -23,6 +23,13 @@ define(['backbone'], function(Backbone) {
             var minutes = duration % 60 > 9 ? duration % 60 : '0' + duration % 60;
             var hours = Math.floor(duration / 60) > 9 ? Math.floor(duration / 60) : '0' + Math.floor(duration / 60);
             this.set('time', hours + ':' + minutes + ':' + seconds);
+        },
+        start: function() {
+            app.geolocation.start_date = Date.now();
+            app.bluetooth.ready();
+            this.clear();
+            app.geolocation.init();
+            app.geolocation.start();
         }
     });
 });

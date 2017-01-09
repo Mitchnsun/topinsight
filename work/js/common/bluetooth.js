@@ -66,6 +66,9 @@ var app = app || {};
         },
         connecterror: function(msg) {
             console.log('- connecterror -', msg);
+            if (msg.errorMessage === "Peripheral Disconnected") {
+                app.geolocation.reset();
+            }
             ble.startScan([], _.bind(this.startScanSuccess, this), _.bind(this.startScanError, this));
             setTimeout(_.bind(this.stopscan, this), 15000);
         },
