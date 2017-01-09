@@ -8,8 +8,17 @@ define(['backbone'], function(Backbone) {
         parse: function(response, options) {
             return response.course;
         },
-        setDuration: function(first, last) {
-            var duration = Math.round((last.get('time') - first.get('time')) / 1000);
+        calcDuration: function(first, last) {
+            var duration = 0;
+            if (!first || !last) {
+                first = new Date(this.get('created'));
+                last = new Date(this.get('updated'));
+                duration = Math.round((last.getTime() - first.getTime()) / 1000);
+                console.log(first, last, duration);
+            } else {
+                duration = Math.round((last.get('time') - first.get('time')) / 1000);
+            }
+
             var seconds = duration % 60 > 9 ? duration % 60 : '0' + duration % 60;
             duration = Math.round(duration / 60);
             var minutes = duration % 60 > 9 ? duration % 60 : '0' + duration % 60;

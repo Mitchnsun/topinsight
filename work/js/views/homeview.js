@@ -19,13 +19,11 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
             app.geolocation.route = _.isEmpty(app.geolocation.route) ? new Route() : app.geolocation.route;
             app.bluetooth.params = new BluetoothParams();
             app.bluetooth.init(_.bind(this.startCourse, this), _.bind(this.getLastCourse, this));
-            this.startCourse();
 
             this.listenTo(app.course, 'change', this.render);
             this.render();
         },
-        getLastCourse: function(msg) {
-            console.log('- getLastCourse -', msg);
+        getLastCourse: function() {
             this.lastcourse = new LastCourse();
             this.lastcourse.fetch({
                 data: $.param({ access_token: app.accessToken.get() }),
@@ -35,8 +33,10 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
         },
         lastcoursecallback: function(model, response, options) {
             app.course.set(model.get('course'));
+            app.course.calcDuration();
         },
         startCourse: function() {
+            app.course.clear();
             app.geolocation.init();
         },
         render: function() {

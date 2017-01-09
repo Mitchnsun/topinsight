@@ -3,6 +3,11 @@ var app = app || {};
 (function($) {
     'use strict';
     app.wordings = {
+        defaultGPS: {
+            /* Paris, France */
+            lat: 48.8566,
+            lng: 2.3522
+        },
         continue: "continuer",
         errors: {
             default: "Une erreur est survenue, veuillez réessayer dans quelques instants",

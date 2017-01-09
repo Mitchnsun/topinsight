@@ -4,7 +4,6 @@ define(['backbone'], function(Backbone) {
         height: $(window).height(),
         wordings: app.wordings.itinerary,
         initialize: function(options) {
-            app.geolocation.init();
             app.geolocation.getlocations();
             this.route = app.geolocation.route;
 
@@ -21,29 +20,41 @@ define(['backbone'], function(Backbone) {
                 urls: app.urls,
                 course: app.course.toJSON()
             }));
+
+            if (this.route.length > 0) {
+                this.starting_location = this.route.startinglocation();
+            } else if (app.course.get('latitude_start')) {
+                this.starting_location = {
+                    lat: parseFloat(app.course.get('latitude_start')),
+                    lng: parseFloat(app.course.get('longitude_start'))
+                };
+            } else {
+                this.starting_location = app.wordings.defaultGPS;
+            }
+            console.log(this.starting_location);
             require(['async!' + app.urls.google_maps], _.bind(this.rendermaps, this));
         },
         /* Google Maps */
         rendermaps: function() {
-            this.starting_location = {
-                model: this.route.first()
-            }
-
             var heightHeader = $('header').height();
             var heightFooter = $('.itinerary__footer').height();
             $('.itinerary__map').height(this.height - heightHeader - heightFooter);
             this.map = new google.maps.Map(document.getElementById('map'), {
-                center: this.starting_location.model.location(),
+                center: this.starting_location,
                 zoom: 14
             });
-            this.listenTo(this.route, 'updated', _.bind(this.update, this));
+
             this.addStartingPoint();
-            this.traceRoute();
-            this.livereload();
+
+            if (this.route.length > 0) {
+                this.listenTo(this.route, 'updated', _.bind(this.update, this));
+                this.traceRoute();
+                this.livereload();
+            }
         },
         addStartingPoint: function() {
             this.starting_location.marker = new google.maps.Marker({
-                position: this.starting_location.model.location(),
+                position: this.starting_location,
                 map: this.map,
                 title: this.wordings.start,
                 icon: this.wordings.icon

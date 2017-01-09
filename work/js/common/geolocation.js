@@ -43,7 +43,7 @@ var app = app || {};
         saveCourse: function() {
             var firstLocation = this.route.first();
             var lastLocation = this.route.last();
-            app.course.setDuration(firstLocation, lastLocation)
+            app.course.calcDuration(firstLocation, lastLocation)
 
             if (!app.course.get('id')) {
                 this.saveFirstLocation(firstLocation);
@@ -51,7 +51,6 @@ var app = app || {};
             this.saveLastLocation(lastLocation);
         },
         saveFirstLocation: function(model) {
-            console.log(model.toJSON());
             app.course.url = app.urls.endpoint + app.urls.ws_course + "?access_token=" + app.accessToken.get();
             app.course.save({
                 latitudeStart: model.get('latitude'),
@@ -66,11 +65,13 @@ var app = app || {};
             });
         },
         saveLastLocation: function(model) {
-            console.log(model.toJSON());
             app.course.url = app.urls.endpoint + app.urls.ws_course + '/' + app.course.get('id') + "?access_token=" + app.accessToken.get();
             app.course.save({
                 latitudeEnd: model.get('latitude'),
-                longitudeEnd: model.get('longitude')
+                longitudeEnd: model.get('longitude'),
+                speed: 22.6,
+                distance: 13.7,
+                assistance: 2
             }, {
                 patch: true,
                 success: function(model, response, options) {

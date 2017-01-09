@@ -9,8 +9,8 @@ define(['backbone'], function(Backbone) {
         },
         location: function() {
             return {
-                lat: this.get('latitude'),
-                lng: this.get('longitude')
+                lat: parseFloat(this.get('latitude')),
+                lng: parseFloat(this.get('longitude'))
             };
         }
     });
