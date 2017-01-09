@@ -4,6 +4,7 @@ define(['backbone'], function(Backbone) {
         height: $(window).height(),
         wordings: app.wordings.itinerary,
         initialize: function(options) {
+            app.geolocation.init();
             app.geolocation.getlocations();
             this.route = app.geolocation.route;
 

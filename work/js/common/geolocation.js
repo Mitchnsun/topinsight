@@ -41,11 +41,14 @@ var app = app || {};
             this.saveCourse();
         },
         saveCourse: function() {
-            if (app.course.get('id')) {
-                this.saveLastLocation(this.route.last());
-            } else {
-                this.saveFirstLocation(this.route.first());
+            var firstLocation = this.route.first();
+            var lastLocation = this.route.last();
+            app.course.setDuration(firstLocation, lastLocation)
+
+            if (!app.course.get('id')) {
+                this.saveFirstLocation(firstLocation);
             }
+            this.saveLastLocation(lastLocation);
         },
         saveFirstLocation: function(model) {
             console.log(model.toJSON());

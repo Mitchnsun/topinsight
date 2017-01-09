@@ -17,8 +17,8 @@ var app = app || {};
             console.log('#SUCCESS ', msg);
         },
         /* initialize */
-        init: function() {
-            ble.isEnabled(_.bind(this.ready, this), _.bind(this.enable, this));
+        init: function(success, failure) {
+            ble.isEnabled(success, failure);
         },
         enable: function(msg) {
             console.log('- enable bluetooth - ', msg);
