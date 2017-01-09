@@ -11,14 +11,14 @@ define(['backbone'], function(Backbone) {
         calcDuration: function(first, last) {
             var duration = 0;
             if (!first || !last) {
-                first = new Date(this.get('created'));
-                last = new Date(this.get('updated'));
+                first = new Date(this.get('created').replace(/\+.*$/, ''));
+                last = new Date(this.get('updated').replace(/\+.*$/, ''));
                 duration = Math.round((last.getTime() - first.getTime()) / 1000);
-                console.log(first, last, duration);
             } else {
                 duration = Math.round((last.get('time') - first.get('time')) / 1000);
             }
 
+            duration = _.isNaN(duration) ? 0 : duration;
             var seconds = duration % 60 > 9 ? duration % 60 : '0' + duration % 60;
             duration = Math.round(duration / 60);
             var minutes = duration % 60 > 9 ? duration % 60 : '0' + duration % 60;

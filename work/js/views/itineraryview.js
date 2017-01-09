@@ -4,9 +4,7 @@ define(['backbone'], function(Backbone) {
         height: $(window).height(),
         wordings: app.wordings.itinerary,
         initialize: function(options) {
-            app.geolocation.getlocations();
             this.route = app.geolocation.route;
-
             this.headerview = options.headerview;
             this.headerview.render({
                 title: this.wordings.header,
@@ -48,7 +46,6 @@ define(['backbone'], function(Backbone) {
                 this.listenTo(this.route, 'updated', _.bind(this.update, this));
                 this.addStartingPoint();
                 this.traceRoute();
-                this.livereload();
             } else if (app.course.get('latitude_start')) {
                 this.addStartingPoint();
             }
@@ -76,9 +73,6 @@ define(['backbone'], function(Backbone) {
             });
             this.googlepath.setMap(this.map);
         },
-        livereload: function() {
-            this.intervalId = setInterval(_.bind(app.geolocation.getlocations, app.geolocation), 1000);
-        },
         /* User actions */
         events: {
             "click .button--facebook": "share",
@@ -96,7 +90,6 @@ define(['backbone'], function(Backbone) {
         close: function() {
             this.undelegateEvents();
             this.stopListening();
-            clearInterval(this.intervalId);
         }
     });
 });

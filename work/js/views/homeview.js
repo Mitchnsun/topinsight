@@ -38,6 +38,7 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
         startCourse: function() {
             app.course.clear();
             app.geolocation.init();
+            app.geolocation.start();
         },
         render: function() {
             $(this.el).html(Handlebars.templates["home.html"]({
