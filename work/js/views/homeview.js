@@ -18,9 +18,10 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
 
             app.geolocation.route = _.isEmpty(app.geolocation.route) ? new Route() : app.geolocation.route;
             app.bluetooth.params = new BluetoothParams();
-            app.bluetooth.init(_.bind(this.startCourse, this), _.bind(this.getLastCourse, this));
+            this.initBluetooth();
 
             this.listenTo(app.course, 'change', this.render);
+            this.once(app.bluetooth.params, 'ready', this.startCourse);
             this.render();
         },
         getLastCourse: function() {
@@ -31,11 +32,23 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
                 error: _.bind(this.render, this)
             });
         },
+        initBluetooth: function() {
+            app.bluetooth.init(_.bind(this.course, this), _.bind(this.getLastCourse, this));
+        },
         lastcoursecallback: function(model, response, options) {
+            app.bluetooth.enable();
             app.course.set(model.get('course'));
             app.course.calcDuration();
+            setTimeout(_.bind(this.initBluetooth, this), 30000);
+        },
+        course: function() {
+            if (_.isEmpty(app.course) || !app.course.get('id')) {
+                this.startCourse();
+            }
         },
         startCourse: function() {
+            app.geolocation.start_date = Date.now();
+            app.bluetooth.ready();
             app.course.clear();
             app.geolocation.init();
             app.geolocation.start();

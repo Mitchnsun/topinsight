@@ -90,7 +90,7 @@ define(['backbone'], function(Backbone) {
         },
         reset: function(e) {
             e.preventDefault();
-            console.log(e);
+            app.geolocation.reset();
         },
         close: function() {
             this.undelegateEvents();

@@ -18,17 +18,22 @@ var app = app || {};
         },
         /* initialize */
         init: function(success, failure) {
+            console.log('- bluetooth init -');
             ble.isEnabled(success, failure);
         },
         enable: function(msg) {
-            console.log('- enable bluetooth - ', msg);
+            console.log('- enable bluetooth - ');
             // Bluetooth not yet enabled so we try to enable it
             ble.enable(_.bind(this.ready, this), this.error);
         },
         ready: function(msg) {
-            console.log('- ready bluetooth - ', msg);
-            ble.startScan([], _.bind(this.startScanSuccess, this), _.bind(this.startScanError, this));
-            setTimeout(_.bind(this.stopscan, this), 10000);
+            console.log('- ready bluetooth - ');
+            if (this.params.get('address')) {
+                this.connect();
+            } else {
+                ble.startScan([], _.bind(this.startScanSuccess, this), _.bind(this.startScanError, this));
+                setTimeout(_.bind(this.stopscan, this), 15000);
+            }
         },
         /* Scan */
         startScanSuccess: function(device) {
@@ -36,7 +41,7 @@ var app = app || {};
                 this.params.set('address', device.id);
                 this.stopscan();
                 this.connect();
-                console.log('- startScanSuccess - ', device);
+                console.log('- startScanSuccess - ', JSON.stringify(device));
             }
         },
         startScanError: function(msg) {
@@ -54,12 +59,15 @@ var app = app || {};
             ble.connect(this.params.get('address'), _.bind(this.connectsuccess, this), _.bind(this.connecterror, this));
         },
         connectsuccess: function(msg) {
-            console.log('- connectsuccess - ', msg);
-            this.notify();
-            this.read();
+            console.log('- connectsuccess - ', JSON.stringify(msg));
+            this.params.trigger('ready');
+            /*this.notify();
+            this.read();*/
         },
         connecterror: function(msg) {
-            this.error('- connectsuccess - ', msg);
+            console.log('- connecterror -', msg);
+            ble.startScan([], _.bind(this.startScanSuccess, this), _.bind(this.startScanError, this));
+            setTimeout(_.bind(this.stopscan, this), 15000);
         },
         disconnect: function() {
             ble.disconnect(this.params.get('address'), this.success, this.error);
