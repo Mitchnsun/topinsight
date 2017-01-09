@@ -46,19 +46,18 @@ var app = app || {};
             // Remove older stored location
             this.route.remove(this.route.filter(function(point) { return point.get('time') < self.start_date; }));
             this.route.trigger('updated');
+            app.course.calcDuration(this.route.first(), this.route.last())
         },
         saveCourse: function() {
             if (this.route.length === 0) {
                 return false;
             }
-            var firstLocation = this.route.first();
-            var lastLocation = this.route.last();
-            app.course.calcDuration(firstLocation, lastLocation)
 
             if (!app.course.get('id')) {
-                this.saveFirstLocation(firstLocation);
+                this.saveFirstLocation(this.route.first());
+            } else {
+                this.saveLastLocation(this.route.last());
             }
-            this.saveLastLocation(lastLocation);
         },
         saveFirstLocation: function(model) {
             if (!model) {
@@ -68,6 +67,10 @@ var app = app || {};
             app.course.save({
                 latitudeStart: model.get('latitude'),
                 longitudeStart: model.get('longitude')
+            }, {
+                success: function() {
+                    app.geolocation.saveLastLocation(app.geolocation.route.last());
+                }
             });
         },
         saveLastLocation: function(model) {

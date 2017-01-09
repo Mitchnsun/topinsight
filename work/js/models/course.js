@@ -1,8 +1,7 @@
 define(['backbone'], function(Backbone) {
     return Backbone.Model.extend({
         defaults: {
-            time: "00:00:00",
-            distance: "0"
+            time: "00:00:00"
         },
         url: app.urls.endpoint + app.urls.ws_course,
         parse: function(response, options) {
@@ -10,11 +9,11 @@ define(['backbone'], function(Backbone) {
         },
         calcDuration: function(first, last) {
             var duration = 0;
-            if (!first || !last) {
+            if ((!first || !last) && (this.get('created') && this.get('created'))) {
                 first = new Date(this.get('created').replace(/\+.*$/, ''));
                 last = new Date(this.get('updated').replace(/\+.*$/, ''));
                 duration = Math.round((last.getTime() - first.getTime()) / 1000);
-            } else {
+            } else if (first && last) {
                 duration = Math.round((last.get('time') - first.get('time')) / 1000);
             }
 

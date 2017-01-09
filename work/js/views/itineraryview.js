@@ -61,7 +61,7 @@ define(['backbone'], function(Backbone) {
         update: function() {
             this.traceRoute();
             $('.itinerary__element__data--time').html(app.course.get('time'));
-            $('.itinerary__element__data--distance').html(app.course.get('distance'));
+            $('.itinerary__element__data--distance').html(app.course.get('distance') + ' ' + this.wordings.distance.unit);
         },
         traceRoute: function() {
             this.googlepath = new google.maps.Polyline({
@@ -72,6 +72,11 @@ define(['backbone'], function(Backbone) {
                 strokeWeight: 5
             });
             this.googlepath.setMap(this.map);
+            var lastPosition = this.route.last();
+            if (lastPosition) {
+                this.map.setCenter(lastPosition.location());
+            }
+
         },
         /* User actions */
         events: {
