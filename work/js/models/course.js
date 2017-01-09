@@ -19,9 +19,9 @@ define(['backbone'], function(Backbone) {
 
             duration = _.isNaN(duration) ? 0 : duration;
             var seconds = duration % 60 > 9 ? duration % 60 : '0' + duration % 60;
-            duration = Math.round(duration / 60);
+            duration = Math.floor(duration / 60);
             var minutes = duration % 60 > 9 ? duration % 60 : '0' + duration % 60;
-            var hours = Math.round(duration / 60) > 9 ? Math.round(duration / 60) : '0' + Math.round(duration / 60);
+            var hours = Math.floor(duration / 60) > 9 ? Math.floor(duration / 60) : '0' + Math.floor(duration / 60);
             this.set('time', hours + ':' + minutes + ':' + seconds);
         }
     });
