@@ -31,7 +31,7 @@ define(['backbone'], function(Backbone) {
             } else {
                 this.starting_location = app.wordings.defaultGPS;
             }
-            console.log(this.starting_location);
+
             require(['async!' + app.urls.google_maps], _.bind(this.rendermaps, this));
         },
         /* Google Maps */
