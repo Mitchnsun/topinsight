@@ -19,9 +19,15 @@ var app = app || {};
         },
         reset: function() {
             app.course.clear();
+            this.route.reset();
             clearInterval(this.intervalLocationsId);
             clearInterval(this.intervalSaveId);
             backgroundGeolocation.deleteAllLocations(this.success, this.failure);
+        },
+        start: function() {
+            this.getlocations();
+            this.intervalLocationsId = setInterval(_.bind(this.getlocations, this), 1000);
+            this.intervalSaveId = setInterval(_.bind(this.saveCourse, this), 5000);
         },
         stop: function() {
             backgroundGeolocation.stop();
@@ -31,11 +37,6 @@ var app = app || {};
         },
         failure: function(msg) {
             console.log(msg);
-        },
-        start: function() {
-            this.getlocations();
-            this.intervalLocationsId = setInterval(_.bind(this.getlocations, this), 1000);
-            this.intervalSaveId = setInterval(_.bind(this.saveCourse, this), 10000);
         },
         getlocations: function() {
             backgroundGeolocation.getValidLocations(_.bind(this.getlocationscallback, this), this.failure);

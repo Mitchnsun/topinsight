@@ -27,7 +27,7 @@ define(['backbone'], function(Backbone) {
                     lng: parseFloat(app.course.get('longitude_start'))
                 };
             } else {
-                this.starting_location = app.wordings.defaultGPS;
+                this.starting_location = _.isEmpty(this.starting_location) ? app.wordings.defaultGPS : this.starting_location;
             }
 
             require(['async!' + app.urls.google_maps], _.bind(this.rendermaps, this));
@@ -42,8 +42,9 @@ define(['backbone'], function(Backbone) {
                 zoom: 14
             });
 
+            this.listenTo(this.route, 'updated', _.bind(this.update, this));
+
             if (this.route.length > 0) {
-                this.listenTo(this.route, 'updated', _.bind(this.update, this));
                 this.addStartingPoint();
                 this.traceRoute();
             } else if (app.course.get('latitude_start')) {
@@ -59,9 +60,15 @@ define(['backbone'], function(Backbone) {
             });
         },
         update: function() {
+            if (!this.starting_location.marker) {
+                this.starting_location = this.route.startinglocation();
+                this.addStartingPoint();
+            }
             this.traceRoute();
             $('.itinerary__element__data--time').html(app.course.get('time'));
-            $('.itinerary__element__data--distance').html(app.course.get('distance') + ' ' + this.wordings.distance.unit);
+            var distance = app.course.get('distance');
+            distance = distance ? distance : 0;
+            $('.itinerary__element__data--distance').html(distance + ' ' + this.wordings.distance.unit);
         },
         traceRoute: function() {
             this.googlepath = new google.maps.Polyline({
@@ -76,7 +83,6 @@ define(['backbone'], function(Backbone) {
             if (lastPosition) {
                 this.map.setCenter(lastPosition.location());
             }
-
         },
         /* User actions */
         events: {
@@ -90,7 +96,14 @@ define(['backbone'], function(Backbone) {
         },
         reset: function(e) {
             e.preventDefault();
+            this.starting_location = app.geolocation.route.last();
+            this.starting_location = this.starting_location ? this.starting_location.location() : {};
+            this.stopListening();
+            app.geolocation.start_date = Date.now();
+            app.bluetooth.ready();
             app.geolocation.reset();
+            app.geolocation.start();
+            this.listenToOnce(this.route, 'updated', _.bind(this.render, this));
         },
         close: function() {
             this.undelegateEvents();

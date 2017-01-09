@@ -61,8 +61,8 @@ var app = app || {};
         connectsuccess: function(msg) {
             console.log('- connectsuccess - ', JSON.stringify(msg));
             this.params.trigger('ready');
-            /*this.notify();
-            this.read();*/
+            this.read();
+            this.notify();
         },
         connecterror: function(msg) {
             console.log('- connecterror -', msg);
@@ -88,7 +88,7 @@ var app = app || {};
             ble.read(this.params.get('address'), "FFF0", "FFF1", this.readsuccess, this.error);
         },
         readsuccess: function(msg) {
-            console.log('- readsuccess - ', msg, new Uint8Array(msg));
+            console.log('- readsuccess - ', msg, JSON.stringify(msg), new Uint8Array(msg));
         },
         /* Write */
         write: function() {
