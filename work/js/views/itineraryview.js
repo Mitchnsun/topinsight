@@ -18,7 +18,8 @@ define(['backbone'], function(Backbone) {
         render: function() {
             $(this.el).html(Handlebars.templates["itinerary.html"]({
                 wordings: this.wordings,
-                urls: app.urls
+                urls: app.urls,
+                course: app.course.toJSON()
             }));
             require(['async!' + app.urls.google_maps], _.bind(this.rendermaps, this));
         },
@@ -35,7 +36,7 @@ define(['backbone'], function(Backbone) {
                 center: this.starting_location.model.location(),
                 zoom: 14
             });
-            this.listenTo(this.route, 'updated', _.bind(this.traceRoute, this));
+            this.listenTo(this.route, 'updated', _.bind(this.update, this));
             this.addStartingPoint();
             this.traceRoute();
             this.livereload();
@@ -47,6 +48,11 @@ define(['backbone'], function(Backbone) {
                 title: this.wordings.start,
                 icon: this.wordings.icon
             });
+        },
+        update: function() {
+            this.traceRoute();
+            $('.itinerary__element__data--time').html(app.course.get('time'));
+            $('.itinerary__element__data--distance').html(app.course.get('distance'));
         },
         traceRoute: function() {
             this.googlepath = new google.maps.Polyline({

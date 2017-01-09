@@ -82,19 +82,19 @@ var app = app || {};
             reset: "Remettre à zéro",
             start: "Point de départ",
             icon: "assets/img/icons/icon-location.png",
-            elements: [{
+            duration: {
                 title: "Temps",
                 data: "01:30:22",
-                unit: "",
                 icon: "assets/img/icons/icon-clock-grey.png",
                 alt: "Clock Icon"
-            }, {
+            },
+            distance: {
                 title: "Distance",
                 data: "%f",
                 unit: "km",
                 icon: "assets/img/icons/icon-road.png",
                 alt: "Road Icon"
-            }]
+            }
         }
     };
 })();

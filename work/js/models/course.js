@@ -1,5 +1,9 @@
 define(['backbone'], function(Backbone) {
     return Backbone.Model.extend({
+        defaults: {
+            time: "00:00:00",
+            distance: "0"
+        },
         url: app.urls.endpoint + app.urls.ws_course,
         parse: function(response, options) {
             return response.course;
@@ -10,7 +14,7 @@ define(['backbone'], function(Backbone) {
             duration = Math.round(duration / 60);
             var minutes = duration % 60 > 9 ? duration % 60 : '0' + duration % 60;
             var hours = Math.round(duration / 60) > 9 ? Math.round(duration / 60) : '0' + Math.round(duration / 60);
-            this.set('course_time', hours + ':' + minutes + ':' + seconds);
+            this.set('time', hours + ':' + minutes + ':' + seconds);
         }
     });
 });
