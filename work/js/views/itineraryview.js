@@ -44,12 +44,13 @@ define(['backbone'], function(Backbone) {
                 zoom: 14
             });
 
-            this.addStartingPoint();
-
             if (this.route.length > 0) {
                 this.listenTo(this.route, 'updated', _.bind(this.update, this));
+                this.addStartingPoint();
                 this.traceRoute();
                 this.livereload();
+            } else if (app.course.get('latitude_start')) {
+                this.addStartingPoint();
             }
         },
         addStartingPoint: function() {
