@@ -43,7 +43,7 @@ require([
 
     FB.init({
         appId: app.wordings.FBApiID,
-        version: 'v2.4'
+        version: app.wordings.FBversion
     });
 
     var initRouter = function() {

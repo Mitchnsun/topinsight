@@ -9,7 +9,9 @@ var app = app || {};
             lat: 48.8566,
             lng: 2.3522
         },
-        FBApiID: "417602081756626",
+        FBversion: "v2.8",
+        FBApiID: "1354634814611917",
+        FBSecretKey: "fe7e70cfe1bb4af3d39dcb3218961c9a",
         /* Labels */
         continue: "continuer",
         errors: {
