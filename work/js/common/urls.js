@@ -9,8 +9,10 @@ var app = app || {};
         ws_user: "/api/v1/users/me",
         ws_subscribe: "/api/v1/sessions/subscribe",
         ws_login: "/api/v1/sessions/login",
-        ws_course: "/api/v1/courses/",
+        ws_course: "/api/v1/courses",
         ws_lastcourse: "/api/v1/courses/last/updated",
+        ws_lostpassword: "/api/v1/sessions/@/password-recovery/request",
+        ws_retrievepassword: "/api/v1/sessions/password-recovery/reset/",
 
         /* Application urls */
         home: "",

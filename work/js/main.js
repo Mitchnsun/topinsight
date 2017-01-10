@@ -33,20 +33,22 @@ require([
     app.$ = $;
     app.user = new User();
     app.course = new Course();
-    app.vae = new Vae({ access_token: app.accessToken.get() });
+    app.vae = new Vae();
     app.errorview = new Errorview();
 
-    app.user.fetch({
-        data: $.param({ access_token: app.accessToken.get() }),
-        success: function() {
-            // Initialize routing and start Backbone.history()
-            app.router = new Router();
-            Backbone.history.start();
-        },
-        error: function() {
-            // Initialize routing and start Backbone.history()
-            app.router = new Router();
-            Backbone.history.start();
-        }
-    })
+    var initRouter = function() {
+        // Initialize routing and start Backbone.history()
+        app.router = new Router();
+        Backbone.history.start();
+    };
+
+    if (app.accessToken.get()) {
+        app.user.fetch({
+            data: $.param({ access_token: app.accessToken.get() }),
+            success: initRouter,
+            error: initRouter
+        });
+    } else {
+        initRouter();
+    }
 });

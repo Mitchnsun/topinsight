@@ -21,6 +21,7 @@ define(['backbone'], function(Backbone) {
         signout: function(e) {
             app.user.clear();
             app.accessToken.clean();
+            app.bluetooth.clean();
         },
         back: function(e) {
             e.preventDefault();

@@ -3,15 +3,22 @@ var app = app || {};
 (function($) {
     'use strict';
     app.wordings = {
+        defaultGPS: {
+            /* Paris, France */
+            lat: 48.8566,
+            lng: 2.3522
+        },
         continue: "continuer",
         errors: {
             default: "Une erreur est survenue, veuillez réessayer dans quelques instants",
+            bluetooth: "Une erreur est survenue avec le module Bluetooth, veuillez réessayer dans quelques instants",
             /* Front errors */
             empty: "Veuillez remplir tous les champs",
             firstname: "Le prénom doit être composé de 2 à 14 caractères",
             lastname: "Le nom doit être être composé de 2 à 14 caractères",
             email: "Format d'adresse mail invalide",
             password: "Votre mot de passe doit être compris entre 4 et 18 caractères",
+            same_password: "Les deux mots de passe renseignés doivent être identique",
             phone: "Le numéro de téléphone est invalide",
             /* Back errors */
             http: {
@@ -22,6 +29,7 @@ var app = app || {};
                 "500": "Erreur interne du serveur",
             },
             "geoks.user.email.invalid": "L'email renseigné n'existe pas",
+            "geoks.user.email.nonExpired": "Le mot de passe a déjà été réinitialisé, vérifiez votre boîte mail",
             "geoks.user.login.wrong": "Le mot de passe est incorrect"
         },
         dashboard: {
@@ -77,19 +85,21 @@ var app = app || {};
         itinerary: {
             header: "Parcours",
             reset: "Remettre à zéro",
-            elements: [{
+            start: "Point de départ",
+            icon: "assets/img/icons/icon-location.png",
+            duration: {
                 title: "Temps",
                 data: "01:30:22",
-                unit: "",
                 icon: "assets/img/icons/icon-clock-grey.png",
                 alt: "Clock Icon"
-            }, {
+            },
+            distance: {
                 title: "Distance",
                 data: "%f",
                 unit: "km",
                 icon: "assets/img/icons/icon-road.png",
                 alt: "Road Icon"
-            }]
+            }
         }
     };
 })();
