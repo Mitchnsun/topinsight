@@ -24,7 +24,7 @@ var app = app || {};
             lastname: "Le nom doit être être composé de 2 à 14 caractères",
             email: "Format d'adresse mail invalide",
             password: "Votre mot de passe doit être compris entre 4 et 18 caractères",
-            same_password: "Les deux mots de passe renseignés doivent être identique",
+            same_password: "Les deux mots de passe renseignés doivent être identiques",
             phone: "Le numéro de téléphone est invalide",
             /* Back errors */
             http: {
@@ -34,7 +34,7 @@ var app = app || {};
                 "422": "L’entité fournie avec la requête est incompréhensible ou incomplète",
                 "500": "Erreur interne du serveur",
             },
-            "geoks.user.email.invalid": "L'email renseigné n'existe pas",
+            "geoks.user.email.invalid": "Identifiants incorrects",
             "geoks.user.email.nonExpired": "Le mot de passe a déjà été réinitialisé, vérifiez votre boîte mail",
             "geoks.user.login.wrong": "Le mot de passe est incorrect"
         },
@@ -77,7 +77,7 @@ var app = app || {};
             validate: "Valider",
             signin: "Se connecter",
             FBsign: "Connexion Facebook",
-            TWsign: "S'inscrire",
+            TWsign: "S'inscrire"
         },
         password: {
             header: "Mot de passe oublié",
