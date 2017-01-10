@@ -46,10 +46,6 @@ require([
         version: 'v2.4'
     });
 
-    FB.getLoginStatus(function(response) {
-        console.log(response);
-    });
-
     var initRouter = function() {
         // Initialize routing and start Backbone.history()
         app.router = new Router();
