@@ -29,12 +29,14 @@ var app = app || {};
         /* initialize */
         init: function(success, failure) {
             console.log('- bluetooth init -');
-            ble.isEnabled(success, failure);
+            ble.isConnected(this.params.get('address'), success, failure);
         },
-        enable: function(msg) {
+        isenabled: function(msg) {
             console.log('- enable bluetooth - ');
-            // Bluetooth not yet enabled so we try to enable it
-            ble.enable(_.bind(this.ready, this), this.error);
+            ble.isEnabled(_.bind(this.ready, this), _.bind(this.enable, this));
+        },
+        enable: function() {
+            ble.enable(_.bind(this.ready, this), _.bind(this.error, this));
         },
         ready: function(msg) {
             console.log('- ready bluetooth - ');
