@@ -8,7 +8,6 @@
         Geoks Team
     </author>
     <content src="index.html" />
-    
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -16,7 +15,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    
     <platform name="android">
         <allow-intent href="market:*" />
         <splash density="land-hdpi" src="res/screen/android/splashscreen.png" />
@@ -38,16 +36,14 @@
         <preference name="SplashScreenWidth" value="375" />
         <preference name="SplashScreenHeight" value="667" />
     </platform>
-    
     <engine name="ios" spec="~4.3.1" />
     <engine name="android" spec="~6.0.0" />
     <engine name="browser" spec="~4.1.0" />
-    
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="SplashScreenBackgroundColor" value="#FFF" />
     <preference name="DisallowOverscroll" value="true" />
-    
+    <preference name="StatusBarOverlaysWebView" value="false" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-browsersync" spec="~0.1.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
@@ -59,4 +55,5 @@
         <variable name="CONTENT_AUTHORITY" value="$PACKAGE_NAME" />
         <variable name="ALWAYS_USAGE_DESCRIPTION" value="Cette application nécessite un suivi de la géolocalisation en arrière-plan" />
     </plugin>
+    <plugin name="cordova-plugin-statusbar" spec="~2.2.1" />
 </widget>
