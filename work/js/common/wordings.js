@@ -3,15 +3,19 @@ var app = app || {};
 (function($) {
     'use strict';
     app.wordings = {
+        /* Configuration */
         defaultGPS: {
             /* Paris, France */
             lat: 48.8566,
             lng: 2.3522
         },
+        FBApiID: "417602081756626",
+        /* Labels */
         continue: "continuer",
         errors: {
             default: "Une erreur est survenue, veuillez réessayer dans quelques instants",
             bluetooth: "Une erreur est survenue avec le module Bluetooth, veuillez réessayer dans quelques instants",
+            facebook: "Une erreur est survenue avec Facebook, veuillez réessayer dans quelques instants",
             /* Front errors */
             empty: "Veuillez remplir tous les champs",
             firstname: "Le prénom doit être composé de 2 à 14 caractères",
