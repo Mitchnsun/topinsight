@@ -39,7 +39,7 @@ This README documents steps are necessary to get your application up and running
 ###### Deploy ######
 
 * `npm run build:apps` - Build css & js for development, also copy non-minified js for debugging
-> CLI archive ios failed. You have to use Xcode for the moment
+> CLI archive ios failed if you have not the distribution certificat
 
 ###### Configuration ######
 
