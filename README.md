@@ -30,10 +30,16 @@ This README documents steps are necessary to get your application up and running
 ###### Launch ######
 
 * Modify sources in work/
-* `npm run dev` - Launch a web-server to see the application in browser
+* `npm run dev` - Launch a web-server to see the application in browser. Should be shut down to debug on devices.
 > Cordova version 6.4.0 display this error `Error loading cordova-browser`, this is a misleading message error.
 
-* `npm run build` - Build css & js for development, also copy non-minified js for debugging
+* `npm run build:www` - Build css & js for development, also copy non-minified js for debugging
+* `npm run prepare:apps` - Build css & js and update the platforms
+
+###### Deploy ######
+
+* `npm run build:apps` - Build css & js for development, also copy non-minified js for debugging
+> CLI archive ios failed. You have to use Xcode for the moment
 
 ###### Configuration ######
 
