@@ -7,18 +7,18 @@
         display: inline-block;
         width: 50%;
         margin-right: -4px;
-        padding-top: 6px;
+        padding-top: 10px;
         .icon {
-            margin-left: 10px;
+            margin-left: 15px;
         }
         &__title {
             display: inline;
-            font-family: @OpenSansSemibold;
-            font-size: 12px;
+            font-family: @OpenSansLight;
+            font-size: 14px;
             line-height: 18px;
             color: @grey;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 2px;
         }
         &__data {
             text-align: center;
@@ -26,6 +26,9 @@
             font-size: 38px;
             line-height: 64px;
             color: @green;
+        }
+        &:last-of-type {
+            border-left: 1px solid @grey;
         }
     }
     &__footer {
