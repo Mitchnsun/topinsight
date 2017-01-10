@@ -22,6 +22,10 @@ define(['backbone'], function(Backbone) {
             app.user.clear();
             app.accessToken.clean();
             app.bluetooth.clean();
+            var userFB = FB.getAuthResponse();
+            if (userFB && userFB.accessToken) {
+                FB.logout();
+            }
         },
         back: function(e) {
             e.preventDefault();
