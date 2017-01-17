@@ -1,11 +1,21 @@
+html {
+    -webkit-user-select: none; /* disable selection/Copy of UIWebView */
+    user-select: none;
+    -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
+}
+
+* { 
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 a {
     text-decoration: none;
 }
 
 .logo {
-    margin: 40px 54px;
+    margin: 40px 9%;
     &--splashscreen {
-        margin-top: 175px;
+        margin-top: 163px;
     }
     &__image {
         max-width: 100%;

@@ -31,15 +31,15 @@
         -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self' data: gap:
-            https://*.gstatic.com http://*.geoks-dev.fr/;
+            https://*.gstatic.com http://*.geoks-dev.fr/ *.facebook.com;
         script-src 'self' 'unsafe-inline' 'unsafe-eval'
-            https://*.gstatic.com https://*.googleapis.com;
+            https://*.gstatic.com https://*.googleapis.com https://*.facebook.net;
         style-src 'self' 'unsafe-inline'
             https://*.googleapis.com https://*.gstatic.com;
         font-src  'self' 'unsafe-inline' 'unsafe-eval'
             https://*.gstatic.com https://*.googleapis.com;
         img-src 'self' 'unsafe-inline' 'unsafe-eval'
-            https://*.gstatic.com https://*.googleapis.com;
+            https://*.gstatic.com https://*.googleapis.com *.facebook.com;
         media-src *">
     <meta charset="UTF-8">
     <meta name="format-detection" content="telephone=no">
@@ -62,6 +62,7 @@
             <img class="loader__image loader__image--4" src="assets/img/icons/icon-oval-4.png" alt="Oval loader 4">
         </div>
     </div>
+    <div class="error__overlay"></div>
     <div class="error"></div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/output.js"></script>

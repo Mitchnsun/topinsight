@@ -24,7 +24,11 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
             this.listenToOnce(app.bluetooth.params, 'ready', _.bind(app.course.start, app.course));
             this.render();
         },
+        initBluetooth: function() {
+            app.bluetooth.init(_.bind(this.course, this), _.bind(this.getLastCourse, this));
+        },
         getLastCourse: function() {
+            console.log('- get Last Course -');
             this.lastcourse = new LastCourse();
             this.lastcourse.fetch({
                 data: $.param({ access_token: app.accessToken.get() }),
@@ -32,14 +36,11 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
                 error: _.bind(this.render, this)
             });
         },
-        initBluetooth: function() {
-            app.bluetooth.init(_.bind(this.course, this), _.bind(this.getLastCourse, this));
-        },
         lastcoursecallback: function(model, response, options) {
             app.bluetooth.enable();
             app.course.set(model.get('course'));
             app.course.calcDuration();
-            setTimeout(_.bind(this.initBluetooth, this), 30000);
+            app.bluetooth.isenabled();
         },
         course: function() {
             if (_.isEmpty(app.course) || !app.course.get('id')) {

@@ -7,12 +7,14 @@ define(['backbone'], function(Backbone) {
                 message: message ? message : this.wordings.errors.default,
                 wordings: this.wordings
             })).addClass('error--active');
+            $('.error__overlay').addClass('error--active');
         },
         events: {
             "click button": "continue"
         },
         continue: function(e) {
             $(this.el).removeClass('error--active');
+            $('.error__overlay').removeClass('error--active');
         },
         errorcallback: function(jqXHR, response) {
             var param = response.responseJSON ? response.responseJSON.error : jqXHR.responseJSON.error;

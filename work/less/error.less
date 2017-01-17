@@ -8,9 +8,8 @@
     box-sizing: content-box;
     width: 80%;
     margin: 0 10%;
-    &--active {
-        display: block;
-    }
+    z-index: 3;
+    transition: 0.3s;
     &__message {
         font-family: @OpenSansLight;
         font-size: 15px;
@@ -28,5 +27,19 @@
         background: @white;
         border-radius: 0 0 5px 5px;
         width: 100%;
+        margin: 0;
+    }
+    &__overlay {
+        display: none;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        z-index: 2;
+        left: 0;
+        top: 0;
+        overflow-x: hidden;
+    }
+    &--active {
+        display: block;
     }
 }

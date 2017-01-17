@@ -4,6 +4,16 @@ var app = app || {};
     'use strict';
     app.bluetooth = {
         params: {},
+        bytesToString: function(buffer) {
+            return String.fromCharCode.apply(null, new Uint8Array(buffer));
+        },
+        stringToBytes: function(string) {
+            var array = new Uint8Array(string.length);
+            for (var i = 0, l = string.length; i < l; i++) {
+                array[i] = string.charCodeAt(i);
+            }
+            return array.buffer;
+        },
         /* Global functions */
         clean: function() {
             this.disconnect();
@@ -19,12 +29,14 @@ var app = app || {};
         /* initialize */
         init: function(success, failure) {
             console.log('- bluetooth init -');
-            ble.isEnabled(success, failure);
+            ble.isConnected(this.params.get('address'), success, failure);
         },
-        enable: function(msg) {
+        isenabled: function(msg) {
             console.log('- enable bluetooth - ');
-            // Bluetooth not yet enabled so we try to enable it
-            ble.enable(_.bind(this.ready, this), this.error);
+            ble.isEnabled(_.bind(this.ready, this), _.bind(this.enable, this));
+        },
+        enable: function() {
+            ble.enable(_.bind(this.ready, this), _.bind(this.error, this));
         },
         ready: function(msg) {
             console.log('- ready bluetooth - ');
@@ -61,7 +73,7 @@ var app = app || {};
         connectsuccess: function(msg) {
             console.log('- connectsuccess - ', JSON.stringify(msg));
             this.params.trigger('ready');
-            this.read();
+            //this.read();
             this.notify();
         },
         connecterror: function(msg) {
@@ -77,12 +89,12 @@ var app = app || {};
         },
         /* Notifications */
         notify: function() {
-
+            console.log('- start notification -');
             ble.startNotification(this.params.get('address'), "FFF0", "FFF1",
                 _.bind(this.notificationsuccess, this), _.bind(this.notificationerror, this));
         },
         notificationsuccess: function(msg) {
-            console.log('- notificationsuccess - ', msg, new Uint8Array(msg));
+            console.log('- notificationsuccess - ', msg, new Uint8Array(msg), this.bytesToString(msg));
         },
         notificationerror: function(msg) {
             console.log('- notificationerror - ', msg);
@@ -95,8 +107,7 @@ var app = app || {};
         },
         /* Write */
         write: function() {
-            var value = new Uint8Array(1);
-            value[0] = 1;
+            var value = new Uint8Array([86, 1, 1, 1, 12, 7, 0, 8, 0, 10, 3, 0, 0, 0]);
             console.log(value);
             ble.write(this.params.get('address'), "FFF0", "FFF1", value.buffer, this.writesuccess, this.writeerror);
         },

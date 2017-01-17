@@ -7,7 +7,6 @@ define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subs
             this.headerview.render({
                 hidden: true
             });
-            this.login = new Login();
             this.render();
         },
         render: function() {
@@ -23,6 +22,7 @@ define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subs
         },
         signin: function(e) {
             e.preventDefault();
+            this.login = new Login();
             this.login.set(app.rules.user.verification($('.input__element')));
             var login = this.login.toJSON();
             if (login.empty) {
@@ -40,6 +40,23 @@ define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subs
         },
         facebook: function(e) {
             e.preventDefault();
+            FB.login(_.bind(this.fbcallback, this), { scope: 'public_profile,email' });
+        },
+        fbcallback: function(msg) {
+            this.login = new Login();
+            if (msg.status === "connected") {
+                this.login.url = app.urls.endpoint + app.urls.ws_fblogin;
+                this.login.save({
+                    facebook_token: msg.authResponse.accessToken
+                }, {
+                    success: this.login.loged,
+                    error: function() {
+                        app.errorview.render(app.wordings.errors.facebook);
+                    }
+                });
+            } else {
+                app.errorview.render(app.wordings.errors.facebook);
+            }
         },
         signup: function(e) {
             app.subscribe = new Subscribe();

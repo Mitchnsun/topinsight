@@ -12,13 +12,17 @@ require.config({
                 'jquery'
             ],
             exports: 'Backbone'
+        },
+        'facebook': {
+            exports: 'FB'
         }
     },
     paths: {
         jquery: '../vendors/jquery',
         underscore: '../vendors/underscore',
         backbone: '../vendors/backbone',
-        async: '../vendors/async'
+        async: '../vendors/async',
+        facebook: 'https://connect.facebook.net/en_US/sdk'
     }
 });
 
@@ -28,13 +32,19 @@ require([
     'views/errorview',
     'models/user',
     'models/course',
-    'models/vae'
+    'models/vae',
+    'facebook'
 ], function(Backbone, Router, Errorview, User, Course, Vae) {
     app.$ = $;
     app.user = new User();
     app.course = new Course();
     app.vae = new Vae();
     app.errorview = new Errorview();
+
+    FB.init({
+        appId: app.wordings.FBApiID,
+        version: app.wordings.FBversion
+    });
 
     var initRouter = function() {
         // Initialize routing and start Backbone.history()

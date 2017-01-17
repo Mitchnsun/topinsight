@@ -3,22 +3,28 @@ var app = app || {};
 (function($) {
     'use strict';
     app.wordings = {
+        /* Configuration */
         defaultGPS: {
             /* Paris, France */
             lat: 48.8566,
             lng: 2.3522
         },
+        FBversion: "v2.8",
+        FBApiID: "1354634814611917",
+        FBSecretKey: "fe7e70cfe1bb4af3d39dcb3218961c9a",
+        /* Labels */
         continue: "continuer",
         errors: {
             default: "Une erreur est survenue, veuillez réessayer dans quelques instants",
             bluetooth: "Une erreur est survenue avec le module Bluetooth, veuillez réessayer dans quelques instants",
+            facebook: "Une erreur est survenue avec Facebook, veuillez réessayer dans quelques instants",
             /* Front errors */
             empty: "Veuillez remplir tous les champs",
             firstname: "Le prénom doit être composé de 2 à 14 caractères",
             lastname: "Le nom doit être être composé de 2 à 14 caractères",
             email: "Format d'adresse mail invalide",
             password: "Votre mot de passe doit être compris entre 4 et 18 caractères",
-            same_password: "Les deux mots de passe renseignés doivent être identique",
+            same_password: "Les deux mots de passe renseignés doivent être identiques",
             phone: "Le numéro de téléphone est invalide",
             /* Back errors */
             http: {
@@ -28,7 +34,7 @@ var app = app || {};
                 "422": "L’entité fournie avec la requête est incompréhensible ou incomplète",
                 "500": "Erreur interne du serveur",
             },
-            "geoks.user.email.invalid": "L'email renseigné n'existe pas",
+            "geoks.user.email.invalid": "Identifiants incorrects",
             "geoks.user.email.nonExpired": "Le mot de passe a déjà été réinitialisé, vérifiez votre boîte mail",
             "geoks.user.login.wrong": "Le mot de passe est incorrect"
         },
@@ -71,7 +77,7 @@ var app = app || {};
             validate: "Valider",
             signin: "Se connecter",
             FBsign: "Connexion Facebook",
-            TWsign: "S'inscrire",
+            TWsign: "S'inscrire"
         },
         password: {
             header: "Mot de passe oublié",
