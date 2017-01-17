@@ -41,6 +41,7 @@ require([
     app.vae = new Vae();
     app.errorview = new Errorview();
 
+    FastClick.attach(document.body);
     FB.init({
         appId: app.wordings.FBApiID,
         version: app.wordings.FBversion

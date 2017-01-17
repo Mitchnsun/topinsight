@@ -3,6 +3,7 @@ var fs = require('fs');
 
 var result = UglifyJS.minify([
     "node_modules/handlebars/dist/handlebars.runtime.js",
+    "node_modules/fastclick/lib/fastclick.js",
     "work/dist/*.js",
     "work/js/common/*.js"
 ], {
