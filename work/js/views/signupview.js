@@ -47,7 +47,7 @@ define(['backbone', 'models/vae', 'models/subscribe'], function(Backbone, Vae, S
         success: function(model, response, options) {
             $('.button--disabled').removeClass('button--disabled');
             app.user.set(model.get('user'));
-            app.accessToken.set(model.get('accessToken'));
+            app.accessToken.set(model.get('access_token'));
             app.router.navigate(app.urls.home, { trigger: true });
         }
     });
