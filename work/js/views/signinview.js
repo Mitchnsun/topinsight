@@ -16,7 +16,7 @@ define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subs
             }));
         },
         events: {
-            "click .button--signin": "signin",
+            "click .button--signin:not(.button--disabled)": "signin",
             "click .button--facebook": "facebook",
             "click .button--signup": "signup"
         },
@@ -32,6 +32,7 @@ define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subs
                 app.errorview.render(_.first(login.errors));
                 this.login.unset('errors');
             } else {
+                $(e.currentTarget).addClass('button--disabled');
                 this.login.save({}, {
                     success: this.login.loged,
                     error: _.bind(app.errorview.errorcallback, app.errorview)

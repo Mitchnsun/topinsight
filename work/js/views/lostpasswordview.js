@@ -17,13 +17,14 @@ define(['backbone'], function(Backbone) {
             }));
         },
         events: {
-            "click .button--submit": "submit"
+            "click .button--submit:not(.button--disabled)": "submit"
         },
         submit: function(e) {
             e.preventDefault();
             var email = $('.input__element').val();
             app.user.set('email', email);
             if (app.rules.user.email(email)) {
+                $(e.currentTarget).addClass('button--disabled');
                 $.ajax({
                     url: app.urls.endpoint + app.urls.ws_lostpassword.replace('@', email),
                     type: 'PUT',
@@ -35,6 +36,7 @@ define(['backbone'], function(Backbone) {
             }
         },
         success: function(msg) {
+            $('.button--disabled').removeClass('button--disabled');
             if (msg.reset === true) {
                 app.router.navigate(app.urls.retrieve_password, { trigger: true });
             } else {

@@ -17,6 +17,7 @@ define(['backbone'], function(Backbone) {
             $('.error__overlay').removeClass('error--active');
         },
         errorcallback: function(jqXHR, response) {
+            $('.button--disabled').removeClass('button--disabled');
             var param = response.responseJSON ? response.responseJSON.error : jqXHR.responseJSON.error;
             var status = response.status ? response.status : jqXHR.status;
             var message = app.wordings.errors[param] ? app.wordings.errors[param] : app.wordings.errors.http[status];

@@ -17,7 +17,7 @@ define(['backbone', 'models/login'], function(Backbone, Login) {
             }));
         },
         events: {
-            "click .button--submit": "submit"
+            "click .button--submit:not(.button--disabled)": "submit"
         },
         submit: function(e) {
             e.preventDefault();
@@ -32,6 +32,7 @@ define(['backbone', 'models/login'], function(Backbone, Login) {
             }
 
             if (this.checking(token, this.password, password2)) {
+                $(e.currentTarget).addClass('button--disabled');
                 $.ajax({
                     url: app.urls.endpoint + app.urls.ws_retrievepassword + token,
                     type: 'POST',
@@ -71,6 +72,7 @@ define(['backbone', 'models/login'], function(Backbone, Login) {
             });
         },
         errorlogin: function() {
+            $('.button--disabled').removeClass('button--disabled');
             app.router.navigate(app.urls.signin, { trigger: true });
         }
     });

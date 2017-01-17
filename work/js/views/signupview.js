@@ -22,7 +22,7 @@ define(['backbone', 'models/vae', 'models/subscribe'], function(Backbone, Vae, S
             }));
         },
         events: {
-            "click .button--submit": "submit"
+            "click .button--submit:not(.button--disabled)": "submit"
         },
         submit: function(e) {
             e.preventDefault();
@@ -37,6 +37,7 @@ define(['backbone', 'models/vae', 'models/subscribe'], function(Backbone, Vae, S
             } else if (!this.suite) {
                 app.router.navigate(app.urls.signup_suite, { trigger: true });
             } else {
+                $(e.currentTarget).addClass('button--disabled');
                 app.subscribe.save({}, {
                     success: _.bind(this.success, this),
                     error: _.bind(app.errorview.errorcallback, app.errorview)
@@ -44,6 +45,7 @@ define(['backbone', 'models/vae', 'models/subscribe'], function(Backbone, Vae, S
             }
         },
         success: function(model, response, options) {
+            $('.button--disabled').removeClass('button--disabled');
             app.user.set(model.get('user'));
             app.accessToken.set(model.get('accessToken'));
             app.router.navigate(app.urls.home, { trigger: true });
