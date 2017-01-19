@@ -13,6 +13,12 @@ define(['backbone'], function(Backbone) {
                 forward: options.forward,
                 signout: options.signout,
             })).show();
+
+            if (options.shadow) {
+                $(this.el).addClass('shadow');
+            } else {
+                $(this.el).removeClass('shadow');
+            }
         },
         events: {
             "click .chevron--left": "back",

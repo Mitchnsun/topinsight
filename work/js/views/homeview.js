@@ -14,6 +14,7 @@ define(['backbone', 'models/lastcourse', 'models/bluetoothparams', 'collections/
                 back: false,
                 forward: true,
                 signout: true,
+                shadow: true
             });
 
             app.geolocation.route = _.isEmpty(app.geolocation.route) ? new Route() : app.geolocation.route;
