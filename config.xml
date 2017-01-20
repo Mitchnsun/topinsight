@@ -25,12 +25,43 @@
         <splash density="port-ldpi" src="res/screen/android/splashscreen.png" />
         <splash density="port-mdpi" src="res/screen/android/splashscreen.png" />
         <splash density="port-xhdpi" src="res/screen/android/splashscreen.png" />
+        <!--
+            ldpi    : 36x36 px
+            mdpi    : 48x48 px
+            hdpi    : 72x72 px
+            xhdpi   : 96x96 px
+            xxhdpi  : 144x144 px
+            xxxhdpi : 192x192 px
+        -->
+        <icon src="res/app-icons/icon36.png" density="ldpi" />
+        <icon src="res/app-icons/icon48.png" density="mdpi" />
+        <icon src="res/app-icons/icon72.png" density="hdpi" />
+        <icon src="res/app-icons/icon96.png" density="xhdpi" />
+        <icon src="res/app-icons/icon144.png" density="xxhdpi" />
+        <icon src="res/app-icons/icon192.png" density="xxxhdpi" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
         <preference name="target-device" value="handset" />
+        <!-- iOS 8.0+ -->
+        <!-- iPhone 6 Plus  -->
+        <icon src="res/app-icons/icon180.png" width="180" height="180" />
+        <!-- iOS 7.0+ -->
+        <!-- iPhone / iPod Touch  -->
+        <icon src="res/app-icons/icon60.png" width="60" height="60" />
+        <icon src="res/app-icons/icon120.png" width="120" height="120" />
+        <!-- Spotlight Icon -->
+        <icon src="res/app-icons/icon40.png" width="40" height="40" />
+        <icon src="res/app-icons/icon80.png" width="80" height="80" />
+        <!-- iOS 6.1 -->
+        <!-- iPhone / iPod Touch -->
+        <icon src="res/app-icons/icon57.png" width="57" height="57" />
+        <icon src="res/app-icons/icon114.png" width="114" height="114" />
+        <!-- iPhone Spotlight and Settings Icon -->
+        <icon src="res/app-icons/icon29.png" width="29" height="29" />
+        <icon src="res/app-icons/icon58.png" width="58" height="58" />
     </platform>
     <platform name="browser">
         <preference name="SplashScreen" value="assets/img/splashscreen.png" />
