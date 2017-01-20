@@ -20,6 +20,7 @@ define(['backbone', 'models/vae', 'models/subscribe'], function(Backbone, Vae, S
                 urls: app.urls,
                 vae: app.vae.toJSON()
             }));
+            app.hack.form();
         },
         events: {
             "click .button--submit:not(.button--disabled)": "submit"

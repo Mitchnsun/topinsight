@@ -14,6 +14,7 @@ define(['backbone', 'models/subscribe', 'models/login'], function(Backbone, Subs
                 wordings: this.wordings,
                 urls: app.urls
             }));
+            app.hack.form();
         },
         events: {
             "click .button--signin:not(.button--disabled)": "signin",
