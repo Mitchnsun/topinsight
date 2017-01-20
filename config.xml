@@ -45,6 +45,7 @@
         <allow-intent href="itms-apps:*" />
         <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
         <preference name="target-device" value="handset" />
+        <preference name="StatusBarStyle" value="blacktranslucent" />
         <!-- iOS 8.0+ -->
         <!-- iPhone 6 Plus  -->
         <icon src="res/app-icons/icon180.png" width="180" height="180" />
