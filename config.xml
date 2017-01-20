@@ -44,6 +44,7 @@
     <preference name="SplashScreenBackgroundColor" value="#FFF" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="Orientation" value="portrait" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-browsersync" spec="~0.1.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
