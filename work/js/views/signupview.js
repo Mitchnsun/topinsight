@@ -3,6 +3,11 @@ define(['backbone', 'models/vae', 'models/subscribe'], function(Backbone, Vae, S
         el: ".app",
         wordings: app.wordings.sign,
         initialize: function(options) {
+            if (app.accessToken.get()) {
+                app.router.navigate(app.urls.home, { trigger: true });
+                return false;
+            }
+
             this.suite = window.location.hash.match(/suite/) !== null ? true : false;
             this.tmpl = this.suite ? Handlebars.templates["signup-suite.html"] : Handlebars.templates["signup.html"];
             this.headerview = options.headerview;
