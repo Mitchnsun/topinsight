@@ -17,6 +17,7 @@ require.config({
             exports: 'FB'
         }
     },
+    waitSeconds: 30,
     paths: {
         jquery: '../vendors/jquery',
         underscore: '../vendors/underscore',
