@@ -15,6 +15,16 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreenBackgroundColor" value="#FFF" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#202020" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <icon src="res/icon-topinsight.png" />
     <platform name="android">
         <allow-intent href="market:*" />
         <splash density="land-hdpi" src="res/screen/android/splashscreen.png" />
@@ -25,44 +35,27 @@
         <splash density="port-ldpi" src="res/screen/android/splashscreen.png" />
         <splash density="port-mdpi" src="res/screen/android/splashscreen.png" />
         <splash density="port-xhdpi" src="res/screen/android/splashscreen.png" />
-        <!--
-            ldpi    : 36x36 px
-            mdpi    : 48x48 px
-            hdpi    : 72x72 px
-            xhdpi   : 96x96 px
-            xxhdpi  : 144x144 px
-            xxxhdpi : 192x192 px
-        -->
-        <icon src="res/app-icons/icon36.png" density="ldpi" />
-        <icon src="res/app-icons/icon48.png" density="mdpi" />
-        <icon src="res/app-icons/icon72.png" density="hdpi" />
-        <icon src="res/app-icons/icon96.png" density="xhdpi" />
-        <icon src="res/app-icons/icon144.png" density="xxhdpi" />
-        <icon src="res/app-icons/icon192.png" density="xxxhdpi" />
+        <icon density="ldpi" src="res/app-icons/icon36.png" />
+        <icon density="mdpi" src="res/app-icons/icon48.png" />
+        <icon density="hdpi" src="res/app-icons/icon72.png" />
+        <icon density="xhdpi" src="res/app-icons/icon96.png" />
+        <icon density="xxhdpi" src="res/app-icons/icon144.png" />
+        <icon density="xxxhdpi" src="res/app-icons/icon192.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
         <preference name="target-device" value="handset" />
-        <preference name="StatusBarStyle" value="blacktranslucent" />
-        <!-- iOS 8.0+ -->
-        <!-- iPhone 6 Plus  -->
-        <icon src="res/app-icons/icon180.png" width="180" height="180" />
-        <!-- iOS 7.0+ -->
-        <!-- iPhone / iPod Touch  -->
-        <icon src="res/app-icons/icon60.png" width="60" height="60" />
-        <icon src="res/app-icons/icon120.png" width="120" height="120" />
-        <!-- Spotlight Icon -->
-        <icon src="res/app-icons/icon40.png" width="40" height="40" />
-        <icon src="res/app-icons/icon80.png" width="80" height="80" />
-        <!-- iOS 6.1 -->
-        <!-- iPhone / iPod Touch -->
-        <icon src="res/app-icons/icon57.png" width="57" height="57" />
-        <icon src="res/app-icons/icon114.png" width="114" height="114" />
-        <!-- iPhone Spotlight and Settings Icon -->
-        <icon src="res/app-icons/icon29.png" width="29" height="29" />
-        <icon src="res/app-icons/icon58.png" width="58" height="58" />
+        <icon height="180" src="res/app-icons/icon180.png" width="180" />
+        <icon height="60" src="res/app-icons/icon60.png" width="60" />
+        <icon height="120" src="res/app-icons/icon120.png" width="120" />
+        <icon height="40" src="res/app-icons/icon40.png" width="40" />
+        <icon height="80" src="res/app-icons/icon80.png" width="80" />
+        <icon height="57" src="res/app-icons/icon57.png" width="57" />
+        <icon height="114" src="res/app-icons/icon114.png" width="114" />
+        <icon height="29" src="res/app-icons/icon29.png" width="29" />
+        <icon height="58" src="res/app-icons/icon58.png" width="58" />
     </platform>
     <platform name="browser">
         <preference name="SplashScreen" value="assets/img/splashscreen.png" />
@@ -72,13 +65,6 @@
     <engine name="ios" spec="~4.3.1" />
     <engine name="android" spec="~6.0.0" />
     <engine name="browser" spec="~4.1.0" />
-    <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="SplashScreenDelay" value="3000" />
-    <preference name="SplashScreenBackgroundColor" value="#FFF" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="Orientation" value="portrait" />
-    <icon src="res/icon-topinsight.png" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-browsersync" spec="~0.1.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
