@@ -104,8 +104,60 @@ define(['backbone'], function(Backbone) {
             "click .button--reset": "reset"
         },
         share: function(e) {
-            e.preventDefault();
-            console.log(e);
+            if (e && e.preventDefault) {
+                e.preventDefault();
+            }
+
+            var url = app.urls.endpoint + app.urls.ws_course;
+            url += app.course.get('id') ? '/' + app.course.get('id') : '';
+            var message = this.wordings.share_twitter + ' ';
+            message = app.course.get('distance') ? message + app.course.get('distance') : message + 0;
+            message += ' ' + this.wordings.distance.unit;
+
+            if (FB) {
+                FB.api(
+                    "/me/fitness.bikes",
+                    "POST", {
+                        "course": url,
+                        "start_time": app.course.get('created'),
+                        "end_time": app.course.get('updated'),
+                        "message": message
+
+                    },
+                    _.bind(this.shareCallback, this)
+                );
+            } else {
+
+            }
+        },
+        shareCallback: function(response) {
+            if (response && response.error) {
+                /* handle errors */
+                if (response.error.type === "OAuthException") {
+                    FB.login(_.bind(this.fbcallback, this), { scope: 'public_profile,email' });
+                } else {
+                    app.errorview.render(app.wordings.errors.facebook);
+                }
+            }
+            if (response && !response.error) {
+                /* handle the result */
+            }
+        },
+        fbcallback: function(msg) {
+            this.login = new Login();
+            if (msg.status === "connected") {
+                this.login.url = app.urls.endpoint + app.urls.ws_fblogin;
+                this.login.save({
+                    facebook_token: msg.authResponse.accessToken
+                }, {
+                    success: _.bind(this.share, this),
+                    error: function() {
+                        app.errorview.render(app.wordings.errors.facebook);
+                    }
+                });
+            } else {
+                app.errorview.render(app.wordings.errors.facebook);
+            }
         },
         reset: function(e) {
             e.preventDefault();
