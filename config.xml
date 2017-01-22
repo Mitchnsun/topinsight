@@ -15,16 +15,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <preference name="AutoHideSplashScreen" value="true" />
-    <preference name="SplashScreenDelay" value="3000" />
-    <preference name="SplashScreenBackgroundColor" value="#FFF" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="Orientation" value="portrait" />
-    <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#202020" />
-    <preference name="StatusBarStyle" value="lightcontent" />
-    <icon src="res/icon-topinsight.png" />
     <platform name="android">
         <allow-intent href="market:*" />
         <splash density="land-hdpi" src="res/screen/android/splashscreen.png" />
@@ -65,6 +55,16 @@
     <engine name="ios" spec="~4.3.1" />
     <engine name="android" spec="~6.0.0" />
     <engine name="browser" spec="~4.1.0" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreenBackgroundColor" value="#FFF" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#202020" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <icon src="res/icon-topinsight.png" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-browsersync" spec="~0.1.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
