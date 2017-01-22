@@ -25,6 +25,7 @@ var app = app || {};
         retrieve_password: "password/retrieve",
 
         /* Ext */
-        google_maps: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBrN6Q6pXFB0QGdIpxSQfzBecmTSlEwEfU"
+        google_maps: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBrN6Q6pXFB0QGdIpxSQfzBecmTSlEwEfU",
+        tweet: "https://twitter.com/intent/tweet"
     };
 })();

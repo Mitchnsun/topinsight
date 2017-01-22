@@ -93,6 +93,8 @@ var app = app || {};
             reset: "Remettre à zéro",
             start: "Point de départ",
             icon: "assets/img/icons/icon-location.png",
+            share_twitter: "course en vélo électrique de",
+            hashtags: "topinsight,electrique",
             duration: {
                 title: "Temps",
                 data: "01:30:22",

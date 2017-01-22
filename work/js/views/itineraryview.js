@@ -10,14 +10,26 @@ define(['backbone'], function(Backbone) {
                 title: this.wordings.header,
                 back: true
             });
+
             this.listenToOnce(app.bluetooth.params, 'ready', _.bind(app.course.start, app.course));
             this.render();
+        },
+        setTweetUrl: function() {
+            var tweet = app.urls.tweet + '?text=' + this.wordings.share_twitter + ' ';
+            tweet = app.course.get('distance') ? tweet + app.course.get('distance') : tweet + 0;
+            tweet += ' ' + this.wordings.distance.unit;
+            tweet += '&url=' + app.urls.endpoint + app.urls.ws_course;
+            tweet = app.course.get('id') ? tweet + '/' + app.course.get('id') : tweet;
+            tweet += '&hashtags=' + this.wordings.hashtags;
+
+            return encodeURI(tweet);
         },
         render: function() {
             $(this.el).html(Handlebars.templates["itinerary.html"]({
                 wordings: this.wordings,
                 urls: app.urls,
-                course: app.course.toJSON()
+                course: app.course.toJSON(),
+                tweeturl: this.setTweetUrl()
             }));
 
             if (this.route.length > 0) {
@@ -70,6 +82,7 @@ define(['backbone'], function(Backbone) {
             var distance = app.course.get('distance');
             distance = distance ? distance : 0;
             $('.itinerary__element__data--distance').html(distance + ' ' + this.wordings.distance.unit);
+            $('.button--twitter').attr('href', this.setTweetUrl());
         },
         traceRoute: function() {
             this.googlepath = new google.maps.Polyline({
@@ -88,7 +101,6 @@ define(['backbone'], function(Backbone) {
         /* User actions */
         events: {
             "click .button--facebook": "share",
-            "click .button--twitter": "share",
             "click .button--reset": "reset"
         },
         share: function(e) {
