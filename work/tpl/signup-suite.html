@@ -1,23 +1,24 @@
 <form class="form">
     <div class="input">
-        <input class="input__element" type="text" value="{{user.address}}" placeholder="{{wordings.address}}" data-param="address">
+        <input class="input__element" id="addressAutocomplete" type="text" value="{{user.address}}" placeholder="{{wordings.address}}" data-param="address">
     </div>
     <div class="input">
-        <input class="input__element" type="tel" value="{{user.phone}}" placeholder="{{wordings.phone}}" data-param="phone">
+        <input class="input__element input__element--totrim" type="tel" value="{{user.phone}}" placeholder="{{wordings.phone}}" data-param="phone" maxlength="12">
     </div>
     <div class="input">
         {{#if vae.vaetypes}}
-            <select class="input__element" data-param="vaeType">
+            <select class="input__element input__element--vae" data-param="vaeType">
                 <option value="">{{wordings.vae}}</option>
                 {{#each vae.vaetypes}}
                     <option value="{{id}}">{{name}}</option>
                 {{/each}}
-            </select>
+            </select> 
         {{else}}
             <input class="input__element" type="text" value="{{user.vaeType}}" placeholder="{{wordings.vae}}" data-param="vaeType">
         {{/if}}
+        <a href="#{{urls.cgu}}" class="input__label input__label--link">{{wordings.cgu}}</a>
     </div>
     <div class="button--container">
-        <a href="#" class="button button--rectangle button--green button--submit">{{wordings.validate}}</a>
+        <input type="submit" class="button button--rectangle button--green button--submit" value="{{wordings.validate}}">
     </div>
 </form>

@@ -14,18 +14,23 @@ var app = app || {};
         ws_lastcourse: "/api/v1/courses/last/updated",
         ws_lostpassword: "/api/v1/sessions/@/password-recovery/request",
         ws_retrievepassword: "/api/v1/sessions/password-recovery/reset/",
+        ws_verifyemail: "/api/v1/sessions/subscribe/@/verify-email",
+        ws_checkemail: "/api/v1/sessions/subscribe/@/check/",
 
         /* Application urls */
         home: "",
         signin: "signin",
         signup: "signup",
         signup_suite: "signup/suite",
+        signup_verif: "signup/verification",
         itinerary: "itinerary",
         lost_password: "password/lost",
         retrieve_password: "password/retrieve",
+        popup: "popup",
+        cgu: "cgu",
 
         /* Ext */
-        google_maps: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBrN6Q6pXFB0QGdIpxSQfzBecmTSlEwEfU",
+        google_maps: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBrN6Q6pXFB0QGdIpxSQfzBecmTSlEwEfU&libraries=places",
         tweet: "https://twitter.com/intent/tweet"
     };
 })();

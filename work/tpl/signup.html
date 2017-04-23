@@ -1,17 +1,17 @@
 <form class="form">
     <div class="input">
-        <input class="input__element" type="text" placeholder="{{wordings.lastname}}" value="{{user.lastname}}" data-param="lastname">
+        <input class="input__element input__element--totrim" type="text" placeholder="{{wordings.lastname}}" value="{{user.lastname}}" data-param="lastname">
     </div>
     <div class="input">
-        <input class="input__element" type="text" placeholder="{{wordings.firstname}}" value="{{user.firstname}}" data-param="firstname">
+        <input class="input__element input__element--totrim" type="text" placeholder="{{wordings.firstname}}" value="{{user.firstname}}" data-param="firstname">
     </div>
     <div class="input">
-        <input class="input__element" type="email" placeholder="{{wordings.email}}" value="{{user.email}}" data-param="email">
+        <input class="input__element input__element--email" type="email" placeholder="{{wordings.email}}" value="{{user.email}}" data-param="email">
     </div>
     <div class="input">
         <input class="input__element" type="password" placeholder="{{wordings.password}}" value="{{user.password}}" data-param="password">
     </div>
     <div class="button--container">
-        <a href="#{{urls.signup_suite}}" class="button button--rectangle button--green button--submit">{{wordings.validate}}</a>
+        <input type="submit" class="button button--rectangle button--green button--submit" value="{{wordings.validate}}">
     </div>
 </form>

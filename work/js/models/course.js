@@ -1,7 +1,9 @@
 define(['backbone'], function(Backbone) {
     return Backbone.Model.extend({
         defaults: {
-            time: "00:00:00"
+            time: "00:00:00",
+            distance: 0,
+            assistance: 0
         },
         url: app.urls.endpoint + app.urls.ws_course,
         parse: function(response, options) {

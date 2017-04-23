@@ -12,6 +12,8 @@ var app = app || {};
                 distanceFilter: 5,
                 interval: 2000,
                 saveBatteryOnBackground: true,
+                notificationTitle: 'Topinsight',
+                notificationText: 'Trajet en cours',
                 maxLocations: 50000
             });
 
@@ -40,6 +42,9 @@ var app = app || {};
         },
         getlocations: function() {
             backgroundGeolocation.getValidLocations(_.bind(this.getlocationscallback, this), this.failure);
+        },
+        getOneLocation: function(callback) {
+            backgroundGeolocation.getValidLocations(callback, this.failure);
         },
         getlocationscallback: function(locations) {
             var self = this;
@@ -82,9 +87,9 @@ var app = app || {};
             app.course.save({
                 latitudeEnd: model.get('latitude'),
                 longitudeEnd: model.get('longitude'),
-                speed: 22.6,
-                distance: 13.7,
-                assistance: 2
+                speed: parseFloat(app.course.get('speed')),
+                distance: parseFloat(app.course.get('distance')),
+                assistance: app.course.get('assistance')
             }, { patch: true });
         }
     };

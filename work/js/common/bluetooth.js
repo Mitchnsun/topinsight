@@ -21,7 +21,7 @@ var app = app || {};
         },
         error: function(path, msg) {
             console.log('# ERROR ', path, msg)
-            app.errorview.render(app.wordings.errors.bluetooth);
+            app.popupview.render(app.wordings.errors.bluetooth);
         },
         success: function(msg) {
             console.log('#SUCCESS ', msg);
@@ -49,6 +49,7 @@ var app = app || {};
         },
         /* Scan */
         startScanSuccess: function(device) {
+            console.log('startScanSuccess', device);
             if (device.name === this.params.get('name')) {
                 this.params.set('address', device.id);
                 this.stopscan();
@@ -71,7 +72,7 @@ var app = app || {};
             ble.connect(this.params.get('address'), _.bind(this.connectsuccess, this), _.bind(this.connecterror, this));
         },
         connectsuccess: function(msg) {
-            console.log('- connectsuccess - ', JSON.stringify(msg));
+            console.log('- connectsuccess - ', msg);
             this.params.trigger('ready');
             //this.read();
             this.notify();
@@ -90,7 +91,7 @@ var app = app || {};
         /* Notifications */
         notify: function() {
             console.log('- start notification -');
-            ble.startNotification(this.params.get('address'), "FFF0", "FFF1",
+            ble.startNotification(this.params.get('address'), "0000fff0-0000-1000-8000-00805f9b34fb", "0000fff1-0000-1000-8000-00805f9b34fb",
                 _.bind(this.notificationsuccess, this), _.bind(this.notificationerror, this));
         },
         notificationsuccess: function(msg) {
@@ -100,7 +101,7 @@ var app = app || {};
             console.log('- notificationerror - ', msg);
         },
         read: function() {
-            ble.read(this.params.get('address'), "FFF0", "FFF1", this.readsuccess, this.error);
+            ble.read(this.params.get('address'), "0000fff0-0000-1000-8000-00805f9b34fb", "0000fff1-0000-1000-8000-00805f9b34fb", this.readsuccess, this.error);
         },
         readsuccess: function(msg) {
             console.log('- readsuccess - ', msg, JSON.stringify(msg), new Uint8Array(msg));
@@ -109,7 +110,7 @@ var app = app || {};
         write: function() {
             var value = new Uint8Array([86, 1, 1, 1, 12, 7, 0, 8, 0, 10, 3, 0, 0, 0]);
             console.log(value);
-            ble.write(this.params.get('address'), "FFF0", "FFF1", value.buffer, this.writesuccess, this.writeerror);
+            ble.write(this.params.get('address'), "0000fff0-0000-1000-8000-00805f9b34fb", "0000fff1-0000-1000-8000-00805f9b34fb", value.buffer, this.writesuccess, this.writeerror);
         },
         writesuccess: function(msg) {
             console.log('- writesuccess - ', msg, new Uint8Array(msg));

@@ -11,7 +11,7 @@ define(['backbone'], function(Backbone) {
                 title: options.title,
                 back: options.back,
                 forward: options.forward,
-                signout: options.signout,
+                signout: options.signout
             })).show();
 
             if (options.shadow) {
@@ -19,19 +19,27 @@ define(['backbone'], function(Backbone) {
             } else {
                 $(this.el).removeClass('shadow');
             }
+
+            if (options.fixed) {
+                $(this.el).addClass('fixed');
+            } else {
+                $(this.el).removeClass('fixed');
+            }
         },
         events: {
             "click .chevron--left": "back",
             "click .icon--signout": "signout"
         },
         signout: function(e) {
+            e.preventDefault();
+            app.popupview.confirm(true, app.wordings.sign.signout, this.signoutconfirmed);
+        },
+        signoutconfirmed: function() {
             app.user.clear();
             app.accessToken.clean();
             app.bluetooth.clean();
-            var userFB = FB.getAuthResponse();
-            if (userFB && userFB.accessToken) {
-                FB.logout();
-            }
+            facebookConnectPlugin.logout();
+            app.router.navigate(app.urls.signin, { trigger: true });
         },
         back: function(e) {
             e.preventDefault();

@@ -1,10 +1,5 @@
 <div class="dashboard">
-    <div class="dashboard__meter">
-        <img src="assets/img/compteur.png" alt="meter">
-        <div class="dashboard__meter__data">
-            <strong>{{#if course.speed}}{{course.speed}}{{else}}0{{/if}}</strong> {{wordings.meter.unit}}
-        </div>
-    </div>
+    <div class="dashboard__meter"></div>
     <div class="dashboard__battery">
         <ul class="battery">
             <li class="battery__cell battery__cell--empty"></li>
@@ -40,9 +35,12 @@
         <p class="infos__element__unit">{{wordings.assistance.unit}}</p>
     </div>
 </div>
-<h3 class="assistance__title">Assistance</h3>
+<h3 class="assistance__title title--light">
+    <img src="assets/img/icons/icon-line.png" class="title__line" alt="Line"> Assistance <img src="assets/img/icons/icon-line.png" class="title__line" alt="Line">
+</h3>
 <div class="assistance">
-    <a href="#" class="button button--round"><img src="assets/img/buttons/button-plus.png" alt="Plus button"></a>
-    <a href="#" class="button button--round"><img src="assets/img/buttons/button-minus.png" alt="Minus button"></a>
-    <a href="#" class="button button--round"><img src="assets/img/buttons/button-sound.png" alt="Sound button"></a>
+    <a href="#" class="button button--round button--minus"><img src="assets/img/buttons/button-minus.png" alt="Minus button"></a>
+    <a href="#" class="button button--round button--plus"><img src="assets/img/buttons/button-plus.png" alt="Plus button"></a>
+    <a href="#" class="button button--round button--light"><img src="assets/img/buttons/button-light.png" alt="Light button"></a>
 </div>
+<a href="#{{urls.cgu}}" class="button button--green button--mini">i</a>

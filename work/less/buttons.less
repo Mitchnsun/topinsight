@@ -13,9 +13,14 @@
     /* Shapes */
     &--round {
         vertical-align: top;
-        width: 88px;
-        height: 88px;
+        width: 86px;
+        height: 86px;
         overflow: hidden;
+        display: block;
+        &--grey {
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
+        }
         img {
             max-width: 100%;
         }
@@ -28,13 +33,19 @@
         font-family: @Helvetica;
         text-align: center;
         font-size: 16px;
-        line-height: 35px;
+        line-height: 32px;
         letter-spacing: 0.7px;
-        color: @green;
-        border: 2px solid @green;
+        color: @brandcolor;
+        border: 2px solid @brandcolor;
         background: @white;
         border-radius: 4px;
         box-shadow: 0 2px 7px @grey;
+    }
+    &--noborder {
+        border: 0;
+        box-shadow: 0 0 0;
+        font-size: 14px;
+        text-decoration: underline;
     }
     &--half {
         width: 50%;
@@ -46,14 +57,24 @@
         font-family: @HelveticaBold;
         font-size: 19px;
         height: 56px;
-        line-height: 55px;
+        line-height: 52px;
         border-radius: 0;
         box-shadow: none;
+    }
+    &--mini {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 10px;
+        text-align: center;
     }
     /* Colors */
     &--green {
         color: @white;
-        background-color: @green;
+        background-color: @brandcolor;
     }
     &--facebook {
         border-color: @facebook;
@@ -64,5 +85,13 @@
         border-color: @twitter;
         background: @twitter;
         color: @white;
+    }
+}
+@media (max-height: 590px) {
+    .button {
+        &--round {
+            width: 80px;
+            height: 80px;
+        }
     }
 }

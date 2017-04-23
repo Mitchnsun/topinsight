@@ -1,0 +1,7 @@
+<p class="popup__message">{{message}}</p>
+{{#if confirm}}
+    <button class="popup__button popup__button--left" data-action="yes">{{wordings.yes}}</button>
+    <button class="popup__button popup__button--right" data-action="cancel">{{wordings.cancel}}</button>
+{{else}}
+    <button class="popup__button" data-action="yes">{{wordings.continue}}</button>
+{{/if}}

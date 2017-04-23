@@ -42,7 +42,7 @@ var app = app || {};
                 return rule.test(value);
             },
             phone: function(value) {
-                var rule = new RegExp(/^(?:(?:\+|00)[0-9]{2,3}|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/);
+                var rule = new RegExp(/^(?:(?:\+|00)[0-9]{2,3}|0)*[1-9](?:\d{2}){4}$/);
                 return rule.test(value);
             }
         }

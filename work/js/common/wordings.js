@@ -11,9 +11,12 @@ var app = app || {};
         },
         FBversion: "v2.8",
         FBApiID: "1354634814611917",
-        FBSecretKey: "fe7e70cfe1bb4af3d39dcb3218961c9a",
+        AndroidKeyHash: "JOezvZxfG+vARrOlVMv4woIYYiM=",
+        theme_color: "#00BFA5",
         /* Labels */
         continue: "continuer",
+        cancel: "annuler",
+        yes: "oui",
         errors: {
             default: "Une erreur est survenue, veuillez réessayer dans quelques instants",
             bluetooth: "Une erreur est survenue avec le module Bluetooth, veuillez réessayer dans quelques instants",
@@ -34,12 +37,20 @@ var app = app || {};
                 "422": "L’entité fournie avec la requête est incompréhensible ou incomplète",
                 "500": "Erreur interne du serveur",
             },
+            "verifyemail": "Cet email existe déjà",
             "geoks.user.email.invalid": "Identifiants incorrects",
             "geoks.user.email.nonExpired": "Le mot de passe a déjà été réinitialisé, vérifiez votre boîte mail",
-            "geoks.user.login.wrong": "Le mot de passe est incorrect"
+            "geoks.user.login.wrong": "Le mot de passe est incorrect",
+            "geoks.user.token.notFound": "Le code d'activation est incorrect",
+            "geoks.user.notFound": "Utilisateur inconnu",
+            "geoks.user.bad_token": "Le code d'activation est incorrect"
+        },
+        cgu: {
+            title: "CGU"
         },
         dashboard: {
             header: "Tableau de bord",
+            maxspeed: 50,
             meter: {
                 unit: "km/h"
             },
@@ -76,8 +87,13 @@ var app = app || {};
             lostpassword: "Mot de passe oublié ?",
             validate: "Valider",
             signin: "Se connecter",
+            signout: "Voulez vous vous déconnecter ?",
             FBsign: "Connexion Facebook",
-            TWsign: "S'inscrire"
+            TWsign: "S'inscrire",
+            code: "Code",
+            code_sent: "Un code de confirmation vient de vous être envoyé par email",
+            verification: "Merci de renseigner le code envoyé par email pour valider votre inscription",
+            cgu: "En validant mon inscription, j'accepte les conditions générales d'utilisation"
         },
         password: {
             header: "Mot de passe oublié",
@@ -93,7 +109,7 @@ var app = app || {};
             reset: "Remettre à zéro",
             start: "Point de départ",
             icon: "assets/img/icons/icon-location.png",
-            share_twitter: "course en vélo électrique de",
+            share_message: "course en vélo électrique de",
             hashtags: "topinsight,electrique",
             duration: {
                 title: "Temps",

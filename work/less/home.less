@@ -7,11 +7,11 @@
             position: absolute;
             top: 34%;
             font-family: @LiquidCrystal;
-            color: @green;
+            color: @brandcolor;
             font-size: 30px;
             line-height: 1.2;
             text-align: center;
-            width: 90%;
+            left: 40%;
             strong {
                 display: block;
                 color: @white;
@@ -33,8 +33,11 @@
 }
 .infos, .assistance {
     width: 100%;
+    display: -webkit-flex;
     display: flex;
+    -webkit-align-items: center;
     align-items: center;
+    -webkit-justify-content: space-around;
     justify-content: space-around;
 }
 .infos {
@@ -54,7 +57,7 @@
             font-family: @OpenSansLight;
             font-size: 44px;
             line-height: 52px;
-            color: @green;
+            color: @brandcolor;
             span {
                 line-height: 1;
                 font-size: 26px;
@@ -71,22 +74,7 @@
 
 .assistance {
     &__title {
-        margin: 5% 0;
-        font-family: @OpenSansLight;
-        font-size: 14px;
-        line-height: 20px;
-        color: @grey;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        &:before, &:after {
-            content: '-';
-        }
-        &:before {
-            margin: 0 5px 0 24px;
-        }
-        &:after {
-            margin: 0 24px 0 5px;
-        }
+        margin: 4% 20px;
     }
 }
 
@@ -147,5 +135,27 @@
                 }
             }
         }
+    }
+}
+@media (max-height: 590px) {
+    .assistance {
+        &__title {
+            margin: 2% 15px;
+        }
+    }
+}
+@media (min-height: 600px) {
+    .infos, .dashboard {
+        padding: 2% 0;
+    }
+}
+@media (min-height: 650px) {
+    .infos, .dashboard {
+        padding: 3% 0;
+    }
+}
+@media (min-height: 700px) {
+    .infos, .dashboard {
+        padding: 4% 0;
     }
 }

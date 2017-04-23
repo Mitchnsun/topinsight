@@ -4,10 +4,6 @@ html {
     -webkit-touch-callout: none; /* disable the IOS popup when long-press on a link */
 }
 
-body {
-    overflow: hidden;
-}
-
 * { 
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -30,11 +26,23 @@ a {
     margin-top: @size-header;
 }
 
+.fixed {
+    position:fixed;
+}
+
 .text {
-    padding: 100px 65px;
+    padding: 100px 65px 15% 65px;
     text-align: center;
     line-height: 24px;
     font-size: 16px;
     font-family: @OpenSansLight;
-    color: @green;
+    color: @brandcolor;
+}
+
+.mentions {
+    padding: 0 5% 10px;
+    line-height: 20px;
+    font-size: 14px;
+    font-family: @OpenSansLight;
+    color: @black;
 }

@@ -1,16 +1,16 @@
 .form {
-    padding: 5% 15%;
+    padding: 5% 15% 4%;
 }
 .input {
     position: relative;
     width: 100%;
-    padding: 10% 0;
+    padding: 30px 0;
     -webkit-appearance: none;
     -moz-appearance: none;
     &__element {
         width: 100%;
         -webkit-appearance: none;
-        -webkit-text-fill-color: @green;
+        -webkit-text-fill-color: @brandcolor;
         height: 24px;
         line-height: 24px;
         font-size: 16px;
@@ -18,21 +18,26 @@
         margin: 0;
         padding: 1px 0 1px 0;
         font-family: @OpenSansLight;
-        color: @green;
+        color: @brandcolor;
         border: 0;
-        border-bottom: 1px solid @green;
+        border-bottom: 1px solid @brandcolor;
         border-radius: 0;
         background-color: @white;
-        &--error {
-           border-bottom: 1px solid @red; 
+        select&{
+            height: 27px;
         }
     }
     &__label {
         font-family: @OpenSansLight;
-        color: @green;
+        color: @brandcolor;
         line-height: 24px;
         font-size: 14px;
         margin-top: 5px;
         float: right;
+        &--link {
+            text-align: center;
+            text-decoration: underline;
+            margin-top: 10%;
+        }
     }
 }

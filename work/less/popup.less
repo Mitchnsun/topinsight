@@ -1,4 +1,4 @@
-.error {
+.popup {
     display: none;
     background: @white;
     position: fixed;
@@ -22,12 +22,22 @@
         font-size: 15px;
         line-height: 55px;
         text-transform: uppercase;
-        color: @green;
-        border: 1px solid @green;
+        color: @brandcolor;
+        border: 1px solid @brandcolor;
         background: @white;
         border-radius: 0 0 5px 5px;
         width: 100%;
         margin: 0;
+        &--left, &--right {
+            width: 50%;
+            float: left;
+        }
+        &--left {
+            border-bottom-right-radius: 0;
+        }
+        &--right {
+            border-bottom-left-radius: 0;
+        }
     }
     &__overlay {
         display: none;

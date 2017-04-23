@@ -6,7 +6,7 @@ define(['backbone', 'models/login'], function(Backbone, Login) {
             this.headerview = options.headerview;
             this.headerview.render({
                 title: this.wordings.header,
-                back: true
+                back: false
             });
             this.render();
         },
@@ -15,12 +15,22 @@ define(['backbone', 'models/login'], function(Backbone, Login) {
                 wordings: this.wordings,
                 urls: app.urls
             }));
+            app.hack.form();
         },
         events: {
-            "click .button--submit:not(.button--disabled)": "submit"
+            "submit": "submit",
+            "focusout .input__element--token": "trim"
+        },
+        trim: function(e) {
+            var target = $(e.currentTarget);
+            target.val(target.val().trim());
         },
         submit: function(e) {
             e.preventDefault();
+            if ($(e.currentTarget).hasClass('button--disabled')) {
+                return false;
+            }
+
             var token = $('.input__element--token').val();
             this.password = $('.input__element--password1').val();
             var password2 = $('.input__element--password2').val();
@@ -31,30 +41,32 @@ define(['backbone', 'models/login'], function(Backbone, Login) {
                 }
             }
 
-            if (this.checking(token, this.password, password2)) {
+            if (/Android/.test(navigator.userAgent) && (token === "" || this.password === "" || password2 === "")) {
+                app.hack.nextfield($('.input__element'));
+            } else if (this.checking(token, this.password, password2)) {
                 $(e.currentTarget).addClass('button--disabled');
                 $.ajax({
-                    url: app.urls.endpoint + app.urls.ws_retrievepassword + token,
+                    url: app.urls.endpoint + app.urls.ws_retrievepassword + token.trim(),
                     type: 'POST',
                     data: data,
                     success: _.bind(this.success, this),
-                    error: _.bind(app.errorview.errorcallback, app.errorview)
+                    error: _.bind(app.popupview.errorcallback, app.popupview)
                 })
             }
         },
         checking: function(token, password1, password2) {
             if (token === "" || password1 === "" || password2 === "") {
-                app.errorview.render(app.wordings.errors.empty);
+                app.popupview.render(app.wordings.errors.empty);
                 return false;
             }
 
             if (!app.rules.user.password(password1)) {
-                app.errorview.render(app.wordings.errors.password);
+                app.popupview.render(app.wordings.errors.password);
                 return false;
             }
 
             if (password1 !== password2) {
-                app.errorview.render(app.wordings.errors.same_password);
+                app.popupview.render(app.wordings.errors.same_password);
                 return false;
             }
 

@@ -12,9 +12,6 @@ require.config({
                 'jquery'
             ],
             exports: 'Backbone'
-        },
-        'facebook': {
-            exports: 'FB'
         }
     },
     waitSeconds: 30,
@@ -22,31 +19,25 @@ require.config({
         jquery: '../vendors/jquery',
         underscore: '../vendors/underscore',
         backbone: '../vendors/backbone',
-        async: '../vendors/async',
-        facebook: 'https://connect.facebook.net/en_US/sdk'
+        async: '../vendors/async'
     }
 });
 
 require([
     'backbone',
     'router',
-    'views/errorview',
+    'views/popupview',
     'models/user',
     'models/course',
-    'models/vae',
-    'facebook'
-], function(Backbone, Router, Errorview, User, Course, Vae) {
+    'models/vae'
+], function(Backbone, Router, Popupview, User, Course, Vae) {
     app.$ = $;
     app.user = new User();
     app.course = new Course();
     app.vae = new Vae();
-    app.errorview = new Errorview();
+    app.popupview = new Popupview();
 
-    FastClick.attach(document.body);
-    FB.init({
-        appId: app.wordings.FBApiID,
-        version: app.wordings.FBversion
-    });
+    document.addEventListener("backbutton", app.backbutton, false);
 
     var initRouter = function() {
         // Initialize routing and start Backbone.history()

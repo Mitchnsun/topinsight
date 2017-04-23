@@ -15,11 +15,9 @@ define(['backbone'], function(Backbone) {
             this.render();
         },
         setTweetUrl: function() {
-            var tweet = app.urls.tweet + '?text=' + this.wordings.share_twitter + ' ';
+            var tweet = app.urls.tweet + '?text=' + this.wordings.share_message + ' ';
             tweet = app.course.get('distance') ? tweet + app.course.get('distance') : tweet + 0;
             tweet += ' ' + this.wordings.distance.unit;
-            tweet += '&url=' + app.urls.endpoint + app.urls.ws_course;
-            tweet = app.course.get('id') ? tweet + '/' + app.course.get('id') : tweet;
             tweet += '&hashtags=' + this.wordings.hashtags;
 
             return encodeURI(tweet);
@@ -94,9 +92,23 @@ define(['backbone'], function(Backbone) {
             });
             this.googlepath.setMap(this.map);
             var lastPosition = this.route.last();
+            app.course.set('distance', (google.maps.geometry.spherical.computeLength(this.googlepath.getPath()) / 1000).toFixed(2));
             if (lastPosition) {
                 this.map.setCenter(lastPosition.location());
             }
+
+            // Calculate Speed
+            var routeEnd = _.last(this.route.toJSON(), 5);
+            var first = _.first(routeEnd);
+            var last = _.last(routeEnd);
+            var duration = Math.round((last.time - first.time) / 1000)
+            var endPath = new google.maps.Polyline({
+                path: routeEnd,
+                geodesic: true
+            });
+
+            var speed = ((google.maps.geometry.spherical.computeLength(endPath.getPath())).toFixed(2) / duration) * 3.6;
+            app.course.set('speed', speed ? speed.toFixed(2) : 0);
         },
         /* User actions */
         events: {
@@ -110,54 +122,25 @@ define(['backbone'], function(Backbone) {
 
             var url = app.urls.endpoint + app.urls.ws_course;
             url += app.course.get('id') ? '/' + app.course.get('id') : '';
-            var message = this.wordings.share_twitter + ' ';
+            var message = this.wordings.share_message + ' ';
             message = app.course.get('distance') ? message + app.course.get('distance') : message + 0;
             message += ' ' + this.wordings.distance.unit;
 
-            if (FB) {
-                FB.api(
-                    "/me/fitness.bikes",
-                    "POST", {
-                        "course": url,
-                        "start_time": app.course.get('created'),
-                        "end_time": app.course.get('updated'),
-                        "message": message
-
+            if (facebookConnectPlugin) {
+                facebookConnectPlugin.showDialog({
+                        method: "share",
+                        href: url,
+                        caption: message
                     },
                     _.bind(this.shareCallback, this)
                 );
             } else {
-
+                app.popupview.render(app.wordings.errors.facebook);
             }
         },
         shareCallback: function(response) {
-            if (response && response.error) {
-                /* handle errors */
-                if (response.error.type === "OAuthException") {
-                    FB.login(_.bind(this.fbcallback, this), { scope: 'public_profile,email' });
-                } else {
-                    app.errorview.render(app.wordings.errors.facebook);
-                }
-            }
-            if (response && !response.error) {
-                /* handle the result */
-            }
-        },
-        fbcallback: function(msg) {
-            this.login = new Login();
-            if (msg.status === "connected") {
-                this.login.url = app.urls.endpoint + app.urls.ws_fblogin;
-                this.login.save({
-                    facebook_token: msg.authResponse.accessToken
-                }, {
-                    success: _.bind(this.share, this),
-                    error: function() {
-                        app.errorview.render(app.wordings.errors.facebook);
-                    }
-                });
-            } else {
-                app.errorview.render(app.wordings.errors.facebook);
-            }
+            app.hack.statusbar();
+            console.log(response);
         },
         reset: function(e) {
             e.preventDefault();

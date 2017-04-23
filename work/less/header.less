@@ -1,33 +1,29 @@
 header {
-    position: fixed;
+    position: absolute;
     top: 0;
     background: @white;
     font-family: @HelveticaBold;
     width: 100%;
     box-sizing: border-box;
+    z-index: 2;
     &.shadow {
         box-shadow: 0 3px 5px -1px @grey;
-    }
-    .title {
-        line-height: @size-header;
-        color: @green;
-        text-align: center;
-        font-size: 20px;
     }
     .chevron {
         position: absolute;
         display: block;
-        height: 16px;
-        width: 9px;
-        top: 20px;
+        height: 55px;
+        width: 50px;
+        top: 0;
         background-size: 9px 16px;
         background-repeat: no-repeat;
+        background-position: 20px 20px;
         &--right {
-            right: 16px;
+            right: 0;
             background-image: url('../assets/img/chevron-right.png');
         }
         &--left {
-            left: 16px;
+            left: 0;
             background-image: url('../assets/img/chevron-left.png');
         }
     }
@@ -36,13 +32,13 @@ header {
         display: block;
         background-repeat: no-repeat;
         &--signout {
-            top: 16px;
-            left: 9px;
-            height: 25px;
-            width: 40px;
+            top: 0;
+            left: 0;
+            height: 55px;
+            width: 55px;
             background-size: 25px 19px, 21px 25px;
             background-image: url('../assets/img/icons/icon-arrow.png'), url('../assets/img/icons/icon-signout.png');
-            background-position: 0 2px, 15px 0px; 
+            background-position: 9px 18px, 24px 16px;
         }
     }
 }
