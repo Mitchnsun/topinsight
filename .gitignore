@@ -6,3 +6,4 @@ plugins
 www
 work/dist
 res
+.history
