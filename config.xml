@@ -25,12 +25,12 @@
         <splash density="port-ldpi" src="res/screen/android/splashscreen.png" />
         <splash density="port-mdpi" src="res/screen/android/splashscreen.png" />
         <splash density="port-xhdpi" src="res/screen/android/splashscreen.png" />
-        <icon density="ldpi" src="res/app-icons/icon36.png" />
-        <icon density="mdpi" src="res/app-icons/icon48.png" />
-        <icon density="hdpi" src="res/app-icons/icon72.png" />
-        <icon density="xhdpi" src="res/app-icons/icon96.png" />
-        <icon density="xxhdpi" src="res/app-icons/icon144.png" />
-        <icon density="xxxhdpi" src="res/app-icons/icon192.png" />
+        <icon density="ldpi" src="res/android/ldpi.png" />
+        <icon density="mdpi" src="res/android/mdpi.png" />
+        <icon density="hdpi" src="res/android/hdpi.png" />
+        <icon density="xhdpi" src="res/android/xhdpi.png" />
+        <icon density="xxhdpi" src="res/android/xxhdpi.png" />
+        <icon density="xxxhdpi" src="res/android/xxxhdpi.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -58,13 +58,12 @@
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="SplashScreenBackgroundColor" value="#FFF" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="Orientation" value="portrait" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#202020" />
-    <preference name="StatusBarStyle" value="lightcontent" />
-    <icon src="res/icon-topinsight.png" />
+    <preference name="StatusBarStyle" value="blackcontent" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-browsersync" spec="~0.1.1" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
@@ -77,4 +76,8 @@
         <variable name="ALWAYS_USAGE_DESCRIPTION" value="Cette application nécessite un suivi de la géolocalisation en arrière-plan" />
     </plugin>
     <plugin name="cordova-plugin-statusbar" spec="~2.2.1" />
+    <plugin name="cordova-plugin-facebook4" spec="~1.7.4">
+        <variable name="APP_ID" value="1354634814611917" />
+        <variable name="APP_NAME" value="Topinsight" />
+    </plugin>
 </widget>

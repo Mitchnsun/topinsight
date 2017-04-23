@@ -1,0 +1,25 @@
+{
+    "ios": {
+        "debug": {
+            "codeSignIdentity": "iPhone Development",
+            "provisioningProfile": "d0c4cb49-410b-4742-a591-fceba0f1f8e",
+            "developmentTeam": "29XZE9TWMA",
+            "packageType": "development"
+        },
+        "release": {
+            "codeSignIdentity": "iPhone Distribution",
+            "provisioningProfile": "d0c4cb49-410b-4742-a591-fceba0f1f8e",
+            "developmentTeam": "29XZE9TWMA",
+            "packageType": "app-store"
+        }
+    },
+    "android": {
+        "debug": {
+            "keystore": "debug.keystore",
+            "storePassword": "android",
+            "alias": "androiddebugkey",
+            "password": "android",
+            "keystoreType": ""
+        }
+    }
+}

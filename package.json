@@ -4,22 +4,22 @@
     "description": "Topinsight project",
     "main": "js/cv.js",
     "scripts": {
-        "clean": "sudo npm run clean:platforms && rm -rf www && npm run prepare",
+        "clean": "sudo npm run clean:platforms && rm -rf www && rm -rf res && npm run prepare",
         "clean:platforms": "cordova platform rm browser && cordova platform rm android && cordova platform rm ios",
         "prepare": "npm run prepare:folders && npm run build:www && sudo cordova prepare",
         "prepare:folders": "mkdir -p www/js && mkdir -p www/vendors && mkdir -p www/css && mkdir -p work/dist && npm run prepare:splashscreens && npm run prepare:icons && npm run prepare:copy",
         "prepare:copy": "cp work/index.html www && cp -r work/assets www && npm run copy:vendors",
         "prepare:splashscreens": "mkdir -p res/screen/ios && mkdir -p res/screen/android && cp work/assets/img/splashscreen.png res/screen/android && cp work/assets/img/splashscreen.png res/screen/ios && mv res/screen/ios/splashscreen.png res/screen/ios/Default@2x~universal~anyany.png",
-        "prepare:icons": "cp -r work/assets/app-icons res",
+        "prepare:icons": "cp -r work/assets/app-icons res && cp -r work/assets/app-icons/android res",
         "prepare:apps": "npm run build:www && sudo cordova prepare",
         "copy:vendors": "cp node_modules/requirejs/require.js www/vendors && cp node_modules/jquery/dist/jquery.js www/vendors && cp node_modules/underscore/underscore.js www/vendors && cp node_modules/backbone/backbone.js www/vendors && cp node_modules/requirejs-plugins/src/async.js www/vendors",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build:www": "npm run prepare:copy && npm run build:css && npm run build:js && npm run copy:map",
         "build:css": "lessc work/less/config.less www/css/output.css",
         "build:js": "handlebars work/tpl/*.html -f work/dist/tpl.js && node scripts/uglify.js",
-        "build:apps": "sudo cordova build --debug --device",
+        "build:apps": "sudo cordova build --debug --device --buildConfig=build.json",
         "copy:map": "cp -r work/js www",
-        "dev": "sudo cordova run browser -- --live-reload"
+        "dev": "npm run build:www && sudo cordova run browser -- --live-reload"
     },
     "repository": {
         "type": "git",
@@ -30,7 +30,6 @@
     "homepage": "https://bitbucket.org/matthieu_comperat/topinsight#readme",
     "dependencies": {
         "backbone": "^1.3.3",
-        "fastclick": "^1.0.6",
         "handlebars": "^4.0.6",
         "jquery": "^3.1.1",
         "less": "^2.7.1",

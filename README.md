@@ -41,18 +41,23 @@ This README documents steps are necessary to get your application up and running
 * `npm run build:apps` - Build css & js for development, also copy non-minified js for debugging
 > CLI archive ios failed if you have not the distribution certificat
 
-###### Configuration ######
+###### Hooks ######
+
+* For Android icons & splashscreens, you have to copy the res/ folder in platforms/android/
+
+###### Others ######
 
 * To see which modules are outdated: `npm outdated`
-
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
 * Code review - No Lint errors allowed
-* Other guidelines
+
+### White Brand ###
+
+* Colors : in files work/less/variables.less -> @brandcolor
+> Default colors : @white: #FFF; @black: #202020; @brandcolor: #00BFA5; @grey: #9B9B9B; @facebook: #3b5998; @twitter: #55acee;
+* Images : in work/assets and work/assets/img
+> Icons in the brand color : chevron-left.png, chevron-right.png, compteur.png, logo.png, splashscreen.png, icon-arrow.png, icon-location.png, icon-signout.png
+* App icons in folder work/assets/app-icons, each files should be changed.
+* After this changes, launch `npm run clean` - clean ios & android platform and build the project
 
 ### Who do I talk to? ###
 
