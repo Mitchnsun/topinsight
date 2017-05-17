@@ -28,19 +28,31 @@ require([
     'router',
     'views/popupview',
     'models/user',
+    'models/bluetoothparams',
     'models/course',
     'models/vae'
-], function(Backbone, Router, Popupview, User, Course, Vae) {
+], function(Backbone, Router, Popupview, User, BluetoothParams, Course, Vae) {
     app.$ = $;
     app.user = new User();
     app.course = new Course();
     app.vae = new Vae();
     app.popupview = new Popupview();
+    app.bluetooth.params = new BluetoothParams();
 
     document.addEventListener("backbutton", app.backbutton, false);
+    // deviceready Event Handler
 
-    var initRouter = function() {
+    // Launch app from external link 
+    // Just launch the app, the app can't display a previous activity
+    /*universalLinks.subscribe('openItinaryView', function(event) {
+        console.log("openItinaryView", event);
+        var urlData = event ? event.detail : {};
+        alert('Did launch application from the link: ' + urlData.url)
+    });*/
+
+    var initRouter = function(d) {
         // Initialize routing and start Backbone.history()
+        app.bluetooth.params.initStatus(d.get('user').vae_type);
         app.router = new Router();
         Backbone.history.start();
     };
@@ -52,6 +64,7 @@ require([
             error: initRouter
         });
     } else {
-        initRouter();
+        app.router = new Router();
+        Backbone.history.start();
     }
 });

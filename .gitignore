@@ -7,3 +7,4 @@ www
 work/dist
 res
 .history
+.DS_Store

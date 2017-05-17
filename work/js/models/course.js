@@ -2,8 +2,7 @@ define(['backbone'], function(Backbone) {
     return Backbone.Model.extend({
         defaults: {
             time: "00:00:00",
-            distance: 0,
-            assistance: 0
+            distance: 0
         },
         url: app.urls.endpoint + app.urls.ws_course,
         parse: function(response, options) {
@@ -28,7 +27,6 @@ define(['backbone'], function(Backbone) {
         },
         start: function() {
             app.geolocation.start_date = Date.now();
-            app.bluetooth.ready();
             this.clear();
             app.geolocation.init();
             app.geolocation.start();

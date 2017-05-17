@@ -15,6 +15,14 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <universal-links>
+        <host name="play.google.com">
+            <path url="/store/apps/details?id=com.geoks.topinsight" />
+        </host>
+        <host name="itunes.apple.com">
+            <path url="/fr/app/topinsight" />
+        </host>
+    </universal-links>
     <platform name="android">
         <allow-intent href="market:*" />
         <splash density="land-hdpi" src="res/screen/android/splashscreen.png" />
@@ -80,4 +88,5 @@
         <variable name="APP_ID" value="1354634814611917" />
         <variable name="APP_NAME" value="Topinsight" />
     </plugin>
+    <plugin name="cordova-universal-links-plugin" spec="~1.2.1" />
 </widget>

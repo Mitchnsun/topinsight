@@ -89,7 +89,7 @@ var app = app || {};
                 longitudeEnd: model.get('longitude'),
                 speed: parseFloat(app.course.get('speed')),
                 distance: parseFloat(app.course.get('distance')),
-                assistance: app.course.get('assistance')
+                assistance: app.bluetooth.params.getAssistanceLevel()
             }, { patch: true });
         }
     };

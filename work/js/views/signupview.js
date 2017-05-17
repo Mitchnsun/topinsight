@@ -139,6 +139,7 @@ define(['backbone', 'models/vae', 'models/subscribe', 'async!' + app.urls.google
         success: function(model, response, options) {
             $('.button--disabled').removeClass('button--disabled');
             app.user.set(model.get('user'));
+            app.bluetooth.params.initStatus(model.get('user').vae_type);
             app.accessToken.set(model.get('access_token'));
             app.popupview.confirm(false, app.wordings.sign.code_sent, this.gotoverification);
         },

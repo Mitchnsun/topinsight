@@ -2,16 +2,14 @@
     <div class="dashboard__meter"></div>
     <div class="dashboard__battery">
         <ul class="battery">
-            <li class="battery__cell battery__cell--empty"></li>
-            <li class="battery__cell battery__cell--empty"></li>
-            <li class="battery__cell"></li>
-            <li class="battery__cell"></li>
-            <li class="battery__cell"></li>
-            <li class="battery__cell"></li>
-            <li class="battery__cell"></li>
-            <li class="battery__cell"></li>
-            <li class="battery__cell"></li>
-            <li class="battery__cell"></li>
+            <li class="battery__cell{{#if batt4}} battery__cell--empty{{/if}}"></li>
+            <li class="battery__cell{{#if batt4}} battery__cell--empty{{/if}}"></li>
+            <li class="battery__cell{{#if batt3}} battery__cell--empty{{/if}}"></li>
+            <li class="battery__cell{{#if batt3}} battery__cell--empty{{/if}}"></li>
+            <li class="battery__cell{{#if batt2}} battery__cell--empty{{/if}}"></li>
+            <li class="battery__cell{{#if batt2}} battery__cell--empty{{/if}}"></li>
+            <li class="battery__cell{{#if batt1}} battery__cell--empty{{/if}}"></li>
+            <li class="battery__cell{{#if batt1}} battery__cell--empty{{/if}}"></li>
         </ul>
     </div>
 </div>
@@ -22,16 +20,16 @@
         <p class="infos__element__data">{{#if course.distance}}{{course.distance}}{{else}}0{{/if}}</p>
         <p class="infos__element__unit">{{wordings.distance.unit}}</p>
     </div>
-    <div class="infos__element">
+    <!--<div class="infos__element">
         <img src="{{wordings.power.icon}}" class="icon icon--small" alt="{{wordings.power.alt}}">
         <h3 class="infos__element__title">{{wordings.power.title}}</h3>
         <p class="infos__element__data">{{#if course.power}}{{course.power}}{{else}}0{{/if}}</p>
         <p class="infos__element__unit">{{wordings.power.unit}}</p>
-    </div>
+    </div>-->
     <div class="infos__element">
         <img src="{{wordings.assistance.icon}}" class="icon icon--small" alt="{{wordings.assistance.alt}}">
         <h3 class="infos__element__title">{{wordings.assistance.title}}</h3>
-        <p class="infos__element__data">{{#if course.assistance}}{{course.assistance}}{{else}}0{{/if}} <span>{{wordings.assistance.pace}}</p>
+        <p class="infos__element__data">{{assistance}} <span>{{wordings.assistance.pace}}</p>
         <p class="infos__element__unit">{{wordings.assistance.unit}}</p>
     </div>
 </div>
@@ -41,6 +39,6 @@
 <div class="assistance">
     <a href="#" class="button button--round button--minus"><img src="assets/img/buttons/button-minus.png" alt="Minus button"></a>
     <a href="#" class="button button--round button--plus"><img src="assets/img/buttons/button-plus.png" alt="Plus button"></a>
-    <a href="#" class="button button--round button--light"><img src="assets/img/buttons/button-light.png" alt="Light button"></a>
+    <a href="#" class="button button--round button--light {{#if isLightOff}}button--round--grey{{/if}}"><img src="assets/img/buttons/button-light.png" alt="Light button"></a>
 </div>
 <a href="#{{urls.cgu}}" class="button button--green button--mini">i</a>

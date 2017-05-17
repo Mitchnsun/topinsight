@@ -12,7 +12,7 @@
         "prepare:splashscreens": "mkdir -p res/screen/ios && mkdir -p res/screen/android && cp work/assets/img/splashscreen.png res/screen/android && cp work/assets/img/splashscreen.png res/screen/ios && mv res/screen/ios/splashscreen.png res/screen/ios/Default@2x~universal~anyany.png",
         "prepare:icons": "cp -r work/assets/app-icons res && cp -r work/assets/app-icons/android res",
         "prepare:apps": "npm run build:www && sudo cordova prepare",
-        "copy:vendors": "cp node_modules/requirejs/require.js www/vendors && cp node_modules/jquery/dist/jquery.js www/vendors && cp node_modules/underscore/underscore.js www/vendors && cp node_modules/backbone/backbone.js www/vendors && cp node_modules/requirejs-plugins/src/async.js www/vendors",
+        "copy:vendors": "cp node_modules/requirejs/require.js www/vendors && cp node_modules/jquery/dist/jquery.js www/vendors && cp node_modules/underscore/underscore.js www/vendors && cp node_modules/backbone/backbone.js www/vendors && cp node_modules/requirejs-plugins/src/async.js www/vendors && cp scripts/html2canvas.js www/vendors",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build:www": "npm run prepare:copy && npm run build:css && npm run build:js && npm run copy:map",
         "build:css": "lessc work/less/config.less www/css/output.css",
@@ -38,5 +38,30 @@
         "reset-css": "^2.2.0",
         "uglify-js": "^2.7.5"
     },
-    "devDependencies": {}
+    "devDependencies": {},
+    "cordova": {
+        "platforms": [
+            "android",
+            "browser",
+            "ios"
+        ],
+        "plugins": {
+            "cordova-plugin-ble-central": {
+                "BLUETOOTH_USAGE_DESCRIPTION": "Topinsight"
+            },
+            "cordova-plugin-browsersync": {},
+            "cordova-plugin-facebook4": {
+                "APP_ID": "1354634814611917",
+                "APP_NAME": "Topinsight"
+            },
+            "cordova-plugin-mauron85-background-geolocation": {
+                "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
+                "CONTENT_AUTHORITY": "$PACKAGE_NAME",
+                "ALWAYS_USAGE_DESCRIPTION": "Cette application nécessite un suivi de la géolocalisation en arrière-plan"
+            },
+            "cordova-plugin-splashscreen": {},
+            "cordova-plugin-statusbar": {},
+            "cordova-plugin-whitelist": {}
+        }
+    }
 }

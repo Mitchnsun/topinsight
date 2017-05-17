@@ -19,15 +19,19 @@ define(['backbone', 'views/meterview', 'models/lastcourse', 'models/bluetoothpar
             this.meterview = new MeterView();
 
             app.geolocation.route = _.isEmpty(app.geolocation.route) ? new Route() : app.geolocation.route;
-            app.bluetooth.params = new BluetoothParams();
+
+            this.listenToOnce(app.bluetooth.params, 'ready', _.bind(app.course.start, app.course));
+
+            app.bluetooth.isConnected(_.bind(this.course, this), _.bind(this.getLastCourse, this));
+
             this.initBluetooth();
 
-            this.listenTo(app.course, 'change', this.render);
-            this.listenToOnce(app.bluetooth.params, 'ready', _.bind(app.course.start, app.course));
             this.render();
+            this.listenTo(app.course, 'change', this.render);
+            this.listenTo(app.bluetooth.params, 'change', this.render);
         },
         initBluetooth: function() {
-            app.bluetooth.init(_.bind(this.course, this), _.bind(this.getLastCourse, this));
+            app.bluetooth.enable();
         },
         getLastCourse: function() {
             app.course.clear();
@@ -39,10 +43,8 @@ define(['backbone', 'views/meterview', 'models/lastcourse', 'models/bluetoothpar
             });
         },
         lastcoursecallback: function(model, response, options) {
-            app.bluetooth.enable();
             app.course.set(model.get('course'));
             app.course.calcDuration();
-            app.bluetooth.isenabled();
         },
         course: function() {
             if (_.isEmpty(app.course) || !app.course.get('id')) {
@@ -73,8 +75,15 @@ define(['backbone', 'views/meterview', 'models/lastcourse', 'models/bluetoothpar
             }
         },
         render: function() {
+            var bl = app.bluetooth.params.getBatteryLevel();
             $(this.el).html(Handlebars.templates["home.html"]({
                 course: app.course.toJSON(),
+                batt4: bl < 4,
+                batt3: bl < 3,
+                batt2: bl < 2,
+                batt1: bl < 1,
+                isLightOff: !app.bluetooth.params.isLightOn(),
+                assistance: app.bluetooth.params.getAssistanceLevel(),
                 wordings: this.wordings,
                 urls: app.urls
             }));
@@ -82,9 +91,11 @@ define(['backbone', 'views/meterview', 'models/lastcourse', 'models/bluetoothpar
             this.disabledButtons()
         },
         disabledButtons: function() {
-            $('.button--round').removeClass('button--round--grey');
-            var assistance = app.course.get('assistance');
+            $('.button--minus, .button--plus').removeClass('button--round--grey');
+
+            var assistance = app.bluetooth.params.getAssistanceLevel();
             assistance = assistance ? assistance : 0;
+
             if (assistance === 0) {
                 $('.button--minus').addClass('button--round--grey');
             } else if (assistance === 5) {
@@ -99,23 +110,16 @@ define(['backbone', 'views/meterview', 'models/lastcourse', 'models/bluetoothpar
         lowerAssistance: function(e) {
             // You can use the class button--disabled if a async function is called
             e.preventDefault();
-            var assistance = app.course.get('assistance');
-            assistance = assistance ? assistance : 0;
-            if (assistance > 0) {
-                app.course.set('assistance', assistance - 1);
-            }
+            app.bluetooth.params.changeAssistance(-1);
         },
         greaterAssistance: function(e) {
             // You can use the class button--disabled if a async function is called
             e.preventDefault();
-            var assistance = app.course.get('assistance');
-            assistance = assistance ? assistance : 0;
-            if (assistance < 5) {
-                app.course.set('assistance', assistance + 1);
-            }
+            app.bluetooth.params.changeAssistance(1);
         },
         lightup: function(e) {
             e.preventDefault();
+            app.bluetooth.params.toggleLight();
         },
         close: function() {
             this.undelegateEvents();

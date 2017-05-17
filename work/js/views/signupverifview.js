@@ -44,6 +44,7 @@ define(['backbone'], function(Backbone) {
             if (msg.access_token) {
                 app.accessToken.set(msg.access_token);
                 app.user.set(msg.user);
+                app.bluetooth.params.initStatus(msg.user.vae_type);
                 app.router.navigate(app.urls.home, { trigger: true });
             } else {
                 app.popupview.render(app.wordings.errors[msg.error]);

@@ -12,7 +12,13 @@ define(['backbone'], function(Backbone) {
             });
 
             this.listenToOnce(app.bluetooth.params, 'ready', _.bind(app.course.start, app.course));
+
+            this.initBluetooth();
+
             this.render();
+        },
+        initBluetooth: function() {
+            app.bluetooth.enable();
         },
         setTweetUrl: function() {
             var tweet = app.urls.tweet + '?text=' + this.wordings.share_message + ' ';
@@ -120,6 +126,32 @@ define(['backbone'], function(Backbone) {
                 e.preventDefault();
             }
 
+            // GET IMAGE MAP TO SEND TO FACEBOOK
+            html2canvas($("#map")).then(_.bind(this.renderedCanvas, this));
+        },
+        renderedCanvas: function(canvas) {
+            var self = this;
+            //canvas.toDataURL("image/png;base64;"); URL
+            canvas.toBlob(function(blob) {
+                var fdata = new FormData();
+                fdata.append('myFile', blob);
+                console.log("in toBlob", blob);
+                $.ajax({
+                    url: app.urls.endpoint + app.urls.ws_course_picture.replace('@', app.course.get('id')) + "?access_token=" + app.accessToken.get(),
+                    type: 'POST',
+                    data: fdata,
+                    processData: false,
+                    contentType: false,
+                    success: _.bind(self.pictureCourseCallback, self),
+                    error: function() {
+                        console.log('error ajax picture course');
+                    }
+                });
+            });
+        },
+        pictureCourseCallback: function(data) {
+            console.log('pictureCourseCallback', data);
+
             var url = app.urls.endpoint + app.urls.ws_course;
             url += app.course.get('id') ? '/' + app.course.get('id') : '';
             var message = this.wordings.share_message + ' ';
@@ -130,6 +162,8 @@ define(['backbone'], function(Backbone) {
                 facebookConnectPlugin.showDialog({
                         method: "share",
                         href: url,
+                        link: "https://itunes.apple.com/fr/app/topinsight", // MODIFY LINE
+                        picture: "http://example.com", // MODIFY LINE
                         caption: message
                     },
                     _.bind(this.shareCallback, this)
@@ -148,7 +182,6 @@ define(['backbone'], function(Backbone) {
             this.starting_location = this.starting_location ? this.starting_location.location() : {};
             this.stopListening();
             app.geolocation.start_date = Date.now();
-            app.bluetooth.ready();
             app.geolocation.reset();
             app.geolocation.start();
             this.listenToOnce(this.route, 'updated', _.bind(this.render, this));
